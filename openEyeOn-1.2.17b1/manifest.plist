@@ -31,7 +31,7 @@
 				<key>bundle-identifier</key>
 				<string>com.FFWDcam.cloudservice</string>
 				<key>bundle-version</key>
-				<string>1.2.16-lan</string>
+				<string>1.2.17</string>
 				<key>kind</key>
 				<string>software</string>
 				<key>title</key>
