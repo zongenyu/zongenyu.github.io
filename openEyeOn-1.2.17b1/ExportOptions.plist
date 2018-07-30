@@ -7,11 +7,11 @@
 	<key>manifest</key>
 	<dict>
 		<key>appURL</key>
-		<string>https://zongenyu.github.io/openEyeOn-1.2.15b1/openEyeOn-1.2.15b1.ipa</string>
+		<string>https://zongenyu.github.io/openEyeOn-1.2.17b1/openEyeOn-1.2.17b1.ipa</string>
 		<key>displayImageURL</key>
-		<string>https://zongenyu.github.io/openEyeOn-1.2.15b1/icon_114x114.png</string>
+		<string>https://zongenyu.github.io/openEyeOn-1.2.17b1/icon_114x114.png</string>
 		<key>fullSizeImageURL</key>
-		<string>https://zongenyu.github.io/openEyeOn-1.2.15b1/icon_512x512.png</string>
+		<string>https://zongenyu.github.io/openEyeOn-1.2.17b1/icon_512x512.png</string>
 	</dict>
 	<key>method</key>
 	<string>development</string>
