@@ -13,9 +13,9 @@
 			<key>certificate</key>
 			<dict>
 				<key>SHA1</key>
-				<string>C02E9757E0F993B11ADF0719E697359EF59984A5</string>
+				<string>F48C4DC14F2D303B5826FDEC7CE18EB48BB622CB</string>
 				<key>dateExpires</key>
-				<string>2019/7/3</string>
+				<string>2019/8/7</string>
 				<key>type</key>
 				<string>iOS Development</string>
 			</dict>
@@ -30,9 +30,9 @@
 					<key>certificate</key>
 					<dict>
 						<key>SHA1</key>
-						<string>C02E9757E0F993B11ADF0719E697359EF59984A5</string>
+						<string>F48C4DC14F2D303B5826FDEC7CE18EB48BB622CB</string>
 						<key>dateExpires</key>
-						<string>2019/7/3</string>
+						<string>2019/8/7</string>
 						<key>type</key>
 						<string>iOS Development</string>
 					</dict>
@@ -65,7 +65,7 @@
 			<key>profile</key>
 			<dict>
 				<key>UUID</key>
-				<string>1e200813-8042-4f2e-873f-b3ad6f84cf27</string>
+				<string>cc078660-2fb4-4fa5-a565-ebb16c9dbc13</string>
 				<key>name</key>
 				<string>iOS Team Provisioning Profile: com.FFWDcam.cloudservice</string>
 			</dict>
