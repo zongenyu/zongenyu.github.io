@@ -38,10 +38,12 @@ $(document).ready(function () {
 });
 
 function init() {
+    var url = "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1/customer_note?userID=827473937"
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1/customer_note",        "method": "GET",
+        "url": url,
+        "method": "GET",
         "headers": {},
         "processData": false,
         "data": ""
