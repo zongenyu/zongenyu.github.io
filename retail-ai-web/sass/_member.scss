@@ -1,0 +1,51 @@
+/*------------------------------------*\
+  #member
+\*------------------------------------*/
+.snapshot{
+  width: 100%;
+}
+.infoBox{
+  margin-bottom: 10px;
+  >p{
+    padding: 3px 0;
+  }
+  label{
+    padding-right: 10px;
+  }
+  input[type="date"], input[type="text"], textarea{
+    width: 100%;
+  }
+}
+.member_note_item{
+  margin-bottom: 5px;
+  p{
+    &:first-child{
+      color: #999;
+    }
+  }
+}
+.addNote_wrap{
+  display: none;
+  &.active{
+    display: block;
+    // border: 1px solid #033a6b;
+    padding: 5px;
+    border-radius: 5px;
+  }
+}
+.table_salesInfo{
+  width: 100%;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+  td{
+    padding: 3px;
+    &:first-child{
+      width: 80px;
+      text-align: center;
+      letter-spacing: 1em;
+    }
+    &:last-child{
+      width: calc(100% - 80px);
+    }
+  }
+}

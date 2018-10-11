@@ -1,0 +1,99 @@
+/*------------------------------------*\
+  #offcanvas
+\*------------------------------------*/
+.offcanvas {
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    max-width: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    top: calc(#{$touch_header_heigh} - 28px); //carousel_text_wrap: 28px
+    left: 0;
+    transition: max-width .5s;
+    height: calc(100vh - 50px);
+    background: #1c1c1c;
+    opacity: .8;
+}
+.offcanvas_wrap{
+    padding: 50px 8% 0 8%;
+    min-height: calc(100vh - 50px - 61px);
+}
+.offcanvas_searchWrap{
+    vertical-align: middle;
+    border: 1px solid $line_gray;
+    input{
+        background: transparent;
+        width: calc(100% - 45px);
+        border: none;
+        color: #fff;
+    }
+    .btn_offcanvasSearch{
+        display: inline-block;
+        width: 36px;
+        height: 36px;
+        vertical-align: middle;
+        background: url(../images/icons/search_offcanvas.png) no-repeat center center/ 50%;
+    }
+}
+.touch_menu{
+    a{
+        display: block;
+        color: #fff;
+        text-align: center;
+        padding: 20px 0;
+        font-size: 14.5px;
+        border-bottom: 1px solid #737373;
+    }
+    >li:last-child a{
+        border: none;
+    }
+    .submenu_title{
+        position: relative;
+        letter-spacing: 1px;
+        &:after{
+            display: block;
+            content: "";
+            position: absolute;
+            top: 20px;
+            right: 5px;
+            width: 20px;
+            height: 20px;
+            background: url(../images/icons/arrow_down_offcanvas.png) no-repeat center center/ 40%;
+        }
+        &.active{
+            &:after{
+                background: url(../images/icons/arrow_up_offcanvas.png) no-repeat center center/ 40%;
+            }
+        }
+    }
+    .submenu{
+        max-height: 0;
+        height: auto;
+        overflow: hidden;
+        transition: max-height .7s ease-out;
+        &.active{
+            max-height: 1000px;
+            transition: max-height .5s ease-in;
+        }
+        a{
+            font-size: 14px;
+        }
+    }
+
+}
+.offcanvas_bottomBtn{
+    a{
+        display: block;
+        float: left;
+        width: 50%;
+        text-align: center;
+        color: #fff;
+        font-size: 14.5px;
+        padding: 20px 0;
+        border-top: 1px solid #737373;
+        &:first-child{
+            border-right: 1px solid #737373;
+        }
+    }
+}
