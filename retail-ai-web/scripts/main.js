@@ -1,3 +1,5 @@
+var userCloudID = "";
+
 $(document).ready(function () {
     init();
 
@@ -38,7 +40,10 @@ $(document).ready(function () {
 });
 
 function init() {
-    var url = "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1/customer_note?userID=827473937"
+    let urlParams = new URLSearchParams(window.location.search);
+    userCloudID = urlParams.get('userID');
+    console.log("userCloudID:"+userCloudID);
+    var url = "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1/customer_note?userID="+userCloudID;
     var settings = {
         "async": true,
         "crossDomain": true,
@@ -56,7 +61,7 @@ function init() {
         // console.log(initData);
 
         //put data to html
-        $(".headerLine").attr("data-id", initData.userID);
+        $(".headerLine").attr("data-id", userCloudID);
         $(".headerLine").text(initData.userName);
         $(".js-userName").val(initData.userName);
         $(".visitTime span:last-child").text(initData.lastVisitTime);
@@ -112,7 +117,7 @@ function getData() {
         "notes": []
     };
 
-    data.userID = $(".headerLine").data("id");
+    data.userID = userCloudID;
     data.userName = $(".js-userName").val();
     data.lastVisitTime ="2018/10/01 11:35";
     data.snapshot = $(".js-snapshot").attr("src");
@@ -158,4 +163,14 @@ function putAjax(data) {
         console.log(JSON.stringify(response));
     });
 
+}
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
