@@ -1,4 +1,5 @@
 var userCloudID = "";
+var headshotPath = "https://s3.ap-northeast-1.amazonaws.com/org.handoutdocs.innovtest.store/12345678901?AWSAccessKeyId=ASIARTDP4WPP6KLP3IRK&Expires=1539362536&Signature=YwzNWk37WaC85BhcJxqCAPJwwBw%3D&x-amz-security-token=FQoGZXIvYXdzEOL%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDFDyi18AvBni%2Fz81ZCLqAZMsXDG%2F8gMAdVJx2zXv7qlpjdOlf41DeYUMBTmphhc%2BMIw3FCKV9NA%2BqmBcg43sc6YSaTmYRIgPlccsOZSCd%2Ff%2BDWvuqoAVckPkxmOrlXwQ0e9tipRY7B76LHqrWc%2FBBkki4szXxNiGSCvkg1dsaJD2qVX58JA9MMu0%2FgrjBRgkcZn%2F8ENTFpftyzZ%2FKy9hsp6XCt5RWowLKBuPNIrfuwZUkGkG5C3AJn91qWCHyly6PsuvfQKyXeML901mQynf9pdXZk0C8YwWedjVicm6zb8g3mJj%2F0l2%2FV268TCKfkFNHbD9B0l4%2F70NEiisloPeBQ%3D%3D";
 
 $(document).ready(function () {
     init();
@@ -65,7 +66,7 @@ function init() {
         $(".headerLine").text(initData.userName);
         $(".js-userName").val(initData.userName);
         $(".visitTime span:last-child").text(initData.lastVisitTime);
-        $(".js-snapshot").attr("src", initData.snapshot);
+        $(".js-snapshot").attr("src", headshotPath);
         $("input[name='gender']").each(function () {
             if ($(this).val() == initData.gender) {
                 $(this).prop("checked", true);
