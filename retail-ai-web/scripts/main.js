@@ -1,4 +1,5 @@
 var userCloudID = "";
+var userFaceID = "";
 var headshotPath = "https://dtz4i0vibj76b.cloudfront.net/tmp/123456789011.jpg";
 
 $(document).ready(function () {
@@ -43,7 +44,11 @@ $(document).ready(function () {
 function init() {
     let urlParams = new URLSearchParams(window.location.search);
     userCloudID = urlParams.get('userID');
+    userFaceID = urlParams.get('tmpID');
+
+    console.log("urlParams:"+urlParams);
     console.log("userCloudID:"+userCloudID);
+    console.log("userFaceID:"+userFaceID);
     var url = "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1/customer_note?userID="+userCloudID;
     var settings = {
         "async": true,
@@ -125,6 +130,10 @@ function getData() {
     data.gender = $("input[name='gender']:checked").val();
     data.birthday = $("input[type='date']").val();
     data.figure = $("input[name='figure']:checked").val();
+
+    if (userFaceID!=='undefined'){
+        data.faceId = userFaceID;
+    }
     $("input[name='favor']:checked").each(function () {
         data.favor.push($(this).val());
     });
