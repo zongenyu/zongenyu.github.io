@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PuYuan.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>armv7</string>
+				<string>arm64</string>
+			</array>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>3DCB3EC55D17FC904E59831841F4CEA7FA481380</string>
+				<key>dateExpires</key>
+				<string>2018/11/22</string>
+				<key>type</key>
+				<string>iOS Development</string>
+			</dict>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>G2T67L774T.com.puyuanbio.glucon</string>
+				<key>aps-environment</key>
+				<string>development</string>
+				<key>com.apple.developer.team-identifier</key>
+				<string>G2T67L774T</string>
+				<key>get-task-allow</key>
+				<true/>
+			</dict>
+			<key>name</key>
+			<string>Glucon.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>b335696f-24f8-4a76-a3ab-b5e17e3ba778</string>
+				<key>name</key>
+				<string>iOS Team Provisioning Profile: com.puyuanbio.glucon</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>G2T67L774T</string>
+				<key>name</key>
+				<string>PU YUAN BIOTECH CO., LTD.</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
