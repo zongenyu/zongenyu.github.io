@@ -153,8 +153,15 @@ function getData() {
             "time":"",
             "note":""
         };
+        if (userFaceID!=='undefined'){
+            data.faceId = userFaceID;
+        }
+        memberNote.userFaceID = userFaceID;        
         memberNote.time=$(this).find("p:first-child").text();
         memberNote.note = $(this).find("p:last-child").text();
+        memberNote.snapshot = headshotPath;
+
+
         data.notes.push(memberNote);
     });
   
@@ -169,6 +176,7 @@ function putAjax(data) {
         "async": true,
         "crossDomain": true,
         "url": "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1/customer_note",        "method": "PUT",
+        // "url": "http://127.0.0.1:8300/customer_note",        "method": "PUT",        
         "headers": {
             "content-type": "application/json"
         },
