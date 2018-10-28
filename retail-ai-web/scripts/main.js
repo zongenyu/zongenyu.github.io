@@ -75,9 +75,9 @@ function init() {
         // console.log(initData);
 
         //put data to html
-        $(".headerLine").attr("data-id", userCloudID);
-        $(".headerLine").text(initData.userName);
-        $(".js-userName").val(initData.userName);
+        $("p.js-userName").attr("data-id", userCloudID);
+        $("p.js-userName").text(initData.userName);
+        $("input.js-userName").val(initData.userName);
         $(".visitTime span:last-child").text(initData.lastVisitTime);
         $(".js-snapshot").attr("src", headshotPath);
         $("input[name='gender']").each(function () {
