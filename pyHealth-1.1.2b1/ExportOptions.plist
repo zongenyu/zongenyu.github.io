@@ -9,7 +9,7 @@
 	<key>manifest</key>
 	<dict>
 		<key>appURL</key>
-		<string>https://zongenyu.github.io/pyHealth-1.1.1b1/pyHealth-1.1.2b1.ipa</string>
+		<string>https://zongenyu.github.io/pyHealth-1.1.2b1/pyHealth-1.1.2b1.ipa</string>
 		<key>displayImageURL</key>
 		<string>https://zongenyu.github.io/pyHealth-1.1.2b1/icon_114x114.png</string>
 		<key>fullSizeImageURL</key>
@@ -22,7 +22,7 @@
 	<key>stripSwiftSymbols</key>
 	<true/>
 	<key>teamID</key>
-	<string>G2T67L774T</string>
+	<string>24W666RFSM</string>
 	<key>thinning</key>
 	<string>&lt;none&gt;</string>
 </dict>

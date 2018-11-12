@@ -13,20 +13,20 @@
 			<key>certificate</key>
 			<dict>
 				<key>SHA1</key>
-				<string>3DCB3EC55D17FC904E59831841F4CEA7FA481380</string>
+				<string>F48C4DC14F2D303B5826FDEC7CE18EB48BB622CB</string>
 				<key>dateExpires</key>
-				<string>2018/11/22</string>
+				<string>2019/8/7</string>
 				<key>type</key>
 				<string>iOS Development</string>
 			</dict>
 			<key>entitlements</key>
 			<dict>
 				<key>application-identifier</key>
-				<string>G2T67L774T.com.puyuanbio.glucon</string>
+				<string>24W666RFSM.com.eyeOnCare.v1</string>
 				<key>aps-environment</key>
 				<string>development</string>
 				<key>com.apple.developer.team-identifier</key>
-				<string>G2T67L774T</string>
+				<string>24W666RFSM</string>
 				<key>get-task-allow</key>
 				<true/>
 			</dict>
@@ -35,16 +35,16 @@
 			<key>profile</key>
 			<dict>
 				<key>UUID</key>
-				<string>b335696f-24f8-4a76-a3ab-b5e17e3ba778</string>
+				<string>7d634592-600b-4d41-809d-ad88276be47c</string>
 				<key>name</key>
-				<string>iOS Team Provisioning Profile: com.puyuanbio.glucon</string>
+				<string>iOS Team Provisioning Profile: com.eyeOnCare.v1</string>
 			</dict>
 			<key>team</key>
 			<dict>
 				<key>id</key>
-				<string>G2T67L774T</string>
+				<string>24W666RFSM</string>
 				<key>name</key>
-				<string>PU YUAN BIOTECH CO., LTD.</string>
+				<string>RAYLIOS TECHNOLOGY INC.</string>
 			</dict>
 		</dict>
 	</array>
