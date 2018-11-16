@@ -5,7 +5,7 @@
 <body>
     <!-- @@include('./template/_header.html') @@include('./template/_offcanvas.html') -->
     <div class="container">
-        <p class="headerLine js-userName" data-id="">娜美</p>
+        <p class="headerLine js-userName" data-id=""></p>
         <div class="content">
             <p class="visitTime">
                 <span>上次來訪時間：</span>
@@ -45,34 +45,38 @@
             </div>
 
             <div class="infoBox">
-                <p>體型</p>
+                <p>偏好顏色</p>
                 <div>
                     <label>
-                        <input type="radio" name="figure" value="高"> 高
+                        <input type="checkbox" name="favorColor" value="黃"> 黃
                     </label>
                     <label>
-                        <input type="radio" name="figure" value="矮"> 矮
+                        <input type="checkbox" name="favorColor" value="白"> 白
                     </label>
                     <label>
-                        <input type="radio" name="figure" value="胖"> 胖
+                        <input type="checkbox" name="favorColor" value="黑"> 黑
                     </label>
                     <label>
-                        <input type="radio" name="figure" value="瘦"> 瘦
+                        <input type="checkbox" name="favorColor" value="綠"> 綠
+                    </label>
+                    <label>
+                        <input type="checkbox" name="favorColor" value="其他"> 其他
                     </label>
                 </div>
             </div>
 
+
             <div class="infoBox">
-                <p>喜好</p>
+                <p>偏好</p>
                 <div>
                     <label>
-                        <input type="checkbox" name="favor" value="玉石"> 玉石
+                        <input type="checkbox" name="favor" value="項鏈"> 項鏈
                     </label>
                     <label>
-                        <input type="checkbox" name="favor" value="項鍊"> 項鍊
+                        <input type="checkbox" name="favor" value="手鍊"> 手鍊
                     </label>
                     <label>
-                        <input type="checkbox" name="favor" value="手鐲"> 手鐲
+                        <input type="checkbox" name="favor" value="腳鏈"> 腳鏈
                     </label>
                     <label>
                         <input type="checkbox" name="favor" value="戒指"> 戒指
@@ -81,22 +85,58 @@
             </div>
 
             <div class="infoBox">
-                <p>稱謂</p>
+                <p>購買意願</p>
                 <div>
                     <label>
-                        <input type="checkbox" name="familyrole" value="祖父母"> 祖父母
+                        <input type="radio" name="dealChance" value="高"> 高
                     </label>
                     <label>
-                        <input type="checkbox" name="familyrole" value="父母"> 父母
+                        <input type="radio" name="dealChance" value="中"> 中
                     </label>
                     <label>
-                        <input type="checkbox" name="familyrole" value="夫妻"> 夫妻
+                        <input type="radio" name="dealChance" value="低"> 低
+                    </label>
+                </div>
+            </div>
+            
+            <div class="infoBox">
+                <p>預算</p>
+                <div>
+                    <label>
+                        <input type="radio" name="budget" value="五千內"> 五千內
                     </label>
                     <label>
-                        <input type="checkbox" name="familyrole" value="子女"> 子女
+                        <input type="radio" name="budget" value="五千到一萬"> 五千到一萬
                     </label>
                     <label>
-                        <input type="checkbox" name="familyrole" value="男女朋友"> 男女朋友
+                        <input type="radio" name="budget" value="一萬到兩萬"> 一萬到兩萬
+                    </label>
+                    <label>
+                        <input type="radio" name="budget" value="兩萬到三萬"> 兩萬到三萬
+                    </label>
+                    <label>
+                        <input type="radio" name="budget" value="三萬以上"> 三萬以上
+                    </label>
+                </div>
+            </div>
+            
+            <div class="infoBox">
+                <p>職業</p>
+                <div>
+                    <label>
+                        <input type="radio" name="career" value="軍公教"> 軍公教
+                    </label>
+                    <label>
+                        <input type="radio" name="career" value="工"> 工
+                    </label>
+                    <label>
+                        <input type="radio" name="career" value="商"> 商
+                    </label>
+                    <label>
+                        <input type="radio" name="career" value="農"> 農
+                    </label>
+                    <label>
+                        <input type="radio" name="career" value="家管"> 家管
                     </label>
                 </div>
             </div>

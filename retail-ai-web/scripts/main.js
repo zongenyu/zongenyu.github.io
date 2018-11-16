@@ -72,7 +72,7 @@ function init() {
     $.ajax(settings).done(function (response) {
         // console.log(response);
         initData=response;
-        // console.log(initData);
+        console.log(initData);
 
         //put data to html
         $("p.js-userName").attr("data-id", userCloudID);
@@ -86,11 +86,13 @@ function init() {
             }
         });
         $("input[type='date']").val(initData.birthday);
-        $("input[name='figure']").each(function () {
-            if ($(this).val() == initData.figure) {
-                $(this).prop("checked", true);
-            }
-        });
+        for (var i = 0; i < initData.favorColor.length; i++) {
+            $("input[name='favorColor']").each(function () {
+                if ($(this).val() == initData.favorColor[i]) {
+                    $(this).prop("checked", true);
+                }
+            });
+        }
         for (var i = 0; i < initData.favor.length; i++) {
             $("input[name='favor']").each(function () {
                 if ($(this).val() == initData.favor[i]) {
@@ -98,13 +100,21 @@ function init() {
                 }
             });
         }
-        for (var j = 0; j < initData.familyRole.length; j++) {
-            $("input[name='familyrole']").each(function () {
-                if ($(this).val() == initData.familyRole[j]) {
-                    $(this).prop("checked", true);
-                }
-            });
-        }
+        $("input[name='dealChance']").each(function () {
+            if ($(this).val() == initData.dealChance) {
+                $(this).prop("checked", true);
+            }
+        });
+        $("input[name='budget']").each(function () {
+            if ($(this).val() == initData.budget) {
+                $(this).prop("checked", true);
+            }
+        });
+        $("input[name='career']").each(function () {
+            if ($(this).val() == initData.career) {
+                $(this).prop("checked", true);
+            }
+        });
         for (var k = 0; k < initData.notes.length; k++) {
             var html ='<div class="member_note_item js-note">';
             var p1 = '<p>' + initData.notes[k].time+'</p>';
@@ -125,28 +135,31 @@ function getData() {
         "snapshot": "",
         "gender": "",
         "birthday": "",
-        "figure": "",
+        "favorColor": [],
         "favor": [],
-        "familyRole": [],
+        "dealChance": "",
+        "budget": "",
+        "career": "",
         "notes": []
     };
 
     data.userID = userCloudID;
-    data.userName = $(".js-userName").val();
+    data.userName = $("input.js-userName").val();
     data.lastVisitTime ="2018/10/01 11:35";
     data.snapshot = $(".js-snapshot").attr("src");
     data.gender = $("input[name='gender']:checked").val();
     data.birthday = $("input[type='date']").val();
-    data.figure = $("input[name='figure']:checked").val();
-
+    data.dealChance = $("input[name='dealChance']:checked").val();
+    data.budget = $("input[name='budget']:checked").val();
+    data.career = $("input[name='career']:checked").val();
     if (userFaceID!=='undefined'){
         data.faceId = userFaceID;
     }
+    $("input[name='favorColor']:checked").each(function () {
+        data.favorColor.push($(this).val());
+    });
     $("input[name='favor']:checked").each(function () {
         data.favor.push($(this).val());
-    });
-    $("input[name='familyrole']:checked").each(function () {
-        data.familyRole.push($(this).val());
     });
     $(".js-note").each(function () {
         var memberNote={
@@ -187,6 +200,7 @@ function putAjax(data) {
 
     $.ajax(settings).done(function (response) {
         console.log(JSON.stringify(response));
+        alert("資料更新完成");
     });
 
 }
