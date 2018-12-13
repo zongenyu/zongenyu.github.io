@@ -1,7 +1,8 @@
 var userCloudID = "";
 var userFaceID = "";
 var headshotToken = "";
-var origImgToken = ""
+var origImgToken = "";
+var headshotPath = "";
 
 $(document).ready(function () {
     init();
