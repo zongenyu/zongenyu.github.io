@@ -52,7 +52,6 @@ function init() {
     origImgToken = urlParams.get('orig_img_token');
 
     getImgUrl(headshotToken, headshotPath);
-    $(".js-snapshot").attr("src", headshotPath);
 
 
     console.log("urlParams:"+urlParams);
@@ -217,6 +216,10 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 
+function updateImage(){
+    $(".js-snapshot").attr("src", headshotPath);
+}
+
 function getImgUrl(token, urlPath){
 
     var settings = {
@@ -235,5 +238,6 @@ function getImgUrl(token, urlPath){
     $.ajax(settings).done(function (response) {
         console.log(JSON.stringify(response));
         urlPath=response.Location;
+        updateImage();
     });    
 }
