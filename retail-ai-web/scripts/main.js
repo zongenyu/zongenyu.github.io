@@ -221,7 +221,7 @@ function getImgUrl(token, urlPath){
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1/faceImg",
+        "url": "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1/faceImg?file_token="+token,
         "method": "GET",
         // "url": "http://127.0.0.1:8300/customer_note",        "method": "PUT",        
         "headers": {
