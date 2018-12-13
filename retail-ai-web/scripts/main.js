@@ -84,7 +84,8 @@ function init() {
         $("p.js-userName").text(initData.userName);
         $("input.js-userName").val(initData.userName);
         $(".visitTime span:last-child").text(initData.lastVisitTime);
-        $(".js-snapshot").attr("src", headshotPath);
+        // $(".js-snapshot").attr("src", headshotPath);
+        // $(".js-snapshot-small").attr("src", headshotPath);
         $("input[name='gender']").each(function () {
             if ($(this).val() == initData.gender) {
                 $(this).prop("checked", true);
@@ -227,7 +228,7 @@ function updateImage(){
     console.log('\n');
     console.log('origImgPath:'+imgPath.origImgPath);
     $(".js-snapshot").attr("src", imgPath.headshotPath);
-
+    $(".js-snapshot-small").attr("src", imgPath.origImgPath);
     // Upadate original picture here
 
 }
