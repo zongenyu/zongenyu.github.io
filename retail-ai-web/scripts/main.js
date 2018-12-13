@@ -47,10 +47,10 @@ function init() {
 
     userCloudID = urlParams.get('userID');
     userFaceID = urlParams.get('tmpID');
-    headshotPath = urlParams.get('img');
+    headshotToken = urlParams.get('img');
     origImgToken = urlParams.get('orig_img_token');
 
-    // headshotPath = getImgUrl(headshotToken);
+    headshotPath = getImgUrl(headshotToken);
     $(".js-snapshot").attr("src", headshotPath);
 
 
@@ -232,7 +232,6 @@ function getImgUrl(token, urlPath){
     // console.log(settings.data);
 
     $.ajax(settings).done(function (response) {
-        alert(response);
         console.log(JSON.stringify(response));
         urlPath=response.Location;
     });    
