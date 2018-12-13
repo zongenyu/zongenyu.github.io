@@ -51,7 +51,7 @@ function init() {
     origImgToken = urlParams.get('orig_img_token');
 
     // headshotPath = getImgUrl(headshotToken);
-    $(".js-snapshot").attr("src", headshotPath);
+    $(".js-snapshot").attr("src", headshotToken);
 
 
     console.log("urlParams:"+urlParams);
