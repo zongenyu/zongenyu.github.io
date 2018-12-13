@@ -1,17 +1,19 @@
 /*------------------------------------*\
   #member
 \*------------------------------------*/
-.container{
+.content{
   position: relative;
 }
 .snapshot{
   width: 100%;
+  display: block;
 }
 .snapshot_small{
-  width: 30%;
+  display: block;
+  width: 35%;
   position: absolute;
-  right:0;
-  bottom: 0;
+  right:15px;
+  bottom: 10px;
 }
 .infoBox{
   margin-bottom: 10px;
