@@ -55,7 +55,7 @@ function init() {
     origImgToken = urlParams.get('orig_img_token');
 
     getImgUrl(headshotToken, 'headshotPath', imgPath);
-    getImgUrl(origImgToken, 'origImgPath' imgPath);
+    getImgUrl(origImgToken, 'origImgPath', imgPath);
 
 
     console.log("urlParams:"+urlParams);
