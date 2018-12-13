@@ -232,6 +232,7 @@ function getImgUrl(token, urlPath){
     // console.log(settings.data);
 
     $.ajax(settings).done(function (response) {
+        alert(response);
         console.log(JSON.stringify(response));
         urlPath=response.Location;
     });    
