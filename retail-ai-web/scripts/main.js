@@ -237,7 +237,7 @@ function getImgUrl(token, urlPath){
 
     $.ajax(settings).done(function (response) {
         console.log(JSON.stringify(response));
-        headshotPath=response.Location;
+        urlPath=response.Location;
         updateImage();
     });    
 }
