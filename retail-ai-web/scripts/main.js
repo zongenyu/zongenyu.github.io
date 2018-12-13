@@ -177,7 +177,8 @@ function getData() {
         memberNote.userFaceID = userFaceID;        
         memberNote.time=$(this).find("p:first-child").text();
         memberNote.note = $(this).find("p:last-child").text();
-        memberNote.snapshot = headshotPath;
+        memberNote.snapshot = headshotToken;
+        memberNote.orig_img_token = origImgToken;
 
 
         data.notes.push(memberNote);
