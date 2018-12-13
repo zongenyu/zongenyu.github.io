@@ -2,8 +2,8 @@ var userCloudID = "";
 var userFaceID = "";
 var headshotToken = "";
 var origImgToken = "";
-var headshotPath = "";
-var origImgPath = "";
+var imgPath={};
+
 
 $(document).ready(function () {
     init();
@@ -45,6 +45,8 @@ $(document).ready(function () {
 });
 
 function init() {
+
+
     let urlParams = new URLSearchParams(window.location.search);
 
     userCloudID = urlParams.get('userID');
@@ -52,8 +54,8 @@ function init() {
     headshotToken = urlParams.get('img');
     origImgToken = urlParams.get('orig_img_token');
 
-    getImgUrl(headshotToken, headshotPath);
-    getImgUrl(origImgToken, origImgPath);
+    getImgUrl(headshotToken, 'headshotPath', imgPath);
+    getImgUrl(origImgToken, 'origImgPath' imgPath);
 
 
     console.log("urlParams:"+urlParams);
@@ -220,16 +222,16 @@ function getParameterByName(name, url) {
 
 function updateImage(){
 
-    console.log('headshotPath:'+headshotPath);
+    console.log('headshotPath:'+imgPath.headshotPath);
     console.log('\n');
-    console.log('origImgPath:'+origImgPath);
-    $(".js-snapshot").attr("src", headshotPath);
+    console.log('origImgPath:'+imgPath.origImgPath);
+    $(".js-snapshot").attr("src", imgPath.headshotPath);
 
     // Upadate original picture here
 
 }
 
-function getImgUrl(token, urlPath){
+function getImgUrl(token, key, pathObj){
 
     var settings = {
         "async": true,
@@ -246,7 +248,7 @@ function getImgUrl(token, urlPath){
 
     $.ajax(settings).done(function (response) {
         console.log(JSON.stringify(response));
-        urlPath=response.Location;
+        pathObj[key]=response.Location;
         updateImage();
     });    
 }
