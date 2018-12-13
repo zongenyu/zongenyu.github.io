@@ -3,6 +3,7 @@ var userFaceID = "";
 var headshotToken = "";
 var origImgToken = "";
 var headshotPath = "";
+var origImgPath = "";
 
 $(document).ready(function () {
     init();
@@ -52,6 +53,7 @@ function init() {
     origImgToken = urlParams.get('orig_img_token');
 
     getImgUrl(headshotToken, headshotPath);
+    getImgUrl(origImgToken, origImgPath);
 
 
     console.log("urlParams:"+urlParams);
@@ -217,7 +219,14 @@ function getParameterByName(name, url) {
 }
 
 function updateImage(){
+
+    console.log('headshotPath:'+headshotPath);
+    console.log('\n');
+    console.log('origImgPath:'+origImgPath);
     $(".js-snapshot").attr("src", headshotPath);
+
+    // Upadate original picture here
+
 }
 
 function getImgUrl(token, urlPath){
