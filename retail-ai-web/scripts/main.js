@@ -81,6 +81,7 @@ function init() {
         $("input.js-userName").val(initData.userName);
         $(".visitTime span:last-child").text(initData.lastVisitTime);
         $(".js-snapshot").attr("src", headshotPath);
+        $(".js-snapshot-small").attr("src", headshotPath);
         $("input[name='gender']").each(function () {
             if ($(this).val() == initData.gender) {
                 $(this).prop("checked", true);
