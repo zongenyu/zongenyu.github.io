@@ -174,19 +174,16 @@ function getData() {
         };
         if (userFaceID!=='undefined'){
             data.faceId = userFaceID;
-            data.origImgToken = headshotToken;
-        } else {
-            data.origImgToken = origImgToken;
         }
         memberNote.userFaceID = userFaceID;        
         memberNote.time=$(this).find("p:first-child").text();
         memberNote.note = $(this).find("p:last-child").text();
         memberNote.snapshot = headshotToken;
 
-
         data.notes.push(memberNote);
     });
-  
+
+    data.origImgToken = (origImgToken==='undefined'?headshotToken, origImgToken);
     putAjax(data);
 };
 
