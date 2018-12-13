@@ -183,7 +183,7 @@ function getData() {
         data.notes.push(memberNote);
     });
 
-    data.origImgToken = (origImgToken==='undefined'?headshotToken, origImgToken);
+    data.origImgToken = (origImgToken==='undefined'?headshotToken:origImgToken);
     putAjax(data);
 };
 
