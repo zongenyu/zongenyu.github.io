@@ -1,6 +1,7 @@
 var userCloudID = "";
 var userFaceID = "";
-var headshotPath = "";
+var headshotToken = "";
+var origImgToken = ""
 
 $(document).ready(function () {
     init();
@@ -46,10 +47,10 @@ function init() {
 
     userCloudID = urlParams.get('userID');
     userFaceID = urlParams.get('tmpID');
-    headshotPath = urlParams.get('img=');
-    let indexImgKey = window.location.search.indexOf('img=');
-    headshotPath = window.location.search.substring(indexImgKey+'img='.length, window.location.search.length+1);
+    headshotToken = = urlParams.get('img');
+    origImgToken = = urlParams.get('orig_img_token');
 
+    headshotPath = getImgUrl(headshotToken);
     $(".js-snapshot").attr("src", headshotPath);
 
 
@@ -213,4 +214,25 @@ function getParameterByName(name, url) {
     if (!results) return null;
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+function getImgUrl(token, urlPath){
+
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1/faceImg",
+        "method": "GET",
+        // "url": "http://127.0.0.1:8300/customer_note",        "method": "PUT",        
+        "headers": {
+            "content-type": "application/json"
+        },
+        "processData": false
+    };
+    // console.log(settings.data);
+
+    $.ajax(settings).done(function (response) {
+        console.log(JSON.stringify(response));
+        urlPath=response.Location;
+    });    
 }
