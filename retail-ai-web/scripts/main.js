@@ -52,7 +52,7 @@ function init() {
     userCloudID = urlParams.get('userID');
     userFaceID = urlParams.get('tmpID');
     headshotToken = urlParams.get('img');
-    origImgToken = urlParams.get('orig_img_token');
+    origImgToken = urlParams.get('origImgToken');
 
     getImgUrl(headshotToken, 'headshotPath', imgPath);
     getImgUrl(origImgToken, 'origImgPath', imgPath);
@@ -178,7 +178,7 @@ function getData() {
         memberNote.time=$(this).find("p:first-child").text();
         memberNote.note = $(this).find("p:last-child").text();
         memberNote.snapshot = headshotToken;
-        memberNote.orig_img_token = origImgToken;
+        memberNote.origImgToken = origImgToken;
 
 
         data.notes.push(memberNote);
