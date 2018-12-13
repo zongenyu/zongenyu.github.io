@@ -47,8 +47,8 @@ function init() {
 
     userCloudID = urlParams.get('userID');
     userFaceID = urlParams.get('tmpID');
-    headshotToken = = urlParams.get('img');
-    origImgToken = = urlParams.get('orig_img_token');
+    headshotToken = urlParams.get('img');
+    origImgToken = urlParams.get('orig_img_token');
 
     headshotPath = getImgUrl(headshotToken);
     $(".js-snapshot").attr("src", headshotPath);
