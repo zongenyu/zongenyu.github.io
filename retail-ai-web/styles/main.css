@@ -525,11 +525,8 @@ section {
   display: block; }
 
 .snapshot_small {
-  display: block;
-  width: 35%;
-  position: absolute;
-  right: 15px;
-  bottom: 10px; }
+  width: 100%;
+  display: block; }
 
 .infoBox {
   margin-bottom: 10px; }
