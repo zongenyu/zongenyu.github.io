@@ -2,7 +2,7 @@ var userCloudID = "";
 var userFaceID = "";
 var headshotToken = "";
 var origImgToken = "";
-var imgPath={};
+var imgPath = {};
 
 $(document).ready(function () {
     init();
@@ -45,7 +45,7 @@ $(document).ready(function () {
     setTimeout(() => {
         getSnapshotFrame();
     }, 2000);
-    
+
     $(window).resize(function () {
         getSnapshotFrame();
     });
@@ -64,11 +64,11 @@ function init() {
     getImgUrl(headshotToken, 'headshotPath', imgPath);
     getImgUrl(origImgToken, 'origImgPath', imgPath);
 
-    console.log("urlParams:"+urlParams);
-    console.log("userCloudID:"+userCloudID);
-    console.log("userFaceID:"+userFaceID);
+    console.log("urlParams:" + urlParams);
+    console.log("userCloudID:" + userCloudID);
+    console.log("userFaceID:" + userFaceID);
     console.log($(".js-snapshot").attr("src"));
-    var url = "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1/customer_note?userID="+userCloudID;
+    var url = "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1/customer_note?userID=" + userCloudID;
     var settings = {
         "async": true,
         "crossDomain": true,
@@ -79,10 +79,10 @@ function init() {
         "data": ""
     }
 
-    var initData={};
+    var initData = {};
     $.ajax(settings).done(function (response) {
         // console.log(response);
-        initData=response;
+        initData = response;
         console.log(initData);
 
         //put data to html
@@ -128,15 +128,15 @@ function init() {
             }
         });
         for (var k = 0; k < initData.notes.length; k++) {
-            var html ='<div class="member_note_item js-note">';
-            var p1 = '<p>' + initData.notes[k].time+'</p>';
+            var html = '<div class="member_note_item js-note">';
+            var p1 = '<p>' + initData.notes[k].time + '</p>';
             var p2 = '<p>' + initData.notes[k].note + '</p>';
-            html=html+p1+p2+'</div>';
+            html = html + p1 + p2 + '</div>';
             $(".member_note").append(html);
         }
 
-    }); 
-    
+    });
+
 }
 
 function getData() {
@@ -157,14 +157,14 @@ function getData() {
 
     data.userID = userCloudID;
     data.userName = $("input.js-userName").val();
-    data.lastVisitTime ="2018/10/01 11:35";
+    data.lastVisitTime = "2018/10/01 11:35";
     data.snapshot = $(".js-snapshot").attr("src");
     data.gender = $("input[name='gender']:checked").val();
     data.birthday = $("input[type='date']").val();
     data.dealChance = $("input[name='dealChance']:checked").val();
     data.budget = $("input[name='budget']:checked").val();
     data.career = $("input[name='career']:checked").val();
-    if (userFaceID!=='undefined'){
+    if (userFaceID !== 'undefined') {
         data.faceId = userFaceID;
     }
     $("input[name='favorColor']:checked").each(function () {
@@ -174,33 +174,33 @@ function getData() {
         data.favor.push($(this).val());
     });
     $(".js-note").each(function () {
-        var memberNote={
-            "time":"",
-            "note":""
+        var memberNote = {
+            "time": "",
+            "note": ""
         };
-        if (userFaceID!=='undefined'){
+        if (userFaceID !== 'undefined') {
             data.faceId = userFaceID;
         }
-        memberNote.userFaceID = userFaceID;        
-        memberNote.time=$(this).find("p:first-child").text();
+        memberNote.userFaceID = userFaceID;
+        memberNote.time = $(this).find("p:first-child").text();
         memberNote.note = $(this).find("p:last-child").text();
         memberNote.snapshot = headshotToken;
 
         data.notes.push(memberNote);
     });
 
-    data.origImgToken = (origImgToken===''?headshotToken:origImgToken);
+    data.origImgToken = (origImgToken === '' ? headshotToken : origImgToken);
     putAjax(data);
 };
 
 function putAjax(data) {
-    var stringData=JSON.stringify(data);
+    var stringData = JSON.stringify(data);
     console.log(stringData);
 
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1/customer_note",        "method": "PUT",
+        "url": "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1/customer_note", "method": "PUT",
         // "url": "http://127.0.0.1:8300/customer_note",        "method": "PUT",        
         "headers": {
             "content-type": "application/json"
@@ -227,22 +227,22 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 
-function updateImage(){
-    console.log('imagePath:'+JSON.stringify(imgPath));
-    console.log('headshotPath:'+imgPath.headshotPath);
+function updateImage() {
+    console.log('imagePath:' + JSON.stringify(imgPath));
+    console.log('headshotPath:' + imgPath.headshotPath);
     console.log('\n');
-    console.log('origImgPath:'+imgPath.origImgPath);
+    console.log('origImgPath:' + imgPath.origImgPath);
     $(".js-snapshot").attr("src", imgPath.headshotPath);
     $(".js-snapshot-small").attr("src", imgPath.origImgPath);
     // Upadate original picture here
 }
 
-function getImgUrl(token, key, pathObj){
+function getImgUrl(token, key, pathObj) {
 
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1/faceImg?file_token="+token,
+        "url": "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1/faceImg?file_token=" + token,
         "method": "GET",
         // "url": "http://127.0.0.1:8300/customer_note",        "method": "PUT",        
         "headers": {
@@ -254,9 +254,9 @@ function getImgUrl(token, key, pathObj){
 
     $.ajax(settings).done(function (response) {
         console.log(JSON.stringify(response));
-        pathObj[key]=response.Location;
+        pathObj[key] = response.Location;
         updateImage();
-    });    
+    });
 }
 
 function getSnapshotFrame() {
