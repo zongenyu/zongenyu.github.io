@@ -144,6 +144,9 @@ function init() {
 }
 
 function getData(apiCall) {
+
+    let urlParams = new URLSearchParams(window.location.search);
+
     var data = {
         "userID": "",
         "userName": "",
@@ -156,9 +159,11 @@ function getData(apiCall) {
         "dealChance": "",
         "budget": "",
         "career": "",
-        "notes": []
+        "notes": [],
+        "targetFace": ""
     };
 
+    data.targetFace = urlParams.get('top') + "," + urlParams.get('left') + "," + urlParams.get('width') + ',' + urlParams.get('height');
     data.userID = userCloudID;
     data.userName = $("input.js-userName").val();
     data.lastVisitTime = "2018/10/01 11:35";
