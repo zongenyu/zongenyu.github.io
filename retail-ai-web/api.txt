@@ -1,6 +1,6 @@
 
 ========================================================================
-存檔方法
+儲存顧客備忘錄方法
 ========================================================================
 
 url:
@@ -18,13 +18,11 @@ body:
 
     "gender":"女",
     "birthday": "1979/09/28",
-  - "figure": "高",
-  + "favorColor": ["黃","銀","紅","白","黑","綠","其他"], // 偏好顏色
-  m "favor": ["項鏈","手鍊","腳鏈","戒指"],  // 偏好
-  + "dealChance": ["高","中","低"], // 購買意願 (單選)
-  + "budget": ["五千內","五千到一萬","一萬到兩萬","兩萬到三萬","三萬以上"], // 預算 (單選)
-  + "career": ["軍公教","工","商","農","家管"], // 職業 (單選)    
-  - "familyRole": ["祖父母","父母"],
+    "favorColor": ["黃","銀","紅","白","黑","綠","其他"], // 偏好顏色
+    "favor": ["項鏈","手鍊","腳鏈","戒指"],  // 偏好
+    "dealChance": ["高","中","低"], // 購買意願 (單選)
+    "budget": ["五千內","五千到一萬","一萬到兩萬","兩萬到三萬","三萬以上"], // 預算 (單選)
+    "career": ["軍公教","工","商","農","家管"], // 職業 (單選)    
     "notes":[
                 {
                     "time":"2018/09/20 13:20",
@@ -73,7 +71,7 @@ $.ajax(settings).done(function (response) {
 
 
 ========================================================================
-取得資料方法
+取得顧客備忘錄方法
 ========================================================================
 
 url:
@@ -101,3 +99,262 @@ var settings = {
 $.ajax(settings).done(function (response) {
   console.log(response);
 });
+
+
+========================================================================
+取得相片清單方法
+========================================================================
+
+- url:
+https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1/face_event?mac=b8:27:eb:f3:51:14
+
+- method:
+GET
+
+- body:
+N/A
+
+- sample code:
+
+```
+var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1/face_event",
+  "method": "GET",
+  "headers": {
+    "content-type": "application/json",
+    "cache-control": "no-cache"
+  },
+  "processData": false,
+  "data": ""
+}
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
+```
+
+- sample response
+
+```
+{
+    "Items": [
+        {
+            "faceGroup": "b827ebf35114",
+            "imgToken": "1234567890",
+            "faceRectangles": [
+                {
+                    "width": 157,
+                    "top": 96,
+                    "left": 255,
+                    "height": 157
+                }
+            ],
+            "mac": "b8:27:eb:f3:51:14",
+            "timestamp": 1550472178452
+        },
+        {
+            "faceGroup": "b827ebf35114",
+            "imgToken": "1234567890",
+            "faceRectangles": [
+                {
+                    "width": 139,
+                    "top": 170,
+                    "left": 119,
+                    "height": 139
+                }
+            ],
+            "mac": "b8:27:eb:f3:51:14",
+            "timestamp": 1550472178238
+        },
+        {
+            "faceGroup": "b827ebf35114",
+            "imgToken": "1234567890",
+            "faceRectangles": [
+                {
+                    "width": 157,
+                    "top": 96,
+                    "left": 255,
+                    "height": 157
+                }
+            ],
+            "mac": "b8:27:eb:f3:51:14",
+            "timestamp": 1550471545542
+        },
+        {
+            "faceGroup": "b827ebf35114",
+            "imgToken": "1234567890",
+            "faceRectangles": [
+                {
+                    "width": 139,
+                    "top": 170,
+                    "left": 119,
+                    "height": 139
+                }
+            ],
+            "mac": "b8:27:eb:f3:51:14",
+            "timestamp": 1550471545538
+        },
+        {
+            "faceGroup": "b827ebf35114",
+            "imgToken": "1234567890",
+            "faceRectangles": [
+                {
+                    "width": 157,
+                    "top": 96,
+                    "left": 255,
+                    "height": 157
+                }
+            ],
+            "mac": "b8:27:eb:f3:51:14",
+            "timestamp": 1550470936145
+        },
+        {
+            "faceGroup": "b827ebf35114",
+            "imgToken": "1234567890",
+            "faceRectangles": [
+                {
+                    "width": 139,
+                    "top": 170,
+                    "left": 119,
+                    "height": 139
+                }
+            ],
+            "mac": "b8:27:eb:f3:51:14",
+            "timestamp": 1550470935972
+        },
+        {
+            "faceGroup": "b827ebf35114",
+            "imgToken": "1234567890",
+            "faceRectangles": [
+                {
+                    "width": 157,
+                    "top": 96,
+                    "left": 255,
+                    "height": 157
+                }
+            ],
+            "mac": "b8:27:eb:f3:51:14",
+            "timestamp": 1550466375596
+        },
+        {
+            "faceGroup": "b827ebf35114",
+            "imgToken": "1234567890",
+            "faceRectangles": [
+                {
+                    "width": 139,
+                    "top": 170,
+                    "left": 119,
+                    "height": 139
+                }
+            ],
+            "mac": "b8:27:eb:f3:51:14",
+            "timestamp": 1550466375481
+        },
+        {
+            "faceGroup": "b827ebf35114",
+            "imgToken": "1234567890",
+            "faceRectangles": [
+                {
+                    "width": 157,
+                    "top": 96,
+                    "left": 255,
+                    "height": 157
+                }
+            ],
+            "mac": "b8:27:eb:f3:51:14",
+            "timestamp": 1550401381831
+        },
+        {
+            "faceGroup": "b827ebf35114",
+            "imgToken": "1234567890",
+            "faceRectangles": [
+                {
+                    "width": 157,
+                    "top": 96,
+                    "left": 255,
+                    "height": 157
+                }
+            ],
+            "mac": "b8:27:eb:f3:51:14",
+            "timestamp": 1550401381806
+        },
+        {
+            "faceGroup": "b827ebf35114",
+            "imgToken": "1234567890",
+            "faceRectangles": [
+                {
+                    "width": 157,
+                    "top": 96,
+                    "left": 255,
+                    "height": 157
+                }
+            ],
+            "mac": "b8:27:eb:f3:51:14",
+            "timestamp": 1550401316284
+        },
+        {
+            "faceGroup": "b827ebf35114",
+            "imgToken": "1234567890",
+            "faceRectangles": [
+                {
+                    "width": 139,
+                    "top": 170,
+                    "left": 119,
+                    "height": 139
+                }
+            ],
+            "mac": "b8:27:eb:f3:51:14",
+            "timestamp": 1550401316278
+        },
+        {
+            "faceGroup": "b827ebf35114",
+            "imgToken": "1234567890",
+            "faceRectangles": [
+                {
+                    "width": 157,
+                    "top": 96,
+                    "left": 255,
+                    "height": 157
+                }
+            ],
+            "mac": "b8:27:eb:f3:51:14",
+            "timestamp": 1550401281898
+        },
+        {
+            "faceGroup": "b827ebf35114",
+            "imgToken": "1234567890",
+            "faceRectangles": [
+                {
+                    "width": 157,
+                    "top": 96,
+                    "left": 255,
+                    "height": 157
+                }
+            ],
+            "mac": "b8:27:eb:f3:51:14",
+            "timestamp": 1550401281890
+        },
+        {
+            "faceGroup": "b827ebf35114",
+            "imgToken": "12345678901",
+            "faceRectangles": [
+                {
+                    "width": 80,
+                    "top": 118,
+                    "left": 134,
+                    "height": 80
+                }
+            ],
+            "mac": "b8:27:eb:f3:51:14",
+            "timestamp": 1550401234817
+        }
+    ],
+    "Count": 15,
+    "ScannedCount": 15
+}
+```
+
+
+========================================================================
