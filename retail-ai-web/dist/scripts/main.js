@@ -38,7 +38,12 @@ $(document).ready(function () {
 
     //儲存基本資料
     $(".js-btn-save").click(function () {
-        getData();
+        getData(putAjax);
+    });
+
+        //儲存基本資料
+    $(".js-btn-newmember").click(function () {
+        getData(postAjax);
     });
 
     //在snapshot畫出臉部方框
@@ -139,7 +144,7 @@ function init() {
 
 }
 
-function getData() {
+function getData(apiCall) {
     var data = {
         "userID": "",
         "userName": "",
@@ -190,7 +195,7 @@ function getData() {
     });
 
     data.origImgToken = (origImgToken === '' ? headshotToken : origImgToken);
-    putAjax(data);
+    apiCall(data);
 };
 
 function putAjax(data) {
