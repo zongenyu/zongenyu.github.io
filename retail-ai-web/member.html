@@ -12,6 +12,55 @@
 <body>
     
     <div class="container">
+        <p class="headerLine">
+            NOTE
+            <a href="#" class="btn_note active">+SAVE</a>
+        </p>
+        <div class="content">
+            <ul class="path">
+                <li>select</li>
+                <li>note</li>
+            </ul>
+        </div>
+
+        <!-- 照片 二版-->
+        <p class="headerLine js-userName" data-id=""></p>
+        <div class="content">
+            <p class="visitTime">
+                <span>上次來訪時間：</span>
+                <span>1911/01/01 01:01</span>
+            </p>
+            <div>
+                <div class="txt-right">
+                    <a href="#" class="btn js-snapshotsEdit">EDIT</a>
+                </div>
+                <div class="memberInfo_snapshots">
+                    <div class="snapshot_wrap">
+                        <img src="images/assets/headshot.jpeg" alt="大頭照" class="snapshot js-snapshot">
+                        <a href="#" class="btn_snapshotDel">X</a>
+                    </div>
+                    <div class="snapshot_wrap">
+                        <img src="images/assets/headshot.jpeg" alt="大頭照" class="snapshot js-snapshot">
+                        <a href="#" class="btn_snapshotDel">X</a>
+                    </div>
+                    <div class="snapshot_wrap">
+                        <img src="images/assets/headshot.jpeg" alt="大頭照" class="snapshot js-snapshot">
+                        <a href="#" class="btn_snapshotDel">X</a>
+                    </div>
+                    <div class="snapshot_wrap">
+                        <img src="images/assets/headshot.jpeg" alt="大頭照" class="snapshot js-snapshot">
+                        <a href="#" class="btn_snapshotDel">X</a>
+                    </div>
+                </div>
+            </div>
+            <div class="snapshot_wrap">
+                <img src="images/assets/headshot.jpeg" alt="大頭照" class="snapshot js-snapshot">
+                <div class="snapshot_frame"></div>
+            </div>
+            <img src="images/assets/headshot.jpeg" alt="大頭照" class="snapshot_small js-snapshot-small">
+        </div>
+    
+        <!-- 照片 初版-->
         <p class="headerLine js-userName" data-id=""></p>
         <div class="content">
             <p class="visitTime">
@@ -24,9 +73,7 @@
             </div>
             <img src="images/assets/headshot.jpeg" alt="大頭照" class="snapshot_small js-snapshot-small">
         </div>
-    </div>
 
-    <div class="container">
         <p class="headerLine">基本資料</p>
         <div class="content">
             <div class="infoBox">
@@ -186,10 +233,6 @@
     <div class="btnWrap">
         <a href="javascript: void(0);" class="btn btn_darkBlue js-btn-save">更新基本資料</a>
     </div>
-        <div class="btnWrap">
-        <a href="javascript: void(0);" class="btn btn_darkBlue js-btn-newmember">新增會員</a>
-    </div>
-
 
     <!--消費記錄-->
     <div class="container">
@@ -250,10 +293,9 @@
     <script src="scripts/vendor/jquery.easing.1.3.js"></script>
     <script src="scripts/vendor/slick.min.js"></script>
     <script src="scripts/vendor/jquery.magnific-popup.min.js"></script>
+    <!-- <script src="scripts/main.js"></script> -->
     <script src="scripts/main.js"></script>
-    <script>
-        
-    </script>
+    
 </body>
 
 </html>

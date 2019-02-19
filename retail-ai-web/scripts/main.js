@@ -53,6 +53,14 @@ $(document).ready(function () {
         getSnapshotFrame();
     });
 
+    //刪除snapshot
+    $(".js-snapshotsEdit").click(function () {
+        $(".btn_snapshotDel").toggleClass("active"); 
+    });
+    $(".btn_snapshotDel").click(function () {
+        $(this).parent().remove();
+    }); 
+
 });
 
 function init() {

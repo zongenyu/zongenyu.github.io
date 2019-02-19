@@ -38,7 +38,10 @@ $(document).ready(function () {
 
     //儲存基本資料
     $(".js-btn-save").click(function () {
-        getData();
+        getData(putAjax);
+    });
+    $(".js-btn-newmember").click(function () {
+        getData(postAjax);
     });
 
     //在snapshot畫出臉部方框
@@ -49,6 +52,14 @@ $(document).ready(function () {
     $(window).resize(function () {
         getSnapshotFrame();
     });
+
+    //刪除snapshot
+    $(".js-snapshotsEdit").click(function () {
+        $(".btn_snapshotDel").toggleClass("active"); 
+    });
+    $(".btn_snapshotDel").click(function () {
+        $(this).parent().remove();
+    }); 
 
 });
 
@@ -69,6 +80,7 @@ function init() {
     console.log("userFaceID:" + userFaceID);
     console.log($(".js-snapshot").attr("src"));
     var url = "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1/customer_note?userID=" + userCloudID;
+
     var settings = {
         "async": true,
         "crossDomain": true,
@@ -139,7 +151,10 @@ function init() {
 
 }
 
-function getData() {
+function getData(apiCall) {
+
+    let urlParams = new URLSearchParams(window.location.search);
+
     var data = {
         "userID": "",
         "userName": "",
@@ -152,9 +167,11 @@ function getData() {
         "dealChance": "",
         "budget": "",
         "career": "",
-        "notes": []
+        "notes": [],
+        "targetFace": ""
     };
 
+    data.targetFace = urlParams.get('top') + "," + urlParams.get('left') + "," + urlParams.get('width') + ',' + urlParams.get('height');
     data.userID = userCloudID;
     data.userName = $("input.js-userName").val();
     data.lastVisitTime = "2018/10/01 11:35";
@@ -190,7 +207,7 @@ function getData() {
     });
 
     data.origImgToken = (origImgToken === '' ? headshotToken : origImgToken);
-    putAjax(data);
+    apiCall(data);
 };
 
 function putAjax(data) {
@@ -202,6 +219,29 @@ function putAjax(data) {
         "crossDomain": true,
         "url": "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1/customer_note", "method": "PUT",
         // "url": "http://127.0.0.1:8300/customer_note",        "method": "PUT",        
+        "headers": {
+            "content-type": "application/json"
+        },
+        "processData": false,
+        "data": stringData
+    };
+    // console.log(settings.data);
+
+    $.ajax(settings).done(function (response) {
+        console.log(JSON.stringify(response));
+        alert("資料更新完成");
+    });
+
+}
+
+function postAjax(data) {
+    var stringData = JSON.stringify(data);
+    console.log(stringData);
+
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1/customer_note", "method": "POST",
         "headers": {
             "content-type": "application/json"
         },

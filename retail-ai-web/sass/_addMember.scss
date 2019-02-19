@@ -1,0 +1,60 @@
+/*------------------------------------*\
+  #addMember
+\*------------------------------------*/
+.btn_note{
+    position: absolute;
+    top: 5px;
+    right: 3px;
+    // background: #ddd;
+    font-size: 15px;
+    letter-spacing: 3px;
+    padding: 2px 5px;
+    border-radius: 5px;
+    border: 1px solid #fff;
+    color: #ddd;
+    text-align: center;
+    font-weight: 500;
+    &.active{
+        color: #286397;
+        background: #fff;
+    }
+}
+.member_imgs{
+    width: 100%;
+    max-width: 500px;
+    margin: 30px auto;
+    tr{
+        border-bottom: 1px solid #ccc;
+    }
+    td{
+        text-align: center;
+        &:first-child{
+            width: 50px;
+        }
+        &:last-child{
+            width: calc(10% - 50px);
+        }
+        img{
+            width: 100%;
+            max-width: 100px;
+        }
+    }
+}
+.member_imgs_row{
+    display: block;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 10px 0;
+    &:last-child{
+        border: none;
+    }
+    input{
+        margin: 0 40px 0 20px;
+        vertical-align: middle;
+    }
+    .snapshot_wrap{
+        display: inline-block;
+        width: calc(100% - 80px);
+        vertical-align: middle;
+    }
+}
