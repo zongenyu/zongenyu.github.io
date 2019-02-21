@@ -105,10 +105,11 @@ section {
 }
 
 .headerLine {
+    position: relative;
     text-align: center;
     font-size: 16px;
     letter-spacing: 0.5em;
-    padding: 5px 0;
+    padding: 8px 0;
     background: #286397; 
     color: #fff;
 }
@@ -164,6 +165,36 @@ section {
     }
 }
 
+.path{
+    margin-bottom: 10px;
+    li{
+        display: inline-block;
+        vertical-align: middle;
+        &:after{
+            
+            display: inline-block;
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-top: 1px solid;
+            border-right: 1px solid;
+            transform: rotate(45deg); 
+            margin: 0 5px;
+        }
+        &:last-child{
+            &:after{
+                display: none;
+            }
+        }
+    }
+}
+.is-link{
+    text-decoration: underline;
+    color: #286397;
+}
+.txt-right{
+    text-align: right;
+}
 // .gotop {
 //     display: none;
 //     position: fixed;
