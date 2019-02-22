@@ -1,0 +1,69 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>RBW</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <p class="headerLine">SETTING</p>
+
+        <div class="content">
+            <div class="snapshot_wrap">
+                <img src="images/assets/headshot.jpeg" alt="" class="snapshot js-snapshot">
+                <div class="snapshot_frame"></div>
+            </div>
+
+            <table class="set_tb">
+                <tr>
+                    <th>URL:</th>
+                    <td class="td_cnt">
+                        <input type="text" class="urlIpt">
+                    </td>
+                    <td class="td_btn">
+                        <a href="#" class="btn btn_darkBlue js-btn_URL">配置</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th rowspan="2">ROI:</th>
+                    <td class="td_cnt">
+                        <span>起點(</span>
+                        <input type="number" min="0" max="100" class="axis_x1" placeholder="x1">
+                        <span>, </span>
+                        <input type="number" min="0" max="100" class="axis_y1" placeholder="y1">
+                        <span>)</span>
+                    </td>
+                    <td rowspan="2" class="td_btn">
+                        <a href="#" class="btn btn_darkBlue js-btn_snapshotFrame">配置</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td_cnt">
+                        <span>終點(</span>
+                        <input type="number" class="axis_x2" placeholder="x2">
+                        <span>, </span>
+                        <input type="number" class="axis_y2" placeholder="y2">
+                        <span>)</span>
+                    </td>
+                </tr>
+            </table>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="scripts/vendor/jquery-1.11.2.min.js"></script>
+    <script src="scripts/vendor/jquery.easing.1.3.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+
+</html>
