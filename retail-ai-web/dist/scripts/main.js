@@ -3,6 +3,8 @@ var userFaceID = "";
 var headshotToken = "";
 var origImgToken = "";
 var imgPath = {};
+var API_ROOT = "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1";
+//var API_ROOT = "http://127.0.0.1:8300";
 
 $(document).ready(function () {
     init();
@@ -40,9 +42,6 @@ $(document).ready(function () {
     $(".js-btn-save").click(function () {
         getData(putAjax);
     });
-
-        //儲存基本資料
-
     $(".js-btn-newmember").click(function () {
         getData(postAjax);
     });
@@ -82,7 +81,7 @@ function init() {
     console.log("userCloudID:" + userCloudID);
     console.log("userFaceID:" + userFaceID);
     console.log($(".js-snapshot").attr("src"));
-    var url = "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1/customer_note?userID=" + userCloudID;
+    var url = API_ROOT + "/customer_note?userID=" + userCloudID;
 
     var settings = {
         "async": true,
@@ -220,7 +219,7 @@ function putAjax(data) {
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1/customer_note", "method": "PUT",
+        "url": API_ROOT + "/customer_note", "method": "PUT",
         // "url": "http://127.0.0.1:8300/customer_note",        "method": "PUT",        
         "headers": {
             "content-type": "application/json"
@@ -244,7 +243,7 @@ function postAjax(data) {
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1/customer_note", "method": "POST",
+        "url": API_ROOT + "/customer_note", "method": "POST",
         "headers": {
             "content-type": "application/json"
         },
@@ -285,7 +284,7 @@ function getImgUrl(token, key, pathObj) {
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1/faceImg?file_token=" + token,
+        "url": API_ROOT + "/faceImg?file_token=" + token,
         "method": "GET",
         // "url": "http://127.0.0.1:8300/customer_note",        "method": "PUT",        
         "headers": {
