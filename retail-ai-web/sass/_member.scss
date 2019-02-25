@@ -15,7 +15,11 @@
   }
 }
 .snapshot_wrap {
-  position: relative; }
+  position: relative; 
+  canvas{
+    width: 100%;
+  }
+}
 
 .snapshot{
   width: 100%;
