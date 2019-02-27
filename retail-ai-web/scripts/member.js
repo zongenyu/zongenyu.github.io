@@ -42,15 +42,15 @@ function drawCanvas(id, src, w, h, top, left) {
 
     image.src = src;
     image.setAttribute("crossOrigin", 'Anonymous');
-    let outfit = w/2
+    let margin = w/2
 
     image.onload = function () {
         console.log(left);
         let imageRect = {
-            left: Math.max(0, left-outfit),
-            top: Math.max(0, top-outfit),
-            width: w+2*outfit,
-            height: h+2*outfit
+            left: Math.max(0, left-margin),
+            top: Math.max(0, top-margin),
+            width: w+2*margin,
+            height: h+2*margin
         };
         let canvasRect = {
             left: 0,
