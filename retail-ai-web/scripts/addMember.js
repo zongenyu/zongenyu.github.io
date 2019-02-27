@@ -118,7 +118,7 @@ function setNote(data) {
 
             localStorage.setItem('memberImgs', JSON.stringify(result));
 
-            location="http://localhost:3000/member.html";
+            location="./member.html";
         }
 
     })
