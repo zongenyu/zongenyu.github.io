@@ -1,6 +1,26 @@
 
+const FACE_TOKEN_ROOT = "faces/"
+const API_ROOT = "http://127.0.0.1:8300"
+
 var memberImgsInfo = JSON.parse(localStorage.getItem("memberImgs"));
+var faces = []
+var mac = ''
+
 console.log(memberImgsInfo);
+console.log(JSON.stringify(localStorage))
+
+$(document).ready(function () {
+
+    let urlParams = new URLSearchParams(window.location.search);    
+    mac = urlParams.get('mac');
+    console.log('mac:'+mac)
+
+})
+
+//儲存基本資料
+$(".btn_note").click(function () {
+    saveJpegNote();
+});
 
 for (var i = 0; i < memberImgsInfo.length; i++) {
     const element = memberImgsInfo[i];
@@ -16,18 +36,19 @@ for (var i = 0; i < memberImgsInfo.length; i++) {
 loadJpeg();
 
 //在snapshot畫出臉部方框
-var saveJpeg = function(){
+var saveJpegNote = function(){
     console.log("===== Start upload All Jpeg ==========")
     for (var i = 0; i < memberImgsInfo.length; i++) {
 
         console.log("===== Uploading Jpeg " +i +" ==========")
 
         var cvsId="canvas"+i;
-        var file_token = "thumb-"+i
+        var file_token = FACE_TOKEN_ROOT+genUUID()
         var chainInfo = {
             canvasID:cvsId,
             file_token:file_token
         }
+        faces.push(file_token)
 
         getImgUploadUrl(chainInfo)
         .then(uploadJpeg)
@@ -36,16 +57,92 @@ var saveJpeg = function(){
         });
 
         console.log("===== End Uploading Jpeg " +i +" ==========")
-
     }
+
+    setTimeout(function(){
+        postCustomerNote()
+    }, 3000)
 
     console.log("===== End upload All Jpeg ==========")    
 };
 
-var saveCustomerNote = function(){
-    
-}
 
+function postCustomerNote() {
+
+        let urlParams = new URLSearchParams(window.location.search);
+
+        var data = {
+            "userID": "",
+            "userName": "",
+            "lastVisitTime": "",
+            "snapshots": [],
+            "gender": "",
+            "birthday": "",
+            "favorColor": [],
+            "favor": [],
+            "dealChance": "",
+            "budget": "",
+            "career": "",
+            "notes": [],
+            "targetFace": ""
+        };
+
+        data.mac = mac
+        data.targetFace = urlParams.get('top') + "," + urlParams.get('left') + "," + urlParams.get('width') + ',' + urlParams.get('height');
+        data.userName = $("input.js-userName").val();
+        data.lastVisitTime = "2018/10/01 11:35";
+        data.snapshots = faces;
+        data.gender = $("input[name='gender']:checked").val();
+        data.birthday = $("input[type='date']").val();
+        data.dealChance = $("input[name='dealChance']:checked").val();
+        data.budget = $("input[name='budget']:checked").val();
+        data.career = $("input[name='career']:checked").val();
+        if (typeof(userFaceID) !== 'undefined') {
+            data.faceId = userFaceID;
+        }
+        $("input[name='favorColor']:checked").each(function () {
+            data.favorColor.push($(this).val());
+        });
+        $("input[name='favor']:checked").each(function () {
+            data.favor.push($(this).val());
+        });
+        $(".js-note").each(function () {
+            var memberNote = {
+                "time": "",
+                "note": ""
+            };
+            if (userFaceID !== 'undefined') {
+                data.faceId = userFaceID;
+            }
+            memberNote.userFaceID = userFaceID;
+            memberNote.time = $(this).find("p:first-child").text();
+            memberNote.note = $(this).find("p:last-child").text();
+            memberNote.snapshot = headshotToken;
+
+            data.notes.push(memberNote);
+        });
+
+        var stringData = JSON.stringify(data);
+
+        console.log('stringData post:'+stringData)
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": API_ROOT + "/customer_note", "method": "POST",
+            "headers": {
+                "content-type": "application/json"
+            },
+            "processData": false,
+            "data": stringData
+        };
+        // console.log(settings.data);
+
+        $.ajax(settings).done(function (response) {
+            console.log(JSON.stringify(response));
+            alert("資料更新完成");
+            resolve('')
+        });
+}
 
 function loadJpeg(uploadUrl) {
 
@@ -95,16 +192,6 @@ function uploadJpeg(chainInfo, resolve, reject){
             console.log("===== End upload a Jpeg ==========")
             resolve(chainInfo)
         })
-
-            // // 图片ajax上传
-            // var xhr = new XMLHttpRequest();
-
-            // // 开始上传
-            // xhr.open("PUT", chainInfo.location, true);
-            // xhr.setRequestHeader("content-type", "binary/octet-stream");
-            // xhr.send(blob);
-
-            // console.log("===== End upload a Jpeg ==========")
     })
 }
 
@@ -219,4 +306,16 @@ function cropImgToCanvas(img, canvas, rectangle, drawRectangle) {
         drawRectangle.width, drawRectangle.height); // With as width / height: 100 * 100 (scale)
 
     console.log('===== done draw image =========')
+}
+
+var genUUID = function() {
+  var d = Date.now();
+  if (typeof performance !== 'undefined' && typeof performance.now === 'function'){
+        d += performance.now(); //use high-precision timer if available
+    }
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        var r = (d + Math.random() * 16) % 16 | 0;
+        d = Math.floor(d / 16);
+        return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+    });
 }

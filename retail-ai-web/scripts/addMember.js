@@ -1,27 +1,39 @@
-console.log("s");
+var mac = ''
 
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1/face_event?mac=b8:27:eb:f3:51:14",
-    "method": "GET",
-    "headers": {
-        "content-type": "application/json"
-        // "cache-control": "no-cache"
-    },
-    "processData": false,
-    "data": ""
-}
+
+
+$(document).ready(function () {
+
+    let urlParams = new URLSearchParams(window.location.search);    
+    mac = urlParams.get('mac');
+    console.log('mac:'+mac)
+
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1/face_event?mac="+mac,
+        "method": "GET",
+        "headers": {
+            "content-type": "application/json"
+            // "cache-control": "no-cache"
+        },
+        "processData": false,
+        "data": ""
+    }
 
 
 $.ajax(settings).done(function (response) {
+
     var data=response;
     console.log(data);
 
     drawHtml(data);
 });
 
+})
+
 function drawHtml(data) {
+
     // console.log(data);
     var htmls="";
     for (var i = 0; i < data.Items.length; i++) {
@@ -46,11 +58,12 @@ function drawHtml(data) {
     }, 3000);
 
     addCheckEvent();
-
     setNote(data);
+
 }
 
 function getSnapshotFrame(data) {
+
     for (let i = 0; i < data.Items.length; i++) {
         if (data.Items[i].faceRectangles.length>0){
             var faceRectangles = data.Items[i].faceRectangles[0]
@@ -89,6 +102,7 @@ function getSnapshotFrame(data) {
 }
 
 function addCheckEvent() {
+
     $("input[name='memberImgs']").click(function () {
         console.log("click");
         for (let i = 0; i < $("input[name='memberImgs']").length; i++) {
@@ -100,9 +114,11 @@ function addCheckEvent() {
             } 
         }
     })
+
 }
 
 function setNote(data) {
+
     var data=data;
     var result=[];
     $(".btn_note").click(function () {
@@ -118,8 +134,9 @@ function setNote(data) {
 
             localStorage.setItem('memberImgs', JSON.stringify(result));
 
-            location="./member.html";
+            location="./member.html?mac="+mac;
         }
 
     })
+
 }
