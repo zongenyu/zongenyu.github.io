@@ -1,6 +1,7 @@
 
 const FACE_TOKEN_ROOT = "faces/"
-const API_ROOT = "http://127.0.0.1:8300"
+const API_ROOT = "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1";
+//const API_ROOT = "http://127.0.0.1:8300"
 
 var memberImgsInfo = JSON.parse(localStorage.getItem("memberImgs"));
 var faces = []
