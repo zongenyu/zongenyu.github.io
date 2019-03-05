@@ -246,11 +246,11 @@ var saveJpegNote = function(){
     console.log("===== Start upload All Jpeg ==========")
     var divs = document.getElementsByClassName('snapshot_wrap')
 
-    for (let div in divs) {
+    for (let i in divs) {
 
         console.log("  ===== Uploading Jpeg ==========")
 
-        var cvsId="canvas" + div.getAttribute('data-picindex');
+        var cvsId="canvas" + divs[i].getAttribute('data-picindex');
         var file_token = FACE_TOKEN_ROOT+genUUID()
         var chainInfo = {
             canvasID:cvsId,
