@@ -5,7 +5,6 @@ const API_ROOT = "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1
 
 var memberImgsInfo = JSON.parse(localStorage.getItem("memberImgs"));
 var faces = []
-var divs=[]
 var mac = ''
 var userCloudID = "";
 var userFaceID = "";
@@ -19,7 +18,6 @@ console.log(JSON.stringify(localStorage))
 $(document).ready(function () {
 
     let urlParams = new URLSearchParams(window.location.search);    
-    divs = document.getElementByClassName('snapshot_wrap')
     mac = urlParams.get('mac');
     console.log('mac:'+mac)
 
@@ -246,6 +244,7 @@ function putAjax(data) {
 var saveJpegNote = function(){
 
     console.log("===== Start upload All Jpeg ==========")
+    var divs = document.getElementsByClassName('snapshot_wrap')
 
     for (let div in divs) {
 
