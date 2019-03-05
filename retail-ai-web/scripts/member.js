@@ -248,7 +248,7 @@ var saveJpegNote = function(){
 
     for (let div in divs) {
 
-        console.log("  ===== Uploading Jpeg " +i +" ==========")
+        console.log("  ===== Uploading Jpeg ==========")
 
         var cvsId="canvas" + div.getAttribute('data-picindex');
         var file_token = FACE_TOKEN_ROOT+genUUID()
@@ -264,7 +264,7 @@ var saveJpegNote = function(){
             console.log(e);
         });
 
-        console.log("===== End Uploading Jpeg " +i +" ==========")
+        console.log("  ===== End Uploading Jpeg ==========")
     }
 
     setTimeout(function(){
