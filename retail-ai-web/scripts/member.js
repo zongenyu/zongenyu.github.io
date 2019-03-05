@@ -362,7 +362,7 @@ function cropFaces() {
         var top = memberImgsInfo[i].faceRectangles[0].top;
         var w = memberImgsInfo[i].faceRectangles[0].width;
         var h = memberImgsInfo[i].faceRectangles[0].height;
-        var src = "https://di93lo4zawi3i.cloudfront.net/faces/" + memberImgsInfo[i].imgToken;
+        var src = "https://di93lo4zawi3i.cloudfront.net/" + memberImgsInfo[i].imgToken;
         drawCanvas(id, src, w, h, top, left);
         console.log(i)
     }
