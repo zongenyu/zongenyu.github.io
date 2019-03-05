@@ -14,7 +14,7 @@
     <div class="container">
         <p class="headerLine">
             NOTE
-            <a href="#" class="btn_note active">+SAVE</a>
+            <a href="#" class="btn_note active js-btn-save">+SAVE</a>
         </p>
         <div class="content">
             <ul class="path">
@@ -24,30 +24,22 @@
         </div>
         
         <!-- 照片 二版-->
-        <div class="cvs_wrap">
-            <div class="txt-right">
-                <a href="#" class="btn js-snapshotsEdit">EDIT</a>
-            </div>
-            <div class="memberInfo_snapshots">
-                <div class="snapshot_wrap">
-                    <canvas id="canvas"></canvas>
-                    <a href="#" class="btn_snapshotDel">X</a>
-                </div>
-            </div>
-        </div>
-        
         <p class="headerLine js-userName" data-id=""></p>
         <div class="content">
             <p class="visitTime">
                 <span>上次來訪時間：</span>
                 <span>1911/01/01 01:01</span>
             </p>
-            <div>
+            <div class="cvs_wrap">
                 <div class="txt-right">
                     <a href="#" class="btn js-snapshotsEdit">EDIT</a>
                 </div>
                 <div class="memberInfo_snapshots">
-                    <div class="snapshot_wrap">
+                    <!-- <div class="snapshot_wrap">
+                        <canvas id="canvas"></canvas>
+                        <a href="#" class="btn_snapshotDel">X</a>
+                    </div> -->
+                    <!-- <div class="snapshot_wrap">
                         <img src="images/assets/headshot.jpeg" alt="大頭照" class="snapshot js-snapshot">
                         <a href="#" class="btn_snapshotDel">X</a>
                     </div>
@@ -58,22 +50,14 @@
                     <div class="snapshot_wrap">
                         <img src="images/assets/headshot.jpeg" alt="大頭照" class="snapshot js-snapshot">
                         <a href="#" class="btn_snapshotDel">X</a>
-                    </div>
-                    <div class="snapshot_wrap">
-                        <img src="images/assets/headshot.jpeg" alt="大頭照" class="snapshot js-snapshot">
-                        <a href="#" class="btn_snapshotDel">X</a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
-            <div class="snapshot_wrap">
-                <img src="images/assets/headshot.jpeg" alt="大頭照" class="snapshot js-snapshot">
-                <div class="snapshot_frame"></div>
-            </div>
-            <img src="images/assets/headshot.jpeg" alt="大頭照" class="snapshot_small js-snapshot-small">
+    
         </div>
     
         <!-- 照片 初版-->
-        <p class="headerLine js-userName" data-id=""></p>
+        <!-- <p class="headerLine js-userName" data-id=""></p>
         <div class="content">
             <p class="visitTime">
                 <span>上次來訪時間：</span>
@@ -84,7 +68,7 @@
                 <div class="snapshot_frame"></div>
             </div>
             <img src="images/assets/headshot.jpeg" alt="大頭照" class="snapshot_small js-snapshot-small">
-        </div>
+        </div> -->
 
         <p class="headerLine">基本資料</p>
         <div class="content">
@@ -308,7 +292,52 @@
     <!-- <script src="scripts/main.js"></script> -->
     <!-- <script src="scripts/main.js"></script> -->
     <script src="scripts/member.js"></script>
-    
+    <script>
+        $(function () {
+            //設定snapshot的寬度
+            var w= $(".snapshot_wrap").width();
+            $(".snapshot_wrap").height(w);
+        
+            //刪除snapshot
+            $(".js-snapshotsEdit").click(function () {
+                $(".btn_snapshotDel").toggleClass("active"); 
+            });
+
+            $(".btn_snapshotDel").click(function () {
+                $(this).parent().remove();
+            }); 
+            
+            // 打開基本資料備註
+            $(".js-btn-addNote").click(function () {
+                $(".addNote_wrap").addClass("active");
+                $(".js-btn-addNote").parent().css("display", "none");
+            });
+
+            //關掉基本資料備註
+            $(".js-btn_cancel").click(function () {
+                $(".addNote_wrap textarea").val("");
+                $(".addNote_wrap").removeClass("active");
+                $(".js-btn-addNote").parent().css("display", "block");
+            });
+
+            //新增基本資料備註
+            $(".js-btn_add").click(function () {
+                var note = $(".addNote_wrap textarea").val();
+                if (note !== "") {
+                    var html = '<div class="member_note_item js-note">';
+                    var time = '<p>2018/09/20 13:20</p>';
+                    var cnt = '<p>' + note + '</p>';
+                    html = html + time + cnt + '</div>';
+                    $(".member_note").append(html);
+
+                    $(".addNote_wrap").removeClass("active");
+                    $(".js-btn-addNote").parent().css("display", "block");
+                }
+
+            });
+
+        });
+    </script>
 </body>
 
 </html>

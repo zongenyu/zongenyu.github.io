@@ -6,6 +6,11 @@ const API_ROOT = "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1
 var memberImgsInfo = JSON.parse(localStorage.getItem("memberImgs"));
 var faces = []
 var mac = ''
+var userCloudID = "";
+var userFaceID = "";
+// var headshotToken = "";
+// var origImgToken = "";
+var imgPath = {};
 
 console.log(memberImgsInfo);
 console.log(JSON.stringify(localStorage))
@@ -16,17 +21,205 @@ $(document).ready(function () {
     mac = urlParams.get('mac');
     console.log('mac:'+mac)
 
-})
+    if (urlParams.has('userID')){
+        init();
+    }
+    
+    //儲存基本資料
+    $(".js-btn-save").click(function () {
+        if (urlParams.has('userID')) {
+            getData(putAjax);
+        }else{
+            saveJpegNote();
+        }
+        
+    });
 
-//儲存基本資料
-$(".btn_note").click(function () {
-    saveJpegNote();
+    // $(".btn_note").click(function () {
+    //     if (urlParams.has('userID')) {
+    //         getData(putAjax);
+    //     } else {
+    //         saveJpegNote();
+    //     }
+    // });
+
 });
+
+function init() {
+
+    let urlParams = new URLSearchParams(window.location.search);
+
+    userCloudID = urlParams.get('userID');
+    userFaceID = urlParams.get('tmpID');
+    // headshotToken = urlParams.get('img');
+    // origImgToken = urlParams.get('origImgToken');
+
+    // getImgUrl(headshotToken, 'headshotPath', imgPath);
+    // getImgUrl(origImgToken, 'origImgPath', imgPath);
+
+    console.log("urlParams:" + urlParams);
+    console.log("userCloudID:" + userCloudID);
+    console.log("userFaceID:" + userFaceID);
+    console.log($(".js-snapshot").attr("src"));
+    var url = API_ROOT + "/customer_note?userID=" + userCloudID;
+
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": url,
+        "method": "GET",
+        "headers": {},
+        "processData": false,
+        "data": ""
+    }
+    console.log(settings);
+    var initData = {};
+    $.ajax(settings).done(function (response) {
+        // console.log(response);
+        initData = response;
+        console.log(initData);
+
+        //put data to html
+        $("p.js-userName").attr("data-id", userCloudID);
+        $("p.js-userName").text(initData.userName);
+        $("input.js-userName").val(initData.userName);
+        $(".visitTime span:last-child").text(initData.lastVisitTime);
+        // $(".js-snapshot").attr("src", headshotPath);
+        // $(".js-snapshot-small").attr("src", headshotPath);
+        $("input[name='gender']").each(function () {
+            if ($(this).val() == initData.gender) {
+                $(this).prop("checked", true);
+            }
+        });
+        $("input[type='date']").val(initData.birthday);
+        for (var i = 0; i < initData.favorColor.length; i++) {
+            $("input[name='favorColor']").each(function () {
+                if ($(this).val() == initData.favorColor[i]) {
+                    $(this).prop("checked", true);
+                }
+            });
+        }
+        for (var i = 0; i < initData.favor.length; i++) {
+            $("input[name='favor']").each(function () {
+                if ($(this).val() == initData.favor[i]) {
+                    $(this).prop("checked", true);
+                }
+            });
+        }
+        $("input[name='dealChance']").each(function () {
+            if ($(this).val() == initData.dealChance) {
+                $(this).prop("checked", true);
+            }
+        });
+        $("input[name='budget']").each(function () {
+            if ($(this).val() == initData.budget) {
+                $(this).prop("checked", true);
+            }
+        });
+        $("input[name='career']").each(function () {
+            if ($(this).val() == initData.career) {
+                $(this).prop("checked", true);
+            }
+        });
+        for (var k = 0; k < initData.notes.length; k++) {
+            var html = '<div class="member_note_item js-note">';
+            var p1 = '<p>' + initData.notes[k].time + '</p>';
+            var p2 = '<p>' + initData.notes[k].note + '</p>';
+            html = html + p1 + p2 + '</div>';
+            $(".member_note").append(html);
+        }
+
+    });
+
+}
+
+function getData(apiCall) {
+
+    let urlParams = new URLSearchParams(window.location.search);
+
+    var data = {
+        "userID": "",
+        "userName": "",
+        "lastVisitTime": "",
+        // "snapshot": "",
+        "gender": "",
+        "birthday": "",
+        "favorColor": [],
+        "favor": [],
+        "dealChance": "",
+        "budget": "",
+        "career": "",
+        "notes": [],
+        "targetFace": ""
+    };
+
+    data.targetFace = urlParams.get('top') + "," + urlParams.get('left') + "," + urlParams.get('width') + ',' + urlParams.get('height');
+    data.userID = userCloudID;
+    data.userName = $("input.js-userName").val();
+    data.lastVisitTime = "2018/10/01 11:35";
+    // data.snapshot = $(".js-snapshot").attr("src");
+    data.gender = $("input[name='gender']:checked").val();
+    data.birthday = $("input[type='date']").val();
+    data.dealChance = $("input[name='dealChance']:checked").val();
+    data.budget = $("input[name='budget']:checked").val();
+    data.career = $("input[name='career']:checked").val();
+    if (userFaceID !== 'undefined') {
+        data.faceId = userFaceID;
+    }
+    $("input[name='favorColor']:checked").each(function () {
+        data.favorColor.push($(this).val());
+    });
+    $("input[name='favor']:checked").each(function () {
+        data.favor.push($(this).val());
+    });
+    $(".js-note").each(function () {
+        var memberNote = {
+            "time": "",
+            "note": ""
+        };
+        if (userFaceID !== 'undefined') {
+            data.faceId = userFaceID;
+        }
+        memberNote.userFaceID = userFaceID;
+        memberNote.time = $(this).find("p:first-child").text();
+        memberNote.note = $(this).find("p:last-child").text();
+        memberNote.snapshot = headshotToken;
+
+        data.notes.push(memberNote);
+    });
+
+    // data.origImgToken = (origImgToken === '' ? headshotToken : origImgToken);
+    apiCall(data);
+};
+
+function putAjax(data) {
+    var stringData = JSON.stringify(data);
+    console.log(stringData);
+
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": API_ROOT + "/customer_note", "method": "PUT",
+        // "url": "http://127.0.0.1:8300/customer_note",        "method": "PUT",        
+        "headers": {
+            "content-type": "application/json"
+        },
+        "processData": false,
+        "data": stringData
+    };
+    // console.log(settings.data);
+
+    $.ajax(settings).done(function (response) {
+        console.log(JSON.stringify(response));
+        alert("資料更新完成");
+    });
+
+}
 
 for (var i = 0; i < memberImgsInfo.length; i++) {
     const element = memberImgsInfo[i];
     var cvsId="canvas"+i;
-    var html = "<div class='snapshot_wrap'>" +
+    var html = "<div class='snapshot_wrap' data-picIndex="+i+">" +
                     "<canvas id='" + cvsId + "'></canvas>" +
                     "<a href='#' class='btn_snapshotDel'>X</a>" +
                 "</div>";
@@ -118,7 +311,7 @@ function postCustomerNote() {
             memberNote.userFaceID = userFaceID;
             memberNote.time = $(this).find("p:first-child").text();
             memberNote.note = $(this).find("p:last-child").text();
-            memberNote.snapshot = headshotToken;
+            // memberNote.snapshot = headshotToken;
 
             data.notes.push(memberNote);
         });
