@@ -462,7 +462,7 @@ function getImgUploadUrl(chainInfo, resolve, reject) {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://localhost:8300/faceImg?file_token="+chainInfo.file_token,
+            "url": API_ROOT + "/faceImg?file_token="+chainInfo.file_token,
             "method": "PUT",
             // "url": "http://127.0.0.1:8300/customer_note",        "method": "PUT",        
             "headers": {
