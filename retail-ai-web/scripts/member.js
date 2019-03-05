@@ -23,7 +23,31 @@ $(document).ready(function () {
 
     if (urlParams.has('userID')){
         init();
+        faces=initData.snapshots
+    } else {
+        for (let item in memberImgsInfo){
+            faces.push(item.imgToken)
+        }
     }
+
+    for (var i = 0; i < memberImgsInfo.length; i++) {
+        const element = memberImgsInfo[i];
+        var cvsId="canvas"+i;
+        var html = "<div class='snapshot_wrap' data-picIndex="+i+">" +
+        "<canvas id='" + cvsId + "'></canvas>" +
+        "<a href='#' class='btn_snapshotDel'>X</a>" +
+        "</div>";
+
+        $(".memberInfo_snapshots").append(html);
+    }
+
+    if (urlParams.has('userID')){
+        init();
+        faces=initData.snapshots
+        loadFaces()
+    } else {
+        cropFaces()
+    }    
     
     //儲存基本資料
     $(".js-btn-save").click(function () {
@@ -216,27 +240,17 @@ function putAjax(data) {
 
 }
 
-for (var i = 0; i < memberImgsInfo.length; i++) {
-    const element = memberImgsInfo[i];
-    var cvsId="canvas"+i;
-    var html = "<div class='snapshot_wrap' data-picIndex="+i+">" +
-                    "<canvas id='" + cvsId + "'></canvas>" +
-                    "<a href='#' class='btn_snapshotDel'>X</a>" +
-                "</div>";
-                
-    $(".memberInfo_snapshots").append(html);
-}
-
-loadJpeg();
-
 //在snapshot畫出臉部方框
 var saveJpegNote = function(){
+
     console.log("===== Start upload All Jpeg ==========")
-    for (var i = 0; i < memberImgsInfo.length; i++) {
+    var divs = document.getElementByClassName('snapshot_wrap')
 
-        console.log("===== Uploading Jpeg " +i +" ==========")
+    for (let div in divs) {
 
-        var cvsId="canvas"+i;
+        console.log("  ===== Uploading Jpeg " +i +" ==========")
+
+        var cvsId="canvas" + div.getAttribute('data-picindex');
         var file_token = FACE_TOKEN_ROOT+genUUID()
         var chainInfo = {
             canvasID:cvsId,
@@ -338,10 +352,9 @@ function postCustomerNote() {
         });
 }
 
-function loadJpeg(uploadUrl) {
+function cropFaces() {
 
-    console.log("===== uploadJpeg ==========")
-    console.log("upload to url:" + uploadUrl)
+    console.log("===== cropFaces ==========")
 
     for (var i = 0; i < memberImgsInfo.length; i++) {
         var id = "canvas" + i;
@@ -354,6 +367,32 @@ function loadJpeg(uploadUrl) {
         console.log(i)
     }
 
+}
+
+function loadFaces() {
+
+    console.log("===== loadFaces ==========")
+
+    for (var i = 0; i < faces.length; i++) {
+
+        var src = "https://di93lo4zawi3i.cloudfront.net/" + faces[i];
+        var image = new Image();
+        image.setAttribute("crossOrigin", 'Anonymous');
+        image.src = src;        
+
+        var id = "canvas" + i;
+        var canvas = document.getElementById(id);
+        canvas.width=100;
+        canvas.height=100;
+        ctx = canvas.getContext('2d');
+
+
+        image.onload = function () {
+            ctx.drawImage(img, 0, 0, image.width,    image.height,     // source rectangle
+                       0, 0, canvas.width, canvas.height);
+            console.log(i)
+        }
+    }
 }
 
 function uploadJpeg(chainInfo, resolve, reject){
