@@ -245,7 +245,7 @@ var saveJpegNote = function(){
     console.log("===== Start upload All Jpeg ==========")
     var divs = document.getElementsByClassName('snapshot_wrap')
 
-    for (let i in divs) {
+    for (let i=0;i<divs.length; i++) {
 
         console.log("  ===== Uploading Jpeg ==========")
 
@@ -484,7 +484,6 @@ function getImgUploadUrl(chainInfo, resolve, reject) {
                 reject('')
             }
         })
-
     })
 }
 
