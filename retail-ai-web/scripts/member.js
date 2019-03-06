@@ -1,5 +1,4 @@
 
-const FACE_TOKEN_ROOT = "faces/"
 const API_ROOT = "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1";
 //const API_ROOT = "http://127.0.0.1:8300"
 
@@ -251,7 +250,7 @@ var saveJpegNote = function(){
         console.log("  ===== Uploading Jpeg ==========")
 
         var cvsId="canvas" + divs[i].getAttribute('data-picindex');
-        var file_token = FACE_TOKEN_ROOT+genUUID()
+        var file_token = genUUID()
         var chainInfo = {
             canvasID:cvsId,
             file_token:file_token
@@ -464,7 +463,6 @@ function getImgUploadUrl(chainInfo, resolve, reject) {
             "crossDomain": true,
             "url": API_ROOT + "/faceImg?file_token="+chainInfo.file_token,
             "method": "PUT",
-            // "url": "http://127.0.0.1:8300/customer_note",        "method": "PUT",        
             "headers": {
                 'content-type': "binary/octet-stream"
             },
@@ -491,6 +489,7 @@ function getImgUploadUrl(chainInfo, resolve, reject) {
 }
 
 function drawCanvas(id, src, w, h, top, left) {
+
     var image = new Image();
 
     var canvas = document.getElementById(id);
@@ -524,8 +523,6 @@ function drawCanvas(id, src, w, h, top, left) {
         //     0, 0,     // Place the result at 0, 0 in the canvas,
         //     50, 50); // With as width / height: 100 * 100 (scale)
     }
-
-
 }
 
 
