@@ -276,8 +276,9 @@ function putAjax(data) {
 
 //存圖，存 customerNote
 var saveJpegNote = function(){
-    console.log("===== Start upload All Jpeg ==========")
 
+    console.log("===== Start upload All Jpeg ==========")
+    var divs = document.getElementsByClassName('snapshot_wrap')
 
     function myLoop (i) {          
         setTimeout(function () {   
