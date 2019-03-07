@@ -279,7 +279,7 @@ var saveJpegNote = function(){
     console.log("===== Start upload All Jpeg ==========")
 
 
-    (function myLoop (i) {          
+    function myLoop (i) {          
         setTimeout(function () {   
 
             console.log("  ===== Uploading Jpeg ==========")
@@ -302,9 +302,9 @@ var saveJpegNote = function(){
             if (--i) myLoop(i);      //  decrement i and call myLoop again if i > 0
 
         }, 1000)                   //  pass the number of iterations as an argument
-    })(divs.length); 
+    }
 
-
+    myLoop(divs.length)
     setTimeout(function(){
         postCustomerNote()
     }, 1000*memberImgsInfo.length)
