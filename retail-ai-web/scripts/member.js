@@ -305,7 +305,7 @@ var saveJpegNote = function(){
         }, 1000)                   //  pass the number of iterations as an argument
     }
 
-    myLoop(divs.length)
+    myLoop(divs.length-1)
     setTimeout(function(){
         postCustomerNote()
     }, 1000*memberImgsInfo.length)
