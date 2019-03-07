@@ -239,37 +239,75 @@ function putAjax(data) {
 
 }
 
-//在snapshot畫出臉部方框
+// //在snapshot畫出臉部方框
+// var saveJpegNote = function(){
+
+//     console.log("===== Start upload All Jpeg ==========")
+//     var divs = document.getElementsByClassName('snapshot_wrap')
+//     faces=[]
+
+//     for (let i=0;i<divs.length; i++) {
+
+//         console.log("  ===== Uploading Jpeg ==========")
+
+//         var cvsId="canvas" + divs[i].getAttribute('data-picindex');
+//         var file_token = genUUID()
+//         var chainInfo = {
+//             canvasID:cvsId,
+//             file_token:file_token
+//         }
+//         faces.push(file_token)
+
+//         getImgUploadUrl(chainInfo)
+//         .then(uploadJpeg)
+//         .catch( e => {
+//             console.log(e);
+//         });
+
+//         console.log("  ===== End Uploading Jpeg ==========")
+//     }
+
+//     setTimeout(function(){
+//         postCustomerNote()
+//     }, 3000)
+
+//     console.log("===== End upload All Jpeg ==========")    
+// };
+
+//存圖，存 customerNote
 var saveJpegNote = function(){
-
     console.log("===== Start upload All Jpeg ==========")
-    var divs = document.getElementsByClassName('snapshot_wrap')
-    faces=[]
 
-    for (let i=0;i<divs.length; i++) {
 
-        console.log("  ===== Uploading Jpeg ==========")
+    (function myLoop (i) {          
+        setTimeout(function () {   
 
-        var cvsId="canvas" + divs[i].getAttribute('data-picindex');
-        var file_token = genUUID()
-        var chainInfo = {
-            canvasID:cvsId,
-            file_token:file_token
-        }
-        faces.push(file_token)
+            console.log("  ===== Uploading Jpeg ==========")
 
-        getImgUploadUrl(chainInfo)
-        .then(uploadJpeg)
-        .catch( e => {
-            console.log(e);
-        });
+            var cvsId="canvas" + divs[i].getAttribute('data-picindex');
+            var file_token = genUUID()
+            let chainInfo = {
+                canvasID:cvsId,
+                file_token:file_token
+            }
+            faces.push(file_token)
 
-        console.log("  ===== End Uploading Jpeg ==========")
-    }
+            getImgUploadUrl(chainInfo)
+            .then(uploadJpeg)
+            .catch( e => {
+                console.log(e);
+            });
+
+            console.log("  ===== End Uploading Jpeg ==========") 
+            if (--i) myLoop(i);      //  decrement i and call myLoop again if i > 0
+
+        }, 1000)                   //  pass the number of iterations as an argument
+    })(divs.length); 
+
 
     setTimeout(function(){
         postCustomerNote()
-    }, 3000)
+    }, 1000*memberImgsInfo.length)
 
     console.log("===== End upload All Jpeg ==========")    
 };
