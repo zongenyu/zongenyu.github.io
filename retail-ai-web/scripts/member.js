@@ -51,7 +51,7 @@ $(document).ready(function () {
     
     //儲存基本資料
     $(".js-btn-save").click(function () {
-        if (true/*urlParams.has('userID')*/) {
+        if (*urlParams.has('userID')) {
             getData(putAjax);
         }else{
             saveJpegNote();
