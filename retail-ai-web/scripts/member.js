@@ -10,6 +10,7 @@ var userFaceID = "";
 // var headshotToken = "";
 // var origImgToken = "";
 var imgPath = {};
+var isPhotoChanged = false
 
 console.log(memberImgsInfo);
 console.log(JSON.stringify(localStorage))
@@ -164,7 +165,6 @@ function getData(apiCall) {
         "userID": "",
         "userName": "",
         "lastVisitTime": "",
-        // "snapshot": "",
         "gender": "",
         "birthday": "",
         "favorColor": [],
@@ -180,7 +180,6 @@ function getData(apiCall) {
     data.userID = userCloudID;
     data.userName = $("input.js-userName").val();
     data.lastVisitTime = "2018/10/01 11:35";
-    // data.snapshot = $(".js-snapshot").attr("src");
     data.gender = $("input[name='gender']:checked").val();
     data.birthday = $("input[type='date']").val();
     data.dealChance = $("input[name='dealChance']:checked").val();
@@ -206,13 +205,18 @@ function getData(apiCall) {
         memberNote.userFaceID = userFaceID;
         memberNote.time = $(this).find("p:first-child").text();
         memberNote.note = $(this).find("p:last-child").text();
-        memberNote.snapshot = headshotToken;
 
         data.notes.push(memberNote);
     });
 
-    // data.origImgToken = (origImgToken === '' ? headshotToken : origImgToken);
-    apiCall(data);
+    if (isPhotoChanged){
+        deleteCustomerNote(userCloudID)
+        .then(function(){
+            saveJpegNote();
+        })
+    } else {
+            apiCall(data);
+    }
 };
 
 function putAjax(data) {
@@ -239,40 +243,30 @@ function putAjax(data) {
 
 }
 
-// //在snapshot畫出臉部方框
-// var saveJpegNote = function(){
+function deleteCustomerNote(userID, resolve, reject){
 
-//     console.log("===== Start upload All Jpeg ==========")
-//     var divs = document.getElementsByClassName('snapshot_wrap')
-//     faces=[]
+    return Promise(function(resolve, reject){
 
-//     for (let i=0;i<divs.length; i++) {
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": API_ROOT + "/customer_note", "method": "DELETE",
+            // "url": "http://127.0.0.1:8300/customer_note",        "method": "PUT",        
+            "headers": {
+                "content-type": "application/json"
+            },
+            "processData": false,
+            "data": ""
+        };
 
-//         console.log("  ===== Uploading Jpeg ==========")
+        $.ajax(settings).done(function (response) {
+            console.log(JSON.stringify(response));
+            alert("資料更新完成");
+        });
 
-//         var cvsId="canvas" + divs[i].getAttribute('data-picindex');
-//         var file_token = genUUID()
-//         var chainInfo = {
-//             canvasID:cvsId,
-//             file_token:file_token
-//         }
-//         faces.push(file_token)
+    })
+}
 
-//         getImgUploadUrl(chainInfo)
-//         .then(uploadJpeg)
-//         .catch( e => {
-//             console.log(e);
-//         });
-
-//         console.log("  ===== End Uploading Jpeg ==========")
-//     }
-
-//     setTimeout(function(){
-//         postCustomerNote()
-//     }, 3000)
-
-//     console.log("===== End upload All Jpeg ==========")    
-// };
 
 //存圖，存 customerNote
 var saveJpegNote = function(){
