@@ -51,13 +51,17 @@ $(document).ready(function () {
     
     //儲存基本資料
     $(".js-btn-save").click(function () {
-        if (urlParams.has('userID')) {
+        if (true/*urlParams.has('userID')*/) {
             getData(putAjax);
         }else{
             saveJpegNote();
         }
-        
     });
+
+    $(".btn_snapshotDel").click(function () {
+        isPhotoChanged=true
+    })
+
 
     // $(".btn_note").click(function () {
     //     if (urlParams.has('userID')) {
@@ -215,7 +219,7 @@ function getData(apiCall) {
             saveJpegNote();
         })
     } else {
-            apiCall(data);
+        apiCall(data);
     }
 };
 
@@ -245,12 +249,13 @@ function putAjax(data) {
 
 function deleteCustomerNote(userID, resolve, reject){
 
-    return Promise(function(resolve, reject){
+    return new Promise(function(resolve, reject){
 
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": API_ROOT + "/customer_note", "method": "DELETE",
+            "url": API_ROOT + "/customer_note?userID="+userID + "&mac=" + mac,
+             "method": "DELETE",
             // "url": "http://127.0.0.1:8300/customer_note",        "method": "PUT",        
             "headers": {
                 "content-type": "application/json"
@@ -258,10 +263,11 @@ function deleteCustomerNote(userID, resolve, reject){
             "processData": false,
             "data": ""
         };
+        console.log('deleteCustomerNote with payload:'+JSON.stringify(settings))
 
-        $.ajax(settings).done(function (response) {
+        $.ajax(settings).done(function(response) {
             console.log(JSON.stringify(response));
-            alert("資料更新完成");
+            resolve('')            
         });
 
     })
