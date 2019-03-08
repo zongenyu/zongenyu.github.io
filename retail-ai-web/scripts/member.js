@@ -387,7 +387,6 @@ function postCustomerNote() {
         $.ajax(settings).done(function (response) {
             console.log(JSON.stringify(response));
             alert("資料更新完成");
-            resolve('')
         });
 }
 
