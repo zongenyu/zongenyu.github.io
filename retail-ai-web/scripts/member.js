@@ -43,8 +43,6 @@ $(document).ready(function () {
     }
 
     if (urlParams.has('userID')){
-        init();
-        faces=initData.snapshots
         loadFaces()
     } else {
         cropFaces()
@@ -103,7 +101,7 @@ function init() {
     }
     console.log(settings);
     $.ajax(settings).done(function (response) {
-        // console.log(response);
+        console.log(response);
         initData = response;
         console.log(initData);
 
