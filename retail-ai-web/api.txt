@@ -1,5 +1,71 @@
 
 ========================================================================
+取得某一裝置所有顧客備忘錄方法
+========================================================================
+
+url:
+https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1/customer_note/all?mac=b8:27:eb:f3:51:14
+
+header:
+  - Content-Type: application/json
+
+method:
+GET
+
+body:
+N/A
+
+
+sample code:
+
+var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1/customer_note/all?mac=b8:27:eb:f3:51:14",
+  "method": "GET",
+  "headers": {
+    "content-type": "application/json",
+  },
+  "processData": false,
+  "data": ""
+}
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
+
+========================================================================
+取得某一顧客備忘錄方法
+========================================================================
+
+url:
+http://192.168.1.216:8300/customer_note (local)
+https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1/customer_note (cloud)
+
+method:
+GET
+
+body:
+N/A
+
+sample code:
+
+var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "http://192.168.1.216:8300/customer_note",
+  "method": "GET",
+  "headers": {},
+  "processData": false,
+  "data": ""
+}
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
+
+
+========================================================================
 儲存顧客備忘錄方法
 ========================================================================
 
@@ -68,38 +134,6 @@ var settings = {
 $.ajax(settings).done(function (response) {
   console.log(response);
 });
-
-
-========================================================================
-取得顧客備忘錄方法
-========================================================================
-
-url:
-http://192.168.1.216:8300/customer_note (local)
-https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1/customer_note (cloud)
-
-method:
-GET
-
-body:
-N/A
-
-sample code:
-
-var settings = {
-  "async": true,
-  "crossDomain": true,
-  "url": "http://192.168.1.216:8300/customer_note",
-  "method": "GET",
-  "headers": {},
-  "processData": false,
-  "data": ""
-}
-
-$.ajax(settings).done(function (response) {
-  console.log(response);
-});
-
 
 ========================================================================
 取得相片清單方法
