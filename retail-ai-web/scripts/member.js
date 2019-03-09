@@ -23,7 +23,7 @@ $(document).ready(function () {
     console.log('mac:'+mac)
 
     if (urlParams.has('userID')){
-        init();
+        // do nothing
     } else {
         for (let i in memberImgsInfo){
             faces.push(memberImgsInfo[i].imgToken)
@@ -42,8 +42,13 @@ $(document).ready(function () {
     }
 
     if (urlParams.has('userID')){
-        faces=initData.snapshots        
-        loadFaces()
+        init();
+
+        setTimeout(function(){
+            faces=initData.snapshots        
+            loadFaces()
+        },2000)
+
     } else {
         cropFaces()
     }    
