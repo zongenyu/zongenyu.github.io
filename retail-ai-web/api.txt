@@ -97,6 +97,43 @@ $.ajax(settings).done(function (response) {
 
 
 ========================================================================
+刪除某一筆顧客備忘錄方法
+========================================================================
+
+url:
+https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1/customer_note?mac=b8:27:eb:f3:51:14&userID=821acb0d-1fa8-4706-a956-eac63341cc79
+
+header:
+  - Content-Type: application/json
+
+method:
+DELETE
+
+body:
+N/A
+
+
+sample code:
+
+var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1/customer_note/mac=b8:27:eb:f3:51:14&userID=821acb0d-1fa8-4706-a956-eac63341cc79",
+  "method": "DELETE",
+  "headers": {
+    "content-type": "application/json",
+  },
+  "processData": false,
+  "data": ""
+}
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
+
+sample response:
+{}
+========================================================================
 儲存顧客備忘錄方法
 ========================================================================
 
