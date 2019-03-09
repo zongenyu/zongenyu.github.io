@@ -5,6 +5,10 @@
 	<title> Image List</title>
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript">
+	const API_ROOT = 'https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1'
+	//const API_ROOT = 'http://localhost:8300'
+	const FACE_ROOT = 'https://di93lo4zawi3i.cloudfront.net'
+
 		var list = [
 "0e0f2f0f5f6c4fa4a4603f726ff6222d",
 "aa5b62462c1d47dd9a699ea540b89f16",
@@ -523,6 +527,88 @@
 ];
 
 		$(document).ready(function () {
+
+			var reqIndex = 0
+
+			setInterval(function(){
+
+				if (reqIndex>=list.length) {return}
+
+				var settings = {
+		            "async": true,
+		            "crossDomain": true,
+		            "url": API_ROOT + "/faceImg?file_token="+list[reqIndex],
+		            "method": "GET",
+		            "headers": {
+		                "content-type": "application/json"
+		            },
+		            "processData": false,
+		            "data": ""
+		        };
+		        console.log(JSON.stringify(settings));
+
+		        $.ajax(settings).done(function (response) {
+			        var body={
+						imgUrl: response.Location,
+						mac:"b8:27:eb:f3:51:14"
+					}
+
+			        var faceEventReq = {
+			            "async": true,
+			            "crossDomain": true,
+			            "url": API_ROOT + "/face_event?mac=b8:27:eb:f3:51:14",
+			            "method": "POST",
+			            "headers": {
+			                "content-type": "application/json"
+			            },
+			            "processData": false,
+			            "data": JSON.stringify(body)
+			        };
+			        // console.log(settings.data);
+
+			        $.ajax(faceEventReq).done(function (response) {
+			            console.log(JSON.stringify(response));
+			        });
+		        });
+
+		        reqIndex++
+			},5000)
+			return
+
+			// {
+			// 	if (reqIndex>10){
+			// 		return;
+			// 	}
+
+			// 	var body={
+			// 		imgUrl: FACE_ROOT + '/' + list[reqIndex],
+			// 		mac:"b8:27:eb:f3:51:14"
+			// 	}
+
+		 //        var settings = {
+		 //            "async": true,
+		 //            "crossDomain": true,
+		 //            "url": API_ROOT + "/face_event?mac=b8:27:eb:f3:51:14",
+		 //            "method": "POST",
+		 //            "headers": {
+		 //                "content-type": "application/json"
+		 //            },
+		 //            "processData": false,
+		 //            "data": JSON.stringify(body)
+		 //        };
+		 //        // console.log(settings.data);
+
+		 //        $.ajax(settings).done(function (response) {
+		 //            console.log(JSON.stringify(response));
+		 //        });
+
+		 //        reqIndex=reqIndex+1
+
+			// }
+
+
+			return
+
 			console.log($('.facebox'));
 			for (let idx in list) {
 				let html = '<div>\n'+ '<p>=============<br>'+list[idx]+'</p>' +'<img src=http://127.0.0.1:8300/file_through?file_token='+list[idx]+' />\n</div>';

@@ -1,5 +1,4 @@
 
-const FACE_TOKEN_ROOT = "faces/"
 const API_ROOT = "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1";
 //const API_ROOT = "http://127.0.0.1:8300"
 
@@ -11,6 +10,7 @@ var userFaceID = "";
 // var headshotToken = "";
 // var origImgToken = "";
 var imgPath = {};
+var isPhotoChanged = false
 
 console.log(memberImgsInfo);
 console.log(JSON.stringify(localStorage))
@@ -23,7 +23,31 @@ $(document).ready(function () {
 
     if (urlParams.has('userID')){
         init();
+        faces=initData.snapshots
+    } else {
+        for (let item in memberImgsInfo){
+            faces.push(item.imgToken)
+        }
     }
+
+    for (var i = 0; i < memberImgsInfo.length; i++) {
+        const element = memberImgsInfo[i];
+        var cvsId="canvas"+i;
+        var html = "<div class='snapshot_wrap' data-picIndex="+i+">" +
+        "<canvas id='" + cvsId + "'></canvas>" +
+        "<a href='#' class='btn_snapshotDel'>X</a>" +
+        "</div>";
+
+        $(".memberInfo_snapshots").append(html);
+    }
+
+    if (urlParams.has('userID')){
+        init();
+        faces=initData.snapshots
+        loadFaces()
+    } else {
+        cropFaces()
+    }    
     
     //儲存基本資料
     $(".js-btn-save").click(function () {
@@ -32,8 +56,12 @@ $(document).ready(function () {
         }else{
             saveJpegNote();
         }
-        
     });
+
+    $(".btn_snapshotDel").click(function () {
+        isPhotoChanged=true
+    })
+
 
     // $(".btn_note").click(function () {
     //     if (urlParams.has('userID')) {
@@ -141,7 +169,6 @@ function getData(apiCall) {
         "userID": "",
         "userName": "",
         "lastVisitTime": "",
-        // "snapshot": "",
         "gender": "",
         "birthday": "",
         "favorColor": [],
@@ -157,7 +184,6 @@ function getData(apiCall) {
     data.userID = userCloudID;
     data.userName = $("input.js-userName").val();
     data.lastVisitTime = "2018/10/01 11:35";
-    // data.snapshot = $(".js-snapshot").attr("src");
     data.gender = $("input[name='gender']:checked").val();
     data.birthday = $("input[type='date']").val();
     data.dealChance = $("input[name='dealChance']:checked").val();
@@ -183,13 +209,18 @@ function getData(apiCall) {
         memberNote.userFaceID = userFaceID;
         memberNote.time = $(this).find("p:first-child").text();
         memberNote.note = $(this).find("p:last-child").text();
-        memberNote.snapshot = headshotToken;
 
         data.notes.push(memberNote);
     });
 
-    // data.origImgToken = (origImgToken === '' ? headshotToken : origImgToken);
-    apiCall(data);
+    if (isPhotoChanged){
+        deleteCustomerNote(userCloudID)
+        .then(function(){
+            saveJpegNote();
+        })
+    } else {
+        apiCall(data);
+    }
 };
 
 function putAjax(data) {
@@ -216,46 +247,68 @@ function putAjax(data) {
 
 }
 
-for (var i = 0; i < memberImgsInfo.length; i++) {
-    const element = memberImgsInfo[i];
-    var cvsId="canvas"+i;
-    var html = "<div class='snapshot_wrap' data-picIndex="+i+">" +
-                    "<canvas id='" + cvsId + "'></canvas>" +
-                    "<a href='#' class='btn_snapshotDel'>X</a>" +
-                "</div>";
-                
-    $(".memberInfo_snapshots").append(html);
-}
+function deleteCustomerNote(userID, resolve, reject){
 
-loadJpeg();
+    return new Promise(function(resolve, reject){
 
-//在snapshot畫出臉部方框
-var saveJpegNote = function(){
-    console.log("===== Start upload All Jpeg ==========")
-    for (var i = 0; i < memberImgsInfo.length; i++) {
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": API_ROOT + "/customer_note?userID="+userID + "&mac=" + mac,
+             "method": "DELETE",
+            // "url": "http://127.0.0.1:8300/customer_note",        "method": "PUT",        
+            "headers": {
+                "content-type": "application/json"
+            },
+            "processData": false,
+            "data": ""
+        };
+        console.log('deleteCustomerNote with payload:'+JSON.stringify(settings))
 
-        console.log("===== Uploading Jpeg " +i +" ==========")
-
-        var cvsId="canvas"+i;
-        var file_token = FACE_TOKEN_ROOT+genUUID()
-        var chainInfo = {
-            canvasID:cvsId,
-            file_token:file_token
-        }
-        faces.push(file_token)
-
-        getImgUploadUrl(chainInfo)
-        .then(uploadJpeg)
-        .catch( e => {
-            console.log(e);
+        $.ajax(settings).done(function(response) {
+            console.log(JSON.stringify(response));
+            resolve('')            
         });
 
-        console.log("===== End Uploading Jpeg " +i +" ==========")
+    })
+}
+
+
+//存圖，存 customerNote
+var saveJpegNote = function(){
+
+    console.log("===== Start upload All Jpeg ==========")
+    var divs = document.getElementsByClassName('snapshot_wrap')
+
+    function myLoop (i) {          
+        setTimeout(function () {   
+
+            console.log("  ===== Uploading Jpeg ==========")
+
+            var cvsId="canvas" + divs[i].getAttribute('data-picindex');
+            var file_token = genUUID()
+            let chainInfo = {
+                canvasID:cvsId,
+                file_token:file_token
+            }
+            faces.push(file_token)
+
+            getImgUploadUrl(chainInfo)
+            .then(uploadJpeg)
+            .catch( e => {
+                console.log(e);
+            });
+
+            console.log("  ===== End Uploading Jpeg ==========") 
+            if (--i) myLoop(i);      //  decrement i and call myLoop again if i > 0
+
+        }, 1000)                   //  pass the number of iterations as an argument
     }
 
+    myLoop(divs.length-1)
     setTimeout(function(){
         postCustomerNote()
-    }, 3000)
+    }, 1000*memberImgsInfo.length)
 
     console.log("===== End upload All Jpeg ==========")    
 };
@@ -334,14 +387,12 @@ function postCustomerNote() {
         $.ajax(settings).done(function (response) {
             console.log(JSON.stringify(response));
             alert("資料更新完成");
-            resolve('')
         });
 }
 
-function loadJpeg(uploadUrl) {
+function cropFaces() {
 
-    console.log("===== uploadJpeg ==========")
-    console.log("upload to url:" + uploadUrl)
+    console.log("===== cropFaces ==========")
 
     for (var i = 0; i < memberImgsInfo.length; i++) {
         var id = "canvas" + i;
@@ -354,6 +405,32 @@ function loadJpeg(uploadUrl) {
         console.log(i)
     }
 
+}
+
+function loadFaces() {
+
+    console.log("===== loadFaces ==========")
+
+    for (var i = 0; i < faces.length; i++) {
+
+        var src = "https://di93lo4zawi3i.cloudfront.net/" + faces[i];
+        var image = new Image();
+        image.setAttribute("crossOrigin", 'Anonymous');
+        image.src = src;        
+
+        var id = "canvas" + i;
+        var canvas = document.getElementById(id);
+        canvas.width=100;
+        canvas.height=100;
+        ctx = canvas.getContext('2d');
+
+
+        image.onload = function () {
+            ctx.drawImage(img, 0, 0, image.width,    image.height,     // source rectangle
+                       0, 0, canvas.width, canvas.height);
+            console.log(i)
+        }
+    }
 }
 
 function uploadJpeg(chainInfo, resolve, reject){
@@ -423,9 +500,8 @@ function getImgUploadUrl(chainInfo, resolve, reject) {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://localhost:8300/faceImg?file_token="+chainInfo.file_token,
+            "url": API_ROOT + "/faceImg?file_token="+chainInfo.file_token,
             "method": "PUT",
-            // "url": "http://127.0.0.1:8300/customer_note",        "method": "PUT",        
             "headers": {
                 'content-type': "binary/octet-stream"
             },
@@ -447,11 +523,11 @@ function getImgUploadUrl(chainInfo, resolve, reject) {
                 reject('')
             }
         })
-
     })
 }
 
 function drawCanvas(id, src, w, h, top, left) {
+
     var image = new Image();
 
     var canvas = document.getElementById(id);
@@ -485,8 +561,6 @@ function drawCanvas(id, src, w, h, top, left) {
         //     0, 0,     // Place the result at 0, 0 in the canvas,
         //     50, 50); // With as width / height: 100 * 100 (scale)
     }
-
-
 }
 
 
