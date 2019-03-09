@@ -34,6 +34,37 @@ $.ajax(settings).done(function (response) {
   console.log(response);
 });
 
+sample response:
+{
+    "Items": [
+        {
+            "faceGroup": "b827ebf35114",
+            "dealChance": "高",
+            "favorColor": [
+                "黃"
+            ],
+            "budget": "五千內",
+            "snapshots": [
+                "40ffc70a-9971-47e7-bbd8-f7795cff4747"
+            ],
+            "userName": "fa-j,acket",
+            "mac": "b8:27:eb:f3:51:14",
+            "gender": "男",
+            "targetFace": "null,null,null,null",
+            "lastVisitTime": "2018/10/01 11:35",
+            "userID": "3520bce4-d0b5-481e-9352-3e7be1587425",
+            "notes": [],
+            "career": "軍公教",
+            "favor": [
+                "項鏈"
+            ],
+            "birthday": "2003-03-08"
+        }
+    ],
+    "Count": 1,
+    "ScannedCount": 1
+}
+
 ========================================================================
 取得某一顧客備忘錄方法
 ========================================================================
