@@ -24,7 +24,6 @@ $(document).ready(function () {
 
     if (urlParams.has('userID')){
         init();
-        faces=initData.snapshots
     } else {
         for (let i in memberImgsInfo){
             faces.push(memberImgsInfo[i].imgToken)
@@ -43,6 +42,7 @@ $(document).ready(function () {
     }
 
     if (urlParams.has('userID')){
+        faces=initData.snapshots        
         loadFaces()
     } else {
         cropFaces()
