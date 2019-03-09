@@ -7,6 +7,7 @@ var faces = []
 var mac = ''
 var userCloudID = "";
 var userFaceID = "";
+var initData = {};
 // var headshotToken = "";
 // var origImgToken = "";
 var imgPath = {};
@@ -23,10 +24,9 @@ $(document).ready(function () {
 
     if (urlParams.has('userID')){
         init();
-        faces=initData.snapshots
     } else {
-        for (let item in memberImgsInfo){
-            faces.push(item.imgToken)
+        for (let i in memberImgsInfo){
+            faces.push(memberImgsInfo[i].imgToken)
         }
     }
 
@@ -42,8 +42,7 @@ $(document).ready(function () {
     }
 
     if (urlParams.has('userID')){
-        init();
-        faces=initData.snapshots
+        faces=initData.snapshots        
         loadFaces()
     } else {
         cropFaces()
@@ -101,9 +100,8 @@ function init() {
         "data": ""
     }
     console.log(settings);
-    var initData = {};
     $.ajax(settings).done(function (response) {
-        // console.log(response);
+        console.log(response);
         initData = response;
         console.log(initData);
 
@@ -279,6 +277,7 @@ var saveJpegNote = function(){
 
     console.log("===== Start upload All Jpeg ==========")
     var divs = document.getElementsByClassName('snapshot_wrap')
+    faces=[]
 
     function myLoop (i) {          
         setTimeout(function () {   
