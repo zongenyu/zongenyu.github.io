@@ -431,9 +431,9 @@ function loadFaces() {
                 console.log(i)
             }
 
-            if (--i>=0){ loop(i) }            
+            if (--i<=-1){ loop(i) }            
 
-        }, 3000)
+        }, 500)
     }
 
     loop(faces.length-1)
