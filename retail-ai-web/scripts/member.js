@@ -433,7 +433,7 @@ function loadFaces() {
 
             if (--i>=0){ loop(i) }            
 
-        }, 500)
+        }, 3000)
     }
 
     loop(faces.length-1)
