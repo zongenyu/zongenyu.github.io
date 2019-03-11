@@ -407,7 +407,7 @@ function cropFaces() {
             drawCanvas(id, src, w, h, top, left);
             console.log(i)
             if (--i>=0){ loop(i)}
-        }, 500)
+        }, 3000)
 
     }
 
