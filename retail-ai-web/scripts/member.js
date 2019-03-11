@@ -178,6 +178,7 @@ function getData(apiCall) {
     };
 
     data.mac = mac
+    data.faces=faces
     data.targetFace = urlParams.get('top') + "," + urlParams.get('left') + "," + urlParams.get('width') + ',' + urlParams.get('height');
     data.userID = userCloudID;
     data.userName = $("input.js-userName").val();
