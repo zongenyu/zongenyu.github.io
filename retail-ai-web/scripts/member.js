@@ -300,7 +300,7 @@ var saveJpegNote = function(){
             });
 
             console.log("  ===== End Uploading Jpeg ==========") 
-            if (--i) myLoop(i);      //  decrement i and call myLoop again if i > 0
+            if (--i>=0) myLoop(i);      //  decrement i and call myLoop again if i > 0
 
         }, 1000)                   //  pass the number of iterations as an argument
     }
