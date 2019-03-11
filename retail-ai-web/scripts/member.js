@@ -30,7 +30,7 @@ $(document).ready(function () {
         }
     }
 
-    for (var i = 0; i < memberImgsInfo.length; i++) {
+    for (var i = 0; i < faces.length; i++) {
         const element = memberImgsInfo[i];
         var cvsId="canvas"+i;
         var html = "<div class='snapshot_wrap' data-picIndex="+i+">" +
