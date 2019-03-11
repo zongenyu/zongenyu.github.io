@@ -553,6 +553,7 @@ function drawCanvas(id, src, w, h, top, left) {
 
     image.setAttribute("crossOrigin", 'Anonymous');
     image.crossOrigin="anonymous"
+    image.crossorigin="anonymous"
     image.src = src;
     let margin = w/2
 
