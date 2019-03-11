@@ -23,37 +23,27 @@ $(document).ready(function () {
     console.log('mac:'+mac)
 
     if (urlParams.has('userID')){
-        // do nothing
-    } else {
-        for (let i in memberImgsInfo){
-            faces.push(memberImgsInfo[i].imgToken)
-        }
-    }
 
-    for (var i = 0; i < faces.length; i++) {
-        const element = memberImgsInfo[i];
-        var cvsId="canvas"+i;
-        var html = "<div class='snapshot_wrap' data-picIndex="+i+">" +
-        "<canvas id='" + cvsId + "'></canvas>" +
-        "<a href='#' class='btn_snapshotDel'>X</a>" +
-        "</div>";
-
-        $(".memberInfo_snapshots").append(html);
-    }
-
-    if (urlParams.has('userID')){
         init();
 
         setTimeout(function(){
-            faces=initData.snapshots        
+            faces=initData.snapshots
+            drawHTMLLayout()
             loadFaces()
-        },2000)
+        }, 2000)
 
     } else {
+
+        for (let item in memberImgsInfo){
+            faces.push(item.imgToken)
+        }
+        drawHTMLLayout()
         cropFaces()
-    }    
+
+    }  
     
-    //儲存基本資料
+
+    // Add Event Handler
     $(".js-btn-save").click(function () {
         if (urlParams.has('userID')) {
             getData(putAjax);
@@ -66,16 +56,20 @@ $(document).ready(function () {
         isPhotoChanged=true
     })
 
-
-    // $(".btn_note").click(function () {
-    //     if (urlParams.has('userID')) {
-    //         getData(putAjax);
-    //     } else {
-    //         saveJpegNote();
-    //     }
-    // });
-
 });
+
+function drawHTMLLayout(){
+
+    for (var i = 0; i < faces.length; i++) {
+        var cvsId="canvas"+i;
+        var html = "<div class='snapshot_wrap' data-picIndex="+i+">" +
+        "<canvas id='" + cvsId + "'></canvas>" +
+        "<a href='#' class='btn_snapshotDel'>X</a>" +
+        "</div>";
+
+        $(".memberInfo_snapshots").append(html);
+    }
+}
 
 function init() {
 
