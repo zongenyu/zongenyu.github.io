@@ -431,7 +431,7 @@ function loadFaces() {
                 console.log(i)
             }
 
-            if (--i>=0){ loop(i) }            
+            if (--i>=2){ loop(i) }            
 
         }, 500)
     }
