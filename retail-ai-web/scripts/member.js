@@ -308,7 +308,7 @@ var saveJpegNote = function(){
     myLoop(divs.length-1)
     setTimeout(function(){
         postCustomerNote()
-    }, 1000*memberImgsInfo.length)
+    }, 2000*(faces.length+1)
 
     console.log("===== End upload All Jpeg ==========")    
 };
