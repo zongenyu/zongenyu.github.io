@@ -406,7 +406,7 @@ function cropFaces() {
             var src = "https://di93lo4zawi3i.cloudfront.net/" + memberImgsInfo[i].imgToken;
             drawCanvas(id, src, w, h, top, left);
             console.log(i)
-            if (++i>=0){ loop(i)}
+            if (--i>=0){ loop(i)}
         }, 500)
 
     }
