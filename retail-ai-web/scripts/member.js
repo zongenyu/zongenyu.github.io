@@ -424,7 +424,7 @@ function loadFaces() {
 
 
         image.onload = function () {
-            ctx.drawImage(img, 0, 0, image.width,    image.height,     // source rectangle
+            ctx.drawImage(image, 0, 0, image.width,    image.height,     // source rectangle
                        0, 0, canvas.width, canvas.height);
             console.log(i)
         }
