@@ -412,7 +412,7 @@ function loadFaces() {
     function loop(i){
 
         setTimeout(function(){
-            
+
             var src = "https://di93lo4zawi3i.cloudfront.net/" + faces[i];
             var image = new Image();
             image.setAttribute("crossOrigin", 'Anonymous');
@@ -431,7 +431,7 @@ function loadFaces() {
                 console.log(i)
             }
 
-            if (--i){ loop(i) }            
+            if (--i>=0){ loop(i) }            
 
         }, 500)
     }
