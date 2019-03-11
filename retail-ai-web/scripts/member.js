@@ -431,12 +431,12 @@ function loadFaces() {
                 console.log(i)
             }
 
-            if (++i<faces.length){ loop(i) }            
+            if (--i){ loop(i) }            
 
         }, 500)
     }
 
-    loop(0)
+    loop(faces.length-1)
 }
 
 function uploadJpeg(chainInfo, resolve, reject){
