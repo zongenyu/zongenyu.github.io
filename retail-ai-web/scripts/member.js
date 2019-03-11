@@ -409,26 +409,34 @@ function loadFaces() {
 
     console.log("===== loadFaces ==========")
 
-    for (var i = 0; i < faces.length; i++) {
+    function loop(i){
 
-        var src = "https://di93lo4zawi3i.cloudfront.net/" + faces[i];
-        var image = new Image();
-        image.setAttribute("crossOrigin", 'Anonymous');
-        image.src = src;        
+        setTimeout(function(){
+            
+            var src = "https://di93lo4zawi3i.cloudfront.net/" + faces[i];
+            var image = new Image();
+            image.setAttribute("crossOrigin", 'Anonymous');
+            image.src = src;        
 
-        var id = "canvas" + i;
-        var canvas = document.getElementById(id);
-        canvas.width=100;
-        canvas.height=100;
-        ctx = canvas.getContext('2d');
+            var id = "canvas" + i;
+            var canvas = document.getElementById(id);
+            canvas.width=100;
+            canvas.height=100;
+            ctx = canvas.getContext('2d');
 
 
-        image.onload = function () {
-            ctx.drawImage(image, 0, 0, image.width,    image.height,     // source rectangle
-                       0, 0, canvas.width, canvas.height);
-            console.log(i)
-        }
+            image.onload = function () {
+                ctx.drawImage(image, 0, 0, image.width,    image.height,     // source rectangle
+                           0, 0, canvas.width, canvas.height);
+                console.log(i)
+            }
+
+            if (--i){ loop(i) }            
+
+        }, 500)
     }
+
+    loop(faces.length-1)
 }
 
 function uploadJpeg(chainInfo, resolve, reject){
