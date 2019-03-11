@@ -407,7 +407,7 @@ function cropFaces() {
             drawCanvas(id, src, w, h, top, left);
             console.log(i)
             if (--i>=0){ loop(i)}
-        }, 3000)
+        }, 500)
 
     }
 
@@ -553,7 +553,6 @@ function drawCanvas(id, src, w, h, top, left) {
 
     image.setAttribute("crossOrigin", 'Anonymous');
     image.crossOrigin="anonymous"
-    image.crossorigin="anonymous"
     image.src = src;
     let margin = w/2
 
