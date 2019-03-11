@@ -394,17 +394,25 @@ function cropFaces() {
 
     console.log("===== cropFaces ==========")
 
-    for (var i = 0; i < memberImgsInfo.length; i++) {
-        var id = "canvas" + i;
-        var left = memberImgsInfo[i].faceRectangles[0].left;
-        var top = memberImgsInfo[i].faceRectangles[0].top;
-        var w = memberImgsInfo[i].faceRectangles[0].width;
-        var h = memberImgsInfo[i].faceRectangles[0].height;
-        var src = "https://di93lo4zawi3i.cloudfront.net/" + memberImgsInfo[i].imgToken;
-        drawCanvas(id, src, w, h, top, left);
-        console.log(i)
+
+    function loop(i) {
+
+        setTimeout(function(){
+            var id = "canvas" + i;
+            var left = memberImgsInfo[i].faceRectangles[0].left;
+            var top = memberImgsInfo[i].faceRectangles[0].top;
+            var w = memberImgsInfo[i].faceRectangles[0].width;
+            var h = memberImgsInfo[i].faceRectangles[0].height;
+            var src = "https://di93lo4zawi3i.cloudfront.net/" + memberImgsInfo[i].imgToken;
+            drawCanvas(id, src, w, h, top, left);
+            console.log(i)
+            if (++i>=0){ loop(i)}
+        }, 500)
+
     }
 
+
+    loop(memberImgsInfo.length-1)
 }
 
 function loadFaces() {
