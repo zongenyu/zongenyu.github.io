@@ -303,8 +303,9 @@ var saveJpegNote = function(){
         console.log("  ===== End Uploading Jpeg ==========")         
     }  
 
-    postCustomerNote()
-    console.log("===== End upload All Jpeg ==========")    
+    setTimeout(function(){
+        postCustomerNote()
+    },6000)
 };
 
 
