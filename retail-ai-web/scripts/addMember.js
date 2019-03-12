@@ -75,6 +75,7 @@ function getSnapshotFrame(data) {
             var headshotImg = new Image();
             headshotImg.src = IMG_ROOT + '/' + data.Items[i].imgToken;
 
+            headshotImg.tag = i
             headshotImg.onload = function(){
 
                 var headshotImgW = headshotImg.width;
@@ -90,15 +91,16 @@ function getSnapshotFrame(data) {
                 var frameH = height / headshotImgH * snapshotWrapH;
                 // console.log('frameTop:' + frameTop + ", frameLeft:" + frameLeft + ', frameW:' + frameW + ", frameH:" + frameH);
 
+                $(".snapshot_frame").eq(headshotImg.tag).css({
+                    "top": frameTop + "%",
+                    "left": frameLeft + "%",
+                    "width": frameW + "px",
+                    "height": frameH + "px",
+                });
 
             }
 
-            $(".snapshot_frame").eq(i).css({
-                "top": frameTop + "%",
-                "left": frameLeft + "%",
-                "width": frameW + "px",
-                "height": frameH + "px",
-            });
+
 
         }
         
