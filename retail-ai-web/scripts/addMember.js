@@ -1,5 +1,5 @@
 
-const IMG_ROOT = 'https://di93lo4zawi3i.cloudfront.net'
+const IMG_ROOT = 'https://0vxsn9uxm1.execute-api.ap-northeast-1.amazonaws.com/default/image'
 var mac = ''
 
 
@@ -74,34 +74,25 @@ function getSnapshotFrame(data) {
 
             var headshotImg = new Image();
             headshotImg.src = IMG_ROOT + '/' + data.Items[i].imgToken;
+            // console.log('headshotImg src:' + headshotImg.src);
+            var headshotImgW = headshotImg.width;
+            var headshotImgH = headshotImg.height;
+            // console.log('headshot image width:' + headshotImgW + ", height:" + headshotImgH);
 
-            headshotImg.tag = i
-            headshotImg.onload = function(){
-
-                console.log('headshotImg i='+headshotImg.tag)
-                var headshotImgW = headshotImg.width;
-                var headshotImgH = headshotImg.height;
-                // console.log('headshot image width:' + headshotImgW + ", height:" + headshotImgH);
-
-                var snapshotWrapW = $(".snapshot_wrap").width();
-                var snapshotWrapH = snapshotWrapW / headshotImgW * headshotImgH;
-                // console.log('snapshotWrapW:' + snapshotWrapW + ", snapshotWrapH:" + snapshotWrapH)
-                var frameTop = Math.round(top / headshotImgH * 100);
-                var frameLeft = Math.round(left / headshotImgW * 100);
-                var frameW = width / headshotImgW * snapshotWrapW;
-                var frameH = height / headshotImgH * snapshotWrapH;
-                // console.log('frameTop:' + frameTop + ", frameLeft:" + frameLeft + ', frameW:' + frameW + ", frameH:" + frameH);
-
-                $(".snapshot_frame").eq(headshotImg.tag).css({
-                    "top": frameTop + "%",
-                    "left": frameLeft + "%",
-                    "width": frameW + "px",
-                    "height": frameH + "px",
-                });
-
-            }
-
-
+            var snapshotWrapW = $(".snapshot_wrap").width();
+            var snapshotWrapH = snapshotWrapW / headshotImgW * headshotImgH;
+            // console.log('snapshotWrapW:' + snapshotWrapW + ", snapshotWrapH:" + snapshotWrapH)
+            var frameTop = Math.round(top / headshotImgH * 100);
+            var frameLeft = Math.round(left / headshotImgW * 100);
+            var frameW = width / headshotImgW * snapshotWrapW;
+            var frameH = height / headshotImgH * snapshotWrapH;
+            // console.log('frameTop:' + frameTop + ", frameLeft:" + frameLeft + ', frameW:' + frameW + ", frameH:" + frameH);
+            $(".snapshot_frame").eq(i).css({
+                "top": frameTop + "%",
+                "left": frameLeft + "%",
+                "width": frameW + "px",
+                "height": frameH + "px",
+            });
 
         }
         
