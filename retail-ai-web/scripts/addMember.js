@@ -55,10 +55,7 @@ function drawHtml(data) {
 
     $(".member_imgs").append(htmls);
 
-    setTimeout(function(){
-        getSnapshotFrame(data);
-    }, 3000);
-
+    getSnapshotFrame(data);
     addCheckEvent();
     setNote(data);
 
@@ -77,19 +74,25 @@ function getSnapshotFrame(data) {
 
             var headshotImg = new Image();
             headshotImg.src = IMG_ROOT + '/' + data.Items[i].imgToken;
-            // console.log('headshotImg src:' + headshotImg.src);
-            var headshotImgW = headshotImg.width;
-            var headshotImgH = headshotImg.height;
-            // console.log('headshot image width:' + headshotImgW + ", height:" + headshotImgH);
 
-            var snapshotWrapW = $(".snapshot_wrap").width();
-            var snapshotWrapH = snapshotWrapW / headshotImgW * headshotImgH;
-            // console.log('snapshotWrapW:' + snapshotWrapW + ", snapshotWrapH:" + snapshotWrapH)
-            var frameTop = Math.round(top / headshotImgH * 100);
-            var frameLeft = Math.round(left / headshotImgW * 100);
-            var frameW = width / headshotImgW * snapshotWrapW;
-            var frameH = height / headshotImgH * snapshotWrapH;
-            // console.log('frameTop:' + frameTop + ", frameLeft:" + frameLeft + ', frameW:' + frameW + ", frameH:" + frameH);
+            headshotImg.onload(function(){
+
+                var headshotImgW = headshotImg.width;
+                var headshotImgH = headshotImg.height;
+                // console.log('headshot image width:' + headshotImgW + ", height:" + headshotImgH);
+
+                var snapshotWrapW = $(".snapshot_wrap").width();
+                var snapshotWrapH = snapshotWrapW / headshotImgW * headshotImgH;
+                // console.log('snapshotWrapW:' + snapshotWrapW + ", snapshotWrapH:" + snapshotWrapH)
+                var frameTop = Math.round(top / headshotImgH * 100);
+                var frameLeft = Math.round(left / headshotImgW * 100);
+                var frameW = width / headshotImgW * snapshotWrapW;
+                var frameH = height / headshotImgH * snapshotWrapH;
+                // console.log('frameTop:' + frameTop + ", frameLeft:" + frameLeft + ', frameW:' + frameW + ", frameH:" + frameH);
+
+
+            }
+
             $(".snapshot_frame").eq(i).css({
                 "top": frameTop + "%",
                 "left": frameLeft + "%",
