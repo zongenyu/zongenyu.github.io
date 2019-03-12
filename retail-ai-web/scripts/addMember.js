@@ -1,5 +1,5 @@
 
-const IMG_ROOT = '"https://di93lo4zawi3i.cloudfront.net/"'
+const IMG_ROOT = 'https://di93lo4zawi3i.cloudfront.net'
 var mac = ''
 
 
