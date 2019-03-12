@@ -1,6 +1,8 @@
 
-const API_ROOT = "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1";
+const IMG_ROOT = 'https://0vxsn9uxm1.execute-api.ap-northeast-1.amazonaws.com/default/image'
+const API_ROOT = "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1"
 //const API_ROOT = "http://127.0.0.1:8300"
+
 
 var memberImgsInfo = JSON.parse(localStorage.getItem("memberImgs"));
 var faces = []
@@ -394,7 +396,6 @@ function cropFaces() {
 
     console.log("===== cropFaces ==========")
 
-
     function loop(i) {
 
         setTimeout(function(){
@@ -403,14 +404,13 @@ function cropFaces() {
             var top = memberImgsInfo[i].faceRectangles[0].top;
             var w = memberImgsInfo[i].faceRectangles[0].width;
             var h = memberImgsInfo[i].faceRectangles[0].height;
-            var src = "https://di93lo4zawi3i.cloudfront.net/" + memberImgsInfo[i].imgToken;
+            var src = IMG_ROOT + '/' + memberImgsInfo[i].imgToken;
             drawCanvas(id, src, w, h, top, left);
             console.log(i)
             if (--i>=0){ loop(i)}
         }, 500)
 
     }
-
 
     loop(memberImgsInfo.length-1)
 }
@@ -423,7 +423,7 @@ function loadFaces() {
 
         setTimeout(function(){
 
-            var src = "https://di93lo4zawi3i.cloudfront.net/" + faces[i];
+            var src = IMG_ROOT + '/' + faces[i];
             var image = new Image();
             image.setAttribute("crossOrigin", 'Anonymous');
             image.src = src;        

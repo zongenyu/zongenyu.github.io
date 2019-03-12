@@ -1,3 +1,5 @@
+
+const IMG_ROOT = 'https://0vxsn9uxm1.execute-api.ap-northeast-1.amazonaws.com/default/image'
 var mac = ''
 
 
@@ -38,7 +40,7 @@ function drawHtml(data) {
     var htmls="";
     for (var i = 0; i < data.Items.length; i++) {
         var imgToken = data.Items[i].imgToken;
-        var url = "https://di93lo4zawi3i.cloudfront.net/" + imgToken;
+        var url = IMG_ROOT + '/' + imgToken;
 
         var html =
             "<label class='member_imgs_row'>" +
@@ -74,7 +76,7 @@ function getSnapshotFrame(data) {
             console.log('top:' + top + ", left:" + left + ", width:" + width + ", height:" + height);
 
             var headshotImg = new Image();
-            headshotImg.src = "https://di93lo4zawi3i.cloudfront.net/" + data.Items[i].imgToken;
+            headshotImg.src = IMG_ROOT + '/' + data.Items[i].imgToken;
             // console.log('headshotImg src:' + headshotImg.src);
             var headshotImgW = headshotImg.width;
             var headshotImgH = headshotImg.height;
