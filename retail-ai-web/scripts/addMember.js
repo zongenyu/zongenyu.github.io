@@ -75,7 +75,7 @@ function getSnapshotFrame(data) {
             var headshotImg = new Image();
             headshotImg.src = IMG_ROOT + '/' + data.Items[i].imgToken;
 
-            headshotImg.onload(function(){
+            headshotImg.onload = function(){
 
                 var headshotImgW = headshotImg.width;
                 var headshotImgH = headshotImg.height;
@@ -91,7 +91,7 @@ function getSnapshotFrame(data) {
                 // console.log('frameTop:' + frameTop + ", frameLeft:" + frameLeft + ', frameW:' + frameW + ", frameH:" + frameH);
 
 
-            })
+            }
 
             $(".snapshot_frame").eq(i).css({
                 "top": frameTop + "%",
