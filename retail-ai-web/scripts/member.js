@@ -282,36 +282,28 @@ var saveJpegNote = function(){
     var divs = document.getElementsByClassName('snapshot_wrap')
     faces=[]
 
-    function myLoop (i) {          
-        setTimeout(function () {   
+    for (let i=0; i<divs.length; i--){
 
-            console.log("  ===== Uploading Jpeg ==========")
+        console.log("  ===== Uploading Jpeg ==========")
 
-            var cvsId="canvas" + divs[i].getAttribute('data-picindex');
-            var file_token = genUUID()
-            let chainInfo = {
-                canvasID:cvsId,
-                file_token:file_token
-            }
-            faces.push(file_token)
+        var cvsId="canvas" + divs[i].getAttribute('data-picindex');
+        var file_token = genUUID()
+        let chainInfo = {
+            canvasID:cvsId,
+            file_token:file_token
+        }
+        faces.push(file_token)
 
-            getImgUploadUrl(chainInfo)
-            .then(uploadJpeg)
-            .catch( e => {
-                console.log(e);
-            });
+        getImgUploadUrl(chainInfo)
+        .then(uploadJpeg)
+        .catch( e => {
+            console.log(e);
+        });
 
-            console.log("  ===== End Uploading Jpeg ==========") 
-            if (--i>=0) myLoop(i);      //  decrement i and call myLoop again if i > 0
+        console.log("  ===== End Uploading Jpeg ==========")         
+    }  
 
-        }, 1000)                   //  pass the number of iterations as an argument
-    }
-
-    myLoop(divs.length-1)
-    setTimeout(function(){
-        postCustomerNote()
-    }, 2000*(faces.length+1))
-
+    postCustomerNote()
     console.log("===== End upload All Jpeg ==========")    
 };
 
