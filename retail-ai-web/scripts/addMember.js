@@ -1,5 +1,5 @@
 
-const IMG_ROOT = 'https://0vxsn9uxm1.execute-api.ap-northeast-1.amazonaws.com/default/image'
+const IMG_ROOT = "https://di93lo4zawi3i.cloudfront.net"
 var mac = ''
 
 
