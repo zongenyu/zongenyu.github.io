@@ -91,7 +91,7 @@ function getSnapshotFrame(data) {
                 // console.log('frameTop:' + frameTop + ", frameLeft:" + frameLeft + ', frameW:' + frameW + ", frameH:" + frameH);
 
 
-            }
+            })
 
             $(".snapshot_frame").eq(i).css({
                 "top": frameTop + "%",
