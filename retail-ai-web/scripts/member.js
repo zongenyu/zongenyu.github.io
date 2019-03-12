@@ -282,7 +282,7 @@ var saveJpegNote = function(){
     var divs = document.getElementsByClassName('snapshot_wrap')
     faces=[]
 
-    for (let i=0; i<divs.length; i--){
+    for (let i=0; i<divs.length; i++){
 
         console.log("  ===== Uploading Jpeg ==========")
 
