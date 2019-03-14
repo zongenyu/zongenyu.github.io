@@ -24,13 +24,16 @@ $(document).ready(function () {
     }
 
 
-$.ajax(settings).done(function (response) {
+    $.ajax(settings).done(function (response) {
 
-    var data=response;
-    console.log(data);
+        var data=response;
+        console.log(data);
 
-    drawHtml(data);
-});
+        drawHtml(data);
+    });
+
+    // 結束遮罩
+    // $(".waitMore").removeClass("active");
 
 })
 

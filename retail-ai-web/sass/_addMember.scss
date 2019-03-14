@@ -58,3 +58,27 @@
         vertical-align: middle;
     }
 }
+
+.waitMore{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    opacity: .7;
+    img{
+        width: 100%;
+    }
+    &.active{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    i{
+        font-size: 100px; 
+        color: #666;
+    }
+}
