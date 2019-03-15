@@ -32,9 +32,6 @@ $(document).ready(function () {
         drawHtml(data);
     });
 
-    // 結束遮罩
-    // $(".waitMore").removeClass("active");
-
 })
 
 function drawHtml(data) {
@@ -101,6 +98,8 @@ function getSnapshotFrame(data) {
         
     }
    
+    // 結束遮罩
+    $(".waitMore").removeClass("active");
 }
 
 function addCheckEvent() {
