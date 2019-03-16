@@ -1,13 +1,15 @@
 
 const IMG_ROOT = "https://di93lo4zawi3i.cloudfront.net"
 var mac = ''
+var imgWidth=1280
+var imgHeight=720
 
 
 
 $(document).ready(function () {
 
     let urlParams = new URLSearchParams(window.location.search);    
-    mac = urlParams.get('mac');
+    mac = 'b8:27:eb:f3:51:14'//urlParams.get('mac');
     console.log('mac:'+mac)
 
     var settings = {
@@ -72,20 +74,13 @@ function getSnapshotFrame(data) {
             let height = faceRectangles.height;
             console.log('top:' + top + ", left:" + left + ", width:" + width + ", height:" + height);
 
-            var headshotImg = new Image();
-            headshotImg.src = IMG_ROOT + '/' + data.Items[i].imgToken;
-            // console.log('headshotImg src:' + headshotImg.src);
-            var headshotImgW = headshotImg.width;
-            var headshotImgH = headshotImg.height;
-            // console.log('headshot image width:' + headshotImgW + ", height:" + headshotImgH);
-
             var snapshotWrapW = $(".snapshot_wrap").width();
-            var snapshotWrapH = snapshotWrapW / headshotImgW * headshotImgH;
+            var snapshotWrapH = snapshotWrapW / imgWidth * imgHeight;
             // console.log('snapshotWrapW:' + snapshotWrapW + ", snapshotWrapH:" + snapshotWrapH)
-            var frameTop = Math.round(top / headshotImgH * 100);
-            var frameLeft = Math.round(left / headshotImgW * 100);
-            var frameW = width / headshotImgW * snapshotWrapW;
-            var frameH = height / headshotImgH * snapshotWrapH;
+            var frameTop = Math.round(top / imgHeight * 100);
+            var frameLeft = Math.round(left / imgWidth * 100);
+            var frameW = width / imgWidth * snapshotWrapW;
+            var frameH = height / imgHeight * snapshotWrapH;
             // console.log('frameTop:' + frameTop + ", frameLeft:" + frameLeft + ', frameW:' + frameW + ", frameH:" + frameH);
             $(".snapshot_frame").eq(i).css({
                 "top": frameTop + "%",
