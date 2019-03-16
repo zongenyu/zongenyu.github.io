@@ -47,6 +47,9 @@ $(document).ready(function () {
 
     // Add Event Handler
     $(".js-btn-save").click(function () {
+            // 結束遮罩
+        $(".waitMore").addClass("active");
+
         if (urlParams.has('userID')) {
             getData(putAjax);
         }else{
@@ -242,6 +245,7 @@ function putAjax(data) {
     // console.log(settings.data);
 
     $.ajax(settings).done(function (response) {
+        $(".waitMore").removeClass("active");        
         console.log(JSON.stringify(response));
         alert("資料更新完成");
     });
@@ -380,6 +384,7 @@ function postCustomerNote() {
         // console.log(settings.data);
 
         $.ajax(settings).done(function (response) {
+            $(".waitMore").removeClass("active");            
             console.log(JSON.stringify(response));
             alert("資料更新完成");
         });
