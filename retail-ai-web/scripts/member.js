@@ -59,7 +59,12 @@ $(document).ready(function () {
 
     $(".btn_snapshotDel").click(function () {
         isPhotoChanged=true
-    })
+    });
+
+    $(".js-btn-del").click(function () {
+        console.log("del");
+        delMember();
+    });
 
 });
 
@@ -600,5 +605,26 @@ var genUUID = function() {
         var r = (d + Math.random() * 16) % 16 | 0;
         d = Math.floor(d / 16);
         return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+    });
+}
+
+function delMember() {
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1/customer_note?mac="+mac+"&userID="+userCloudID,
+        "method": "DELETE",
+        "headers": {
+            "content-type": "application/json",
+        },
+        "processData": false,
+        "data": ""
+    }
+
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+        alert("succeeded");
+        var url="./memberList.html?mac="+mac;
+        document.location.href=url;
     });
 }
