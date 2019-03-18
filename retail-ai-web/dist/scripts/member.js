@@ -1,12 +1,15 @@
 
-const API_ROOT = "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1";
+const IMG_ROOT = 'https://0vxsn9uxm1.execute-api.ap-northeast-1.amazonaws.com/default/image'
+const API_ROOT = "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1"
 //const API_ROOT = "http://127.0.0.1:8300"
+
 
 var memberImgsInfo = JSON.parse(localStorage.getItem("memberImgs"));
 var faces = []
 var mac = ''
 var userCloudID = "";
 var userFaceID = "";
+var initData = {};
 // var headshotToken = "";
 // var origImgToken = "";
 var imgPath = {};
@@ -22,35 +25,31 @@ $(document).ready(function () {
     console.log('mac:'+mac)
 
     if (urlParams.has('userID')){
+
         init();
-        faces=initData.snapshots
+
+        setTimeout(function(){
+            faces=initData.snapshots
+            drawHTMLLayout()
+            loadFaces()
+        }, 2000)
+
     } else {
+
         for (let item in memberImgsInfo){
             faces.push(item.imgToken)
         }
-    }
-
-    for (var i = 0; i < memberImgsInfo.length; i++) {
-        const element = memberImgsInfo[i];
-        var cvsId="canvas"+i;
-        var html = "<div class='snapshot_wrap' data-picIndex="+i+">" +
-        "<canvas id='" + cvsId + "'></canvas>" +
-        "<a href='#' class='btn_snapshotDel'>X</a>" +
-        "</div>";
-
-        $(".memberInfo_snapshots").append(html);
-    }
-
-    if (urlParams.has('userID')){
-        init();
-        faces=initData.snapshots
-        loadFaces()
-    } else {
+        drawHTMLLayout()
         cropFaces()
-    }    
+
+    }  
     
-    //儲存基本資料
+
+    // Add Event Handler
     $(".js-btn-save").click(function () {
+            // 結束遮罩
+        $(".waitMore").addClass("active");
+
         if (urlParams.has('userID')) {
             getData(putAjax);
         }else{
@@ -60,18 +59,27 @@ $(document).ready(function () {
 
     $(".btn_snapshotDel").click(function () {
         isPhotoChanged=true
-    })
+    });
 
-
-    // $(".btn_note").click(function () {
-    //     if (urlParams.has('userID')) {
-    //         getData(putAjax);
-    //     } else {
-    //         saveJpegNote();
-    //     }
-    // });
+    $(".js-btn-del").click(function () {
+        console.log("del");
+        delMember();
+    });
 
 });
+
+function drawHTMLLayout(){
+
+    for (var i = 0; i < faces.length; i++) {
+        var cvsId="canvas"+i;
+        var html = "<div class='snapshot_wrap' data-picIndex="+i+">" +
+        "<canvas id='" + cvsId + "'></canvas>" +
+        "<a href='#' class='btn_snapshotDel'>X</a>" +
+        "</div>";
+
+        $(".memberInfo_snapshots").append(html);
+    }
+}
 
 function init() {
 
@@ -101,9 +109,8 @@ function init() {
         "data": ""
     }
     console.log(settings);
-    var initData = {};
     $.ajax(settings).done(function (response) {
-        // console.log(response);
+        console.log(response);
         initData = response;
         console.log(initData);
 
@@ -180,6 +187,8 @@ function getData(apiCall) {
         "targetFace": ""
     };
 
+    data.mac = mac
+    data.snapshots=faces
     data.targetFace = urlParams.get('top') + "," + urlParams.get('left') + "," + urlParams.get('width') + ',' + urlParams.get('height');
     data.userID = userCloudID;
     data.userName = $("input.js-userName").val();
@@ -241,6 +250,7 @@ function putAjax(data) {
     // console.log(settings.data);
 
     $.ajax(settings).done(function (response) {
+        $(".waitMore").removeClass("active");        
         console.log(JSON.stringify(response));
         alert("資料更新完成");
     });
@@ -279,38 +289,32 @@ var saveJpegNote = function(){
 
     console.log("===== Start upload All Jpeg ==========")
     var divs = document.getElementsByClassName('snapshot_wrap')
+    faces=[]
 
-    function myLoop (i) {          
-        setTimeout(function () {   
+    for (let i=0; i<divs.length; i++){
 
-            console.log("  ===== Uploading Jpeg ==========")
+        console.log("  ===== Uploading Jpeg ==========")
 
-            var cvsId="canvas" + divs[i].getAttribute('data-picindex');
-            var file_token = genUUID()
-            let chainInfo = {
-                canvasID:cvsId,
-                file_token:file_token
-            }
-            faces.push(file_token)
+        var cvsId="canvas" + divs[i].getAttribute('data-picindex');
+        var file_token = genUUID()
+        let chainInfo = {
+            canvasID:cvsId,
+            file_token:file_token
+        }
+        faces.push(file_token)
 
-            getImgUploadUrl(chainInfo)
-            .then(uploadJpeg)
-            .catch( e => {
-                console.log(e);
-            });
+        getImgUploadUrl(chainInfo)
+        .then(uploadJpeg)
+        .catch( e => {
+            console.log(e);
+        });
 
-            console.log("  ===== End Uploading Jpeg ==========") 
-            if (--i) myLoop(i);      //  decrement i and call myLoop again if i > 0
+        console.log("  ===== End Uploading Jpeg ==========")         
+    }  
 
-        }, 1000)                   //  pass the number of iterations as an argument
-    }
-
-    myLoop(divs.length-1)
     setTimeout(function(){
         postCustomerNote()
-    }, 1000*memberImgsInfo.length)
-
-    console.log("===== End upload All Jpeg ==========")    
+    },6000)
 };
 
 
@@ -385,6 +389,7 @@ function postCustomerNote() {
         // console.log(settings.data);
 
         $.ajax(settings).done(function (response) {
+            $(".waitMore").removeClass("active");            
             console.log(JSON.stringify(response));
             alert("資料更新完成");
         });
@@ -394,43 +399,57 @@ function cropFaces() {
 
     console.log("===== cropFaces ==========")
 
-    for (var i = 0; i < memberImgsInfo.length; i++) {
-        var id = "canvas" + i;
-        var left = memberImgsInfo[i].faceRectangles[0].left;
-        var top = memberImgsInfo[i].faceRectangles[0].top;
-        var w = memberImgsInfo[i].faceRectangles[0].width;
-        var h = memberImgsInfo[i].faceRectangles[0].height;
-        var src = "https://di93lo4zawi3i.cloudfront.net/" + memberImgsInfo[i].imgToken;
-        drawCanvas(id, src, w, h, top, left);
-        console.log(i)
+    function loop(i) {
+
+        setTimeout(function(){
+            var id = "canvas" + i;
+            var left = memberImgsInfo[i].faceRectangles[0].left;
+            var top = memberImgsInfo[i].faceRectangles[0].top;
+            var w = memberImgsInfo[i].faceRectangles[0].width;
+            var h = memberImgsInfo[i].faceRectangles[0].height;
+            var src = IMG_ROOT + '/' + memberImgsInfo[i].imgToken;
+            drawCanvas(id, src, w, h, top, left);
+            console.log(i)
+            if (--i>=0){ loop(i)}
+        }, 500)
+
     }
 
+    loop(memberImgsInfo.length-1)
 }
 
 function loadFaces() {
 
     console.log("===== loadFaces ==========")
 
-    for (var i = 0; i < faces.length; i++) {
+    function loop(i){
 
-        var src = "https://di93lo4zawi3i.cloudfront.net/" + faces[i];
-        var image = new Image();
-        image.setAttribute("crossOrigin", 'Anonymous');
-        image.src = src;        
+        setTimeout(function(){
 
-        var id = "canvas" + i;
-        var canvas = document.getElementById(id);
-        canvas.width=100;
-        canvas.height=100;
-        ctx = canvas.getContext('2d');
+            var src = IMG_ROOT + '/' + faces[i];
+            var image = new Image();
+            image.setAttribute("crossOrigin", 'Anonymous');
+            image.src = src;        
+
+            var id = "canvas" + i;
+            var canvas = document.getElementById(id);
+            canvas.width=100;
+            canvas.height=100;
+            ctx = canvas.getContext('2d');
 
 
-        image.onload = function () {
-            ctx.drawImage(img, 0, 0, image.width,    image.height,     // source rectangle
-                       0, 0, canvas.width, canvas.height);
-            console.log(i)
-        }
+            image.onload = function () {
+                ctx.drawImage(image, 0, 0, image.width,    image.height,     // source rectangle
+                           0, 0, canvas.width, canvas.height);
+                console.log(i)
+            }
+
+            if (--i>=0){ loop(i) }            
+
+        }, 100)
     }
+
+    loop(faces.length-1)
 }
 
 function uploadJpeg(chainInfo, resolve, reject){
@@ -536,6 +555,7 @@ function drawCanvas(id, src, w, h, top, left) {
     ctx = canvas.getContext('2d');
 
     image.setAttribute("crossOrigin", 'Anonymous');
+    image.crossOrigin="anonymous"
     image.src = src;
     let margin = w/2
 
@@ -585,5 +605,26 @@ var genUUID = function() {
         var r = (d + Math.random() * 16) % 16 | 0;
         d = Math.floor(d / 16);
         return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+    });
+}
+
+function delMember() {
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1/customer_note?mac="+mac+"&userID="+userCloudID,
+        "method": "DELETE",
+        "headers": {
+            "content-type": "application/json",
+        },
+        "processData": false,
+        "data": ""
+    }
+
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+        alert("succeeded");
+        var url="./memberList.html?mac="+mac;
+        document.location.href=url;
     });
 }
