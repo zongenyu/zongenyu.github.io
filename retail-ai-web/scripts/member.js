@@ -259,7 +259,7 @@ function putAjax(data) {
 function deleteCustomerNote(userID, resolve, reject){
 
     return new Promise(function(resolve, reject){
-
+        $(".waitMore").addClass("active");        
         var settings = {
             "async": true,
             "crossDomain": true,
@@ -275,6 +275,7 @@ function deleteCustomerNote(userID, resolve, reject){
         console.log('deleteCustomerNote with payload:'+JSON.stringify(settings))
 
         $.ajax(settings).done(function(response) {
+        $(".waitMore").removeClass("active");                    
             console.log(JSON.stringify(response));
             resolve('')            
         });
@@ -606,7 +607,10 @@ var genUUID = function() {
     });
 }
 
+
 function delMember() {
+
+    $(".waitMore").addClass("active");        
     var settings = {
         "async": true,
         "crossDomain": true,
@@ -620,6 +624,7 @@ function delMember() {
     }
 
     $.ajax(settings).done(function (response) {
+        $(".waitMore").removeClass("active");                
         console.log(response);
         alert("succeeded");
         var url="./memberList.html?mac="+mac;
