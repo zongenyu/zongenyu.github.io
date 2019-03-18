@@ -192,7 +192,7 @@ function getData(apiCall) {
     data.targetFace = urlParams.get('top') + "," + urlParams.get('left') + "," + urlParams.get('width') + ',' + urlParams.get('height');
     data.userID = userCloudID;
     data.userName = $("input.js-userName").val();
-    data.lastVisitTime = "2018/10/01 11:35";
+    data.lastVisitTime = initData.lastVisitTime
     data.gender = $("input[name='gender']:checked").val();
     data.birthday = $("input[type='date']").val();
     data.dealChance = $("input[name='dealChance']:checked").val();
@@ -341,7 +341,7 @@ function postCustomerNote() {
         data.mac = mac
         data.targetFace = urlParams.get('top') + "," + urlParams.get('left') + "," + urlParams.get('width') + ',' + urlParams.get('height');
         data.userName = $("input.js-userName").val();
-        data.lastVisitTime = "2018/10/01 11:35";
+        data.lastVisitTime = new Date().today() + " " + new Date().timeNow();
         data.snapshots = faces;
         data.gender = $("input[name='gender']:checked").val();
         data.birthday = $("input[type='date']").val();
