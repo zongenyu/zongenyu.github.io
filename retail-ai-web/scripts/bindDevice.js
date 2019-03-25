@@ -1,6 +1,5 @@
 
-// const API_ROOT = "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1"
-const API_ROOT = "http://localhost:8300"
+const API_ROOT = "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1"
 
 
 $(document).ready(function () {
