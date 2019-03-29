@@ -7,7 +7,7 @@ var mac = urlParams.get('mac');
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1/customer_note/all?mac=b8:27:eb:f3:51:14",
+    "url": "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1/customer_note/all?mac="+mac,
     "method": "GET",
     "headers": {
         "content-type": "application/json",
