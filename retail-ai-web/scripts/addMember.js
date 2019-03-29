@@ -9,7 +9,7 @@ var imgHeight=720
 $(document).ready(function () {
 
     let urlParams = new URLSearchParams(window.location.search);    
-    mac = 'b8:27:eb:f3:51:14'//urlParams.get('mac');
+    mac = urlParams.get('mac');
     console.log('mac:'+mac)
 
     var settings = {

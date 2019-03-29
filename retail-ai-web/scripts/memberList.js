@@ -1,3 +1,9 @@
+
+
+const FACE_ROOT = 'https://di93lo4zawi3i.cloudfront.net';
+var urlParams = new URLSearchParams(window.location.search);
+var mac = urlParams.get('mac');
+
 var settings = {
     "async": true,
     "crossDomain": true,
@@ -12,13 +18,8 @@ var settings = {
 
 $.ajax(settings).done(function (response) {
     console.log(response);
-
     init(response);
 });
-
-const FACE_ROOT = 'https://di93lo4zawi3i.cloudfront.net';
-var urlParams = new URLSearchParams(window.location.search);
-var mac = urlParams.get('mac');
 
 //初始化畫面
 function init(data) {
