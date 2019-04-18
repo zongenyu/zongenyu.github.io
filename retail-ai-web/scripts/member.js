@@ -127,20 +127,6 @@ function init() {
             }
         });
         $("input[type='date']").val(initData.birthday);
-        for (var i = 0; i < initData.favorColor.length; i++) {
-            $("input[name='favorColor']").each(function () {
-                if ($(this).val() == initData.favorColor[i]) {
-                    $(this).prop("checked", true);
-                }
-            });
-        }
-        for (var i = 0; i < initData.favor.length; i++) {
-            $("input[name='favor']").each(function () {
-                if ($(this).val() == initData.favor[i]) {
-                    $(this).prop("checked", true);
-                }
-            });
-        }
         $("input[name='dealChance']").each(function () {
             if ($(this).val() == initData.dealChance) {
                 $(this).prop("checked", true);
@@ -178,8 +164,6 @@ function getData(apiCall) {
         "lastVisitTime": "",
         "gender": "",
         "birthday": "",
-        "favorColor": [],
-        "favor": [],
         "dealChance": "",
         "budget": "",
         "career": "",
@@ -201,12 +185,7 @@ function getData(apiCall) {
     if (userFaceID !== 'undefined') {
         data.faceId = userFaceID;
     }
-    $("input[name='favorColor']:checked").each(function () {
-        data.favorColor.push($(this).val());
-    });
-    $("input[name='favor']:checked").each(function () {
-        data.favor.push($(this).val());
-    });
+
     $(".js-note").each(function () {
         var memberNote = {
             "time": "",
@@ -329,8 +308,6 @@ function postCustomerNote() {
             "snapshots": [],
             "gender": "",
             "birthday": "",
-            "favorColor": [],
-            "favor": [],
             "dealChance": "",
             "budget": "",
             "career": "",
@@ -351,12 +328,6 @@ function postCustomerNote() {
         if (typeof(userFaceID) !== 'undefined') {
             data.faceId = userFaceID;
         }
-        $("input[name='favorColor']:checked").each(function () {
-            data.favorColor.push($(this).val());
-        });
-        $("input[name='favor']:checked").each(function () {
-            data.favor.push($(this).val());
-        });
         $(".js-note").each(function () {
             var memberNote = {
                 "time": "",
