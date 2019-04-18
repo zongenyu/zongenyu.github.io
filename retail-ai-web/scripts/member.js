@@ -359,6 +359,7 @@ function postCustomerNote() {
         // console.log(settings.data);
 
         $.ajax(settings).done(function (response) {
+            location.reload();
             $(".waitMore").removeClass("active");            
             console.log(JSON.stringify(response));
             alert("資料更新完成");

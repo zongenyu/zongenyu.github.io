@@ -179,7 +179,6 @@
 
                     <div class="btnWrap">
                         <a href="javascript: void(0);" class="btn btn_red js-btn_cancel">取消</a>
-                        <a href="javascript: void(0);" class="btn btn_green js-btn_add">新增</a>
                     </div>
                     
                 </div>
@@ -244,22 +243,6 @@
                 $(".addNote_wrap textarea").val("");
                 $(".addNote_wrap").removeClass("active");
                 $(".js-btn-addNote").parent().css("display", "block");
-            });
-
-            //新增基本資料備註
-            $(".js-btn_add").click(function () {
-                var note = $(".addNote_wrap textarea").val();
-                if (note !== "") {
-                    var html = '<div class="member_note_item js-note">';
-                    var time = '<p>2018/09/20 13:20</p>';
-                    var cnt = '<p>' + note + '</p>';
-                    html = html + time + cnt + '</div>';
-                    $(".member_note").append(html);
-
-                    $(".addNote_wrap").removeClass("active");
-                    $(".js-btn-addNote").parent().css("display", "block");
-                }
-
             });
 
         });
