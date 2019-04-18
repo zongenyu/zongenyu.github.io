@@ -57,6 +57,15 @@ $(document).ready(function () {
         }
     });
 
+    // update whole customer note when pressing add
+    $(".js-btn_add").click(function () {
+        if (urlParams.has('userID')) {
+            getData(putAjax);
+        }else{
+            saveJpegNote();
+        }
+    });
+
     $(".btn_snapshotDel").click(function () {
         isPhotoChanged=true
     });
