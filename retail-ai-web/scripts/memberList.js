@@ -38,7 +38,7 @@ function init(data) {
         var html_budget = '<p class="js-budget" data-th="預算:">' + data.Items[i].budget+'</p>';
         var html_career = '<p class="js-career" data-th="職業:">' + data.Items[i].career + '</p>';
         
-        var html_tr = '<tr>' + htmli_tdImg + html_tdInfo + html_name + html_gender + html_birthday + html_favorColor + html_favor + html_dealChance + html_budget + html_career+"</tr>";
+        var html_tr = '<tr>' + htmli_tdImg + html_tdInfo + html_name + html_gender + html_birthday + html_budget + html_career+"</tr>";
         $(".member_list").append(html_tr);
         console.log(html_tr);
     }
