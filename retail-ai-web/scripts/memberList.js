@@ -34,32 +34,7 @@ function init(data) {
                         '</p>';
         var html_gender = '<p class="js-gender" data-th="性別:">' + data.Items[i].gender+'</p>';
         var html_birthday = '<p class="js-date" data-th="生日:">' + data.Items[i].birthday +'</p>';
-        var html_favorColor = '<p class="js-favorColor" data-th="偏好顏色:">';
-        for (var j = 0; j < data.Items[i].favorColor.length; j++){
-            var item = '<span>'+ data.Items[i].favorColor[j]+'</span>';
-            if (i == data.Items[i].favorColor.length-1){
-                //最後一筆
-                html_favorColor = html_favorColor + item;
-            }else{
-                //不是最後一筆
-                html_favorColor = html_favorColor + item+'、';
-            }
-        }
-        html_favorColor + '</p>';
-        var html_favor = '<p class="js-favor" data-th="偏好:">';
-        for (var j = 0; j < data.Items[i].favor.length; j++) {
-            var item = '<span>' + data.Items[i].favor[j] + '</span>';
-            if (i == data.Items[i].favor.length - 1) {
-                //最後一筆
-                html_favor = html_favor + item;
-            } else {
-                //不是最後一筆
-                html_favor = html_favor + item + '、';
-            }
-        }
-        html_favor + '</p>';
         
-        var html_dealChance = '<p class="js-dealChance" data-th="購買意願:">' + data.Items[i].dealChance+'</p>';
         var html_budget = '<p class="js-budget" data-th="預算:">' + data.Items[i].budget+'</p>';
         var html_career = '<p class="js-career" data-th="職業:">' + data.Items[i].career + '</p>';
         
