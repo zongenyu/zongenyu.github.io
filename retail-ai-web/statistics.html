@@ -1,0 +1,491 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Image List</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.2/d3.js"></script>
+
+  <script type="text/javascript">
+
+    var retList = 
+    {
+        "Items":
+        [
+            {  "faceGroup":"b827eb456700",
+                "imgToken":"f2d23fb6-c637-4ea0-87a4-5f042aef6134",
+                "faceRectangles":[{"width":51,"top":24,"left":25,"height":51}],
+                "mac":"b8:27:eb:45:67:00",
+                "timestamp":1559012405000,
+                "age":"39",
+                "gender": "female"
+            },
+            {
+                "faceGroup":"b827eb456700",
+                "imgToken":"f2d23fb6-c637-4ea0-87a4-5f042aef6134",
+                "faceRectangles":[{"width":51,"top":24,"left":25,"height":51}],
+                "mac":"b8:27:eb:45:67:00",
+                "timestamp":1559016005000,
+                "age":"41",
+                "gender": "female"
+            },
+            {
+                "faceGroup":"b827eb456700",
+                "imgToken":"c66f0d0c88214712a2aa9dce3410268e",
+                "faceRectangles":[{"width":57,"top":403,"left":595,"height":57}],
+                "mac":"b8:27:eb:45:67:00",
+                "timestamp":1559016005000,
+                "age":"28",
+                "gender": "male"                
+            },
+            {
+                "faceGroup":"b827eb456700",
+                "imgToken":"cc76457fe2aa488bad9ebf5887b2bd90",
+                "faceRectangles":[{"width":65,"top":356,"left":563,"height":65}],
+                "mac":"b8:27:eb:45:67:00",
+                "timestamp":1559023205000,
+                "age":"46",
+                "gender": "female"
+            },
+            {  "faceGroup":"b827eb456700",
+                "imgToken":"f2d23fb6-c637-4ea0-87a4-5f042aef6134",
+                "faceRectangles":[{"width":51,"top":24,"left":25,"height":51}],
+                "mac":"b8:27:eb:45:67:00",
+                "timestamp":1559026805000,
+                "age":"25",
+                "gender": "female"
+            },
+            {
+                "faceGroup":"b827eb456700",
+                "imgToken":"f2d23fb6-c637-4ea0-87a4-5f042aef6134",
+                "faceRectangles":[{"width":51,"top":24,"left":25,"height":51}],
+                "mac":"b8:27:eb:45:67:00",
+                "timestamp":1559026805000,
+                "age":"35",
+                "gender": "female"
+            },
+            {
+                "faceGroup":"b827eb456700",
+                "imgToken":"c66f0d0c88214712a2aa9dce3410268e",
+                "faceRectangles":[{"width":57,"top":403,"left":595,"height":57}],
+                "mac":"b8:27:eb:45:67:00",
+                "timestamp":1559030405000,
+                "age":"43",
+                "gender": "female"                
+            },
+            {
+                "faceGroup":"b827eb456700",
+                "imgToken":"cc76457fe2aa488bad9ebf5887b2bd90",
+                "faceRectangles":[{"width":65,"top":356,"left":563,"height":65}],
+                "mac":"b8:27:eb:45:67:00",
+                "timestamp":1559030405000,
+                "age":"42",
+                "gender": "female"
+            },
+                                    {  "faceGroup":"b827eb456700",
+                "imgToken":"f2d23fb6-c637-4ea0-87a4-5f042aef6134",
+                "faceRectangles":[{"width":51,"top":24,"left":25,"height":51}],
+                "mac":"b8:27:eb:45:67:00",
+                "timestamp":1559030405000,
+                "age":"51",
+                "gender": "female"
+            },
+            {
+                "faceGroup":"b827eb456700",
+                "imgToken":"f2d23fb6-c637-4ea0-87a4-5f042aef6134",
+                "faceRectangles":[{"width":51,"top":24,"left":25,"height":51}],
+                "mac":"b8:27:eb:45:67:00",
+                "timestamp":1559030405000,
+                "age":"35",
+                "gender": "female"
+            },
+            {
+                "faceGroup":"b827eb456700",
+                "imgToken":"c66f0d0c88214712a2aa9dce3410268e",
+                "faceRectangles":[{"width":57,"top":403,"left":595,"height":57}],
+                "mac":"b8:27:eb:45:67:00",
+                "timestamp":1559034005000,
+                "age":"43",
+                "gender": "female"                
+            },
+            {
+                "faceGroup":"b827eb456700",
+                "imgToken":"cc76457fe2aa488bad9ebf5887b2bd90",
+                "faceRectangles":[{"width":65,"top":356,"left":563,"height":65}],
+                "mac":"b8:27:eb:45:67:00",
+                "timestamp":1559034005000,
+                "age":"41",
+                "gender": "male"
+            },
+                        {  "faceGroup":"b827eb456700",
+                "imgToken":"f2d23fb6-c637-4ea0-87a4-5f042aef6134",
+                "faceRectangles":[{"width":51,"top":24,"left":25,"height":51}],
+                "mac":"b8:27:eb:45:67:00",
+                "timestamp":1559034005000,
+                "age":"49",
+                "gender": "female"
+            },
+            {
+                "faceGroup":"b827eb456700",
+                "imgToken":"f2d23fb6-c637-4ea0-87a4-5f042aef6134",
+                "faceRectangles":[{"width":51,"top":24,"left":25,"height":51}],
+                "mac":"b8:27:eb:45:67:00",
+                "timestamp":1559034005000,
+                "age":"51",
+                "gender": "female"
+            },
+            {
+                "faceGroup":"b827eb456700",
+                "imgToken":"c66f0d0c88214712a2aa9dce3410268e",
+                "faceRectangles":[{"width":57,"top":403,"left":595,"height":57}],
+                "mac":"b8:27:eb:45:67:00",
+                "timestamp":1559037605000,
+                "age":"53",
+                "gender": "female"                
+            },
+            {
+                "faceGroup":"b827eb456700",
+                "imgToken":"cc76457fe2aa488bad9ebf5887b2bd90",
+                "faceRectangles":[{"width":65,"top":356,"left":563,"height":65}],
+                "mac":"b8:27:eb:45:67:00",
+                "timestamp":1559037605000,
+                "age":"41",
+                "gender": "male"
+            },
+                        {  "faceGroup":"b827eb456700",
+                "imgToken":"f2d23fb6-c637-4ea0-87a4-5f042aef6134",
+                "faceRectangles":[{"width":51,"top":24,"left":25,"height":51}],
+                "mac":"b8:27:eb:45:67:00",
+                "timestamp":1559037605000,
+                "age":"45",
+                "gender": "female"
+            },
+            {
+                "faceGroup":"b827eb456700",
+                "imgToken":"f2d23fb6-c637-4ea0-87a4-5f042aef6134",
+                "faceRectangles":[{"width":51,"top":24,"left":25,"height":51}],
+                "mac":"b8:27:eb:45:67:00",
+                "timestamp":1559041205000,
+                "age":"39",
+                "gender": "female"
+            },
+            {
+                "faceGroup":"b827eb456700",
+                "imgToken":"c66f0d0c88214712a2aa9dce3410268e",
+                "faceRectangles":[{"width":57,"top":403,"left":595,"height":57}],
+                "mac":"b8:27:eb:45:67:00",
+                "timestamp":1559041205000,
+                "age":"38",
+                "gender": "female"                
+            },
+            {
+                "faceGroup":"b827eb456700",
+                "imgToken":"cc76457fe2aa488bad9ebf5887b2bd90",
+                "faceRectangles":[{"width":65,"top":356,"left":563,"height":65}],
+                "mac":"b8:27:eb:45:67:00",
+                "timestamp":1559041205000,
+                "age":"12",
+                "gender": "male"
+            },
+                        {  "faceGroup":"b827eb456700",
+                "imgToken":"f2d23fb6-c637-4ea0-87a4-5f042aef6134",
+                "faceRectangles":[{"width":51,"top":24,"left":25,"height":51}],
+                "mac":"b8:27:eb:45:67:00",
+                "timestamp":1559041205000,
+                "age":"25",
+                "gender": "female"
+            },
+            {
+                "faceGroup":"b827eb456700",
+                "imgToken":"f2d23fb6-c637-4ea0-87a4-5f042aef6134",
+                "faceRectangles":[{"width":51,"top":24,"left":25,"height":51}],
+                "mac":"b8:27:eb:45:67:00",
+                "timestamp":1559041205000,
+                "age":"35",
+                "gender": "female"
+            },
+            {
+                "faceGroup":"b827eb456700",
+                "imgToken":"c66f0d0c88214712a2aa9dce3410268e",
+                "faceRectangles":[{"width":57,"top":403,"left":595,"height":57}],
+                "mac":"b8:27:eb:45:67:00",
+                "timestamp":1559044805000,
+                "age":"48",
+                "gender": "female"                
+            },
+            {
+                "faceGroup":"b827eb456700",
+                "imgToken":"cc76457fe2aa488bad9ebf5887b2bd90",
+                "faceRectangles":[{"width":65,"top":356,"left":563,"height":65}],
+                "mac":"b8:27:eb:45:67:00",
+                "timestamp":1559044805000,
+                "age":"41",
+                "gender": "male"
+            },
+                        {  "faceGroup":"b827eb456700",
+                "imgToken":"f2d23fb6-c637-4ea0-87a4-5f042aef6134",
+                "faceRectangles":[{"width":51,"top":24,"left":25,"height":51}],
+                "mac":"b8:27:eb:45:67:00",
+                "timestamp":1559044805000,
+                "age":"35",
+                "gender": "female"
+            },
+            {
+                "faceGroup":"b827eb456700",
+                "imgToken":"f2d23fb6-c637-4ea0-87a4-5f042aef6134",
+                "faceRectangles":[{"width":51,"top":24,"left":25,"height":51}],
+                "mac":"b8:27:eb:45:67:00",
+                "timestamp":1559044805000,
+                "age":"35",
+                "gender": "female"
+            },
+            {
+                "faceGroup":"b827eb456700",
+                "imgToken":"c66f0d0c88214712a2aa9dce3410268e",
+                "faceRectangles":[{"width":57,"top":403,"left":595,"height":57}],
+                "mac":"b8:27:eb:45:67:00",
+                "timestamp":1559048405000,
+                "age":"28",
+                "gender": "female"                
+            },
+            {
+                "faceGroup":"b827eb456700",
+                "imgToken":"cc76457fe2aa488bad9ebf5887b2bd90",
+                "faceRectangles":[{"width":65,"top":356,"left":563,"height":65}],
+                "mac":"b8:27:eb:45:67:00",
+                "timestamp":1559048405000,
+                "age":"41",
+                "gender": "male"
+            }
+        ],
+        count: 28
+    };
+
+
+    $(document).ready(function () {
+
+
+
+    // Create dummy data
+    var genderData = {
+        female:0,
+        male:0
+    }
+
+    for (let i in retList.Items){
+        if (retList.Items[i].gender==="female"){
+            genderData.female++
+        } else {
+            genderData.male++
+        }
+    }
+
+    var ageList = []
+    var arrivalList = []
+
+
+    for (let i in retList.Items){
+
+        if (!('gender' in retList.Items[i]) && !('age' in retList.Items[i])){
+            continue;
+        }
+
+        if (retList.Items[i].gender==="female"){
+            genderData.female++
+        } else {
+            genderData.male++
+        }
+
+        ageList.push(parseInt(retList.Items[i].age));
+        let hour = Math.round((parseInt(retList.Items[i].timestamp)-1559005200000)/3600000)+9
+        arrivalList.push(hour);
+
+    }
+    console.log(JSON.stringify(arrivalList))
+
+
+    /**===================================================================
+    *   Draw Gender Pie Chart
+    *
+    *=====================================================================*/
+
+    // set the dimensions and margins of the graph
+    var width = 450
+        height = 450
+        margin = 0
+
+    // The radius of the pieplot is half the width or half the height (smallest one). I substract a bit of margin.
+    var radius = Math.min(width, height) / 2 
+
+    // append the svg object to the div called 'my_dataviz'
+    var svg = d3.select('#genderDiv')
+      .append("svg")
+        .attr("width", width)
+        .attr("height", height)
+      .append("g")
+        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+
+
+    // set the color scale
+    var colorGender = d3.scaleOrdinal()
+      .domain(genderData)
+      .range(["#E87A30", "#579BD5"])
+
+    
+
+    // Compute the position of each group on the pie:
+    var genderPie = d3.pie()
+      .value(function(d) {return d.value; })
+    var gender_data_ready = genderPie(d3.entries(genderData))
+
+
+    // Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
+    svg
+      .selectAll('whatever')
+      .data(gender_data_ready)
+      .enter()
+      .append('path')
+      .attr('d', d3.arc()
+        .innerRadius(0)
+        .outerRadius(radius)
+      )
+      .attr('fill', function(d){ return(colorGender(d.data.key)) })
+      .attr("stroke", "black")
+      .style("stroke-width", "0px")
+      .style("opacity", 0.7)
+
+
+
+    /**===================================================================
+    *   Draw Age Histogram
+    *
+    *=====================================================================*/
+
+    // set the dimensions and margins of the graph
+var margin = {top: 10, right: 30, bottom: 30, left: 40},
+    width = 460 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
+
+// append the svg object to the body of the page
+var svg2 = d3.select('#ageDiv')
+  .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")"); 
+
+
+    let data = ageList;
+      // X axis: scale and draw:
+      var x = d3.scaleLinear()
+          .domain([0, 60])     // can use this instead of 1000 to have the max of data: d3.max(data, function(d) { return +d.price })
+          .range([0, width]);
+      svg2.append("g")
+          .attr("transform", "translate(0," + height + ")")
+          .call(d3.axisBottom(x));
+
+      // set the parameters for the histogram
+      var histogram = d3.histogram()
+          .value(function(d) { return d; })   // I need to give the vector of value
+          .domain([0,60])  // then the domain of the graphic
+          .thresholds([10,20,30,40,50]); // then the numbers of bins
+
+      // And apply this function to data to get the bins
+      var bins = histogram(data);
+      console.log(JSON.stringify(bins));
+
+      // Y axis: scale and draw:
+      var y = d3.scaleLinear()
+          .range([height, 0]);
+          y.domain([0, d3.max(bins, function(d) { return d.length; })]);   // d3.hist has to be called before the Y axis obviously
+      svg2.append("g")
+          .call(d3.axisLeft(y));
+
+      // append the bar rectangles to the svg element
+      svg2.selectAll("rect")
+          .data(bins)
+          .enter()
+          .append("rect")
+            .attr("x", 1)
+            .attr("transform", function(d) { return "translate(" + x(d.x0) + "," + y(d.length) + ")"; })
+            .attr("width", function(d) { return x(d.x1) - x(d.x0) -1 ; })
+            .attr("height", function(d) { return height - y(d.length); })
+            .style("fill", "#69b3a2")
+
+
+    /**===================================================================
+    *   Draw Arrival Histogram
+    *
+    *=====================================================================*/
+    // set the dimensions and margins of the graph
+var margin = {top: 10, right: 30, bottom: 30, left: 40},
+    width = 460 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
+
+// append the svg object to the body of the page
+var svg3 = d3.select('#arrivalDiv')
+  .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")"); 
+
+
+    data = arrivalList;
+    console.log('arrivalList:'+ JSON.stringify(data))
+      // X axis: scale and draw:
+      var x = d3.scaleLinear()
+          .domain([9, 21])     // can use this instead of 1000 to have the max of data: d3.max(data, function(d) { return +d.price })
+          .range([0, width]);
+    console.log('x:'+JSON.stringify(x));
+      svg3.append("g")
+          .attr("transform", "translate(0," + height + ")")
+          .call(d3.axisBottom(x));
+
+      // set the parameters for the histogram
+      var histogram = d3.histogram()
+          .value(function(d) { return d; })   // I need to give the vector of value
+          .domain([9, 21])  // then the domain of the graphic
+          .thresholds(x.ticks(13)); // then the numbers of bins
+
+      // And apply this function to data to get the bins
+      var bins = histogram(data);
+      console.log(JSON.stringify(bins));
+
+      // Y axis: scale and draw:
+      var y = d3.scaleLinear()
+          .range([height, 0]);
+          y.domain([0, d3.max(bins, function(d) { return d.length; })]);   // d3.hist has to be called before the Y axis obviously
+      svg3.append("g")
+          .call(d3.axisLeft(y));
+
+      // append the bar rectangles to the svg element
+      svg3.selectAll("rect")
+          .data(bins)
+          .enter()
+          .append("rect")
+            .attr("x", 1)
+            .attr("transform", function(d) { return "translate(" + x(d.x0) + "," + y(d.length) + ")"; })
+            .attr("width", function(d) { return x(d.x1) - x(d.x0) -1 ; })
+            .attr("height", function(d) { return height - y(d.length); })
+            .style("fill", "#69b3a2")
+});
+
+
+  </script>
+</head>
+<body>
+    <div> 訪客分佈圖 2019年5月28日</div>    
+    <div id='arrivalDiv'></div>    
+
+    <div> 性別分佈圖 </div>
+    <div id='genderDiv'></div>
+
+    <div> 年齡分佈圖 </div>    
+    <div id='ageDiv'></div>
+
+</body>
+</html>
