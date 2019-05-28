@@ -310,8 +310,8 @@
     *=====================================================================*/
 
     // set the dimensions and margins of the graph
-    var width = 450
-        height = 450
+    var width = 4/5*window.innerWidth
+        height = 3/5*window.innerWidth
         margin = 0
 
     // The radius of the pieplot is half the width or half the height (smallest one). I substract a bit of margin.
@@ -364,8 +364,8 @@
 
     // set the dimensions and margins of the graph
 var margin = {top: 10, right: 30, bottom: 30, left: 40},
-    width = 460 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+    width = 4/5*window.innerWidth - margin.left - margin.right,
+    height = 3/5*window.innerWidth - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
 var svg2 = d3.select('#ageDiv')
@@ -421,8 +421,8 @@ var svg2 = d3.select('#ageDiv')
     *=====================================================================*/
     // set the dimensions and margins of the graph
 var margin = {top: 10, right: 30, bottom: 30, left: 40},
-    width = 460 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+    width = 4/5*window.innerWidth - margin.left - margin.right,
+    height = 3/5*window.innerWidth - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
 var svg3 = d3.select('#arrivalDiv')
@@ -478,14 +478,14 @@ var svg3 = d3.select('#arrivalDiv')
   </script>
 </head>
 <body>
-    <div> 訪客分佈圖 2019年5月28日</div>    
-    <div id='arrivalDiv'></div>    
+    <div style="text-align:center;"> 訪客分佈圖 2019年5月28日</div>    
+    <div style="text-align:center; margin-bottom: 30px;" id='arrivalDiv'></div>    
 
-    <div> 性別分佈圖 </div>
-    <div id='genderDiv'></div>
+    <div style="text-align:center;"> 性別分佈圖 </div>
+    <div style="text-align:center; margin-bottom: 30px;" id='genderDiv'></div>
 
-    <div> 年齡分佈圖 </div>    
-    <div id='ageDiv'></div>
+    <div style="text-align:center;"> 年齡分佈圖 </div>    
+    <div style="text-align:center; margin-bottom: 30px;" id='ageDiv'></div>
 
 </body>
 </html>
