@@ -279,7 +279,11 @@ input[type="radio"] {
   box-sizing: border-box;
   /* 1 */
   padding: 0;
-  /* 2 */ }
+  /* 2 */ 
+  vertical-align: middle;
+  width: 18px;
+  height: 18px;
+}
 
 /**
  * Fix the cursor style for Chrome's increment/decrement buttons. For certain
@@ -538,12 +542,17 @@ section {
 .headerLine {
   position: relative;
   text-align: center;
-  font-size: 16px;
+  /* font-size: 16px; */
+  font-size: 18px;
   letter-spacing: 0.5em;
-  padding: 8px 0;
+  /* padding: 8px 0; */
+  padding: 10px 0;
   background: #286397;
   color: #fff; }
-
+.headerLine.headerLine_sub{
+  background: skyblue;
+  padding: 6px 0;
+}
 .container {
   margin-bottom: 20px; }
 
@@ -561,13 +570,15 @@ section {
   font-weight: bold;
   font-size: 10px;
   max-width: 210px;
-  padding: 4px 50px;
+  /* padding: 4px 50px; */
+  padding: 6px 50px;
   text-align: center;
   border-radius: 5px;
   border: 1px solid #286397;
   background: transparent;
   color: #286397;
-  font-size: 14px; }
+  font-size: 14px; 
+}
   .btn.btn_darkBlue {
     color: #fff;
     background: #337ab7;
@@ -623,19 +634,27 @@ section {
   .memberInfo_snapshots .snapshot_wrap {
     display: inline-block;
     width: calc((100% - 30px)/ 3.5); }
+.visitTime span:last-child{
+  font-weight: bold;
+}
 
 .snapshot_wrap {
   position: relative; }
   .snapshot_wrap canvas {
-    width: 100%; }
+    width: 100%; 
+    border-radius: 10px;
+  }
 
 .snapshot {
-  width: 100%;
-  display: block; }
+  /* width: 100%; */
+  width: 75%;
+  display: block;
+  border-radius: 10px; 
+}
 
 .snapshot_frame {
   position: absolute;
-  border: 1px solid gold;
+  /* border: 1px solid gold; */
   width: 0;
   height: 0;
   top: 0;
@@ -661,9 +680,19 @@ section {
 .infoBox {
   margin-bottom: 10px; }
   .infoBox > p {
-    padding: 3px 0; }
+    padding: 5px 0;
+    font-size: 15px;
+  }
+  .infoBox > p:first-child {
+    font-weight: bold;
+  }
   .infoBox label {
-    padding-right: 10px; }
+    display: inline-block;
+    /* padding-right: 10px; */
+    padding: 3px 10px 3px 0;
+    font-size: 15px; 
+    vertical-align: middle;
+  }
   .infoBox input[type="date"], .infoBox input[type="text"], .infoBox textarea {
     width: 100%; }
 
@@ -779,7 +808,9 @@ section {
     .member_list td:first-child {
       width: 100px; }
       .member_list td:first-child img {
-        width: 100%; }
+        width: 100%; 
+        border-radius: 10px;
+      }
     .member_list td:last-child {
       width: calc(100% - 100px);
       padding-left: 10px; }
@@ -787,7 +818,10 @@ section {
         display: inline-block;
         content: attr(data-th);
         padding-right: 5px; }
-
+    .member_list td p{
+      line-height: 30px;
+      font-size: 15px;
+    }
 /* ==========================================================================
    Helper classes
 ========================================================================== */

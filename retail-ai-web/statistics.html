@@ -2,7 +2,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title> Image List</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>RBW</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/main.css">
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.2/d3.js"></script>
 
@@ -478,14 +483,24 @@ var svg3 = d3.select('#arrivalDiv')
   </script>
 </head>
 <body>
-    <div style="text-align:center; font-size: 24px;"> 訪客分佈圖 2019年5月28日</div>    
-    <div style="text-align:center; margin-bottom: 30px;" id='arrivalDiv'></div>    
+    <div class="container">
+        <p class="headerLine">Analytics</p>
+        
+        <!-- <div style="text-align:center; margin: 10px auto 30px auto;">
+            <span style="font-size: 16px;">選擇日期：</span>
+            <input type="date" >
+        </div> -->
 
-    <div style="text-align:center; font-size: 24px;"> 性別分佈圖 </div>
-    <div style="text-align:center; margin-bottom: 30px;" id='genderDiv'></div>
-
-    <div style="text-align:center; font-size: 24px;"> 年齡分佈圖 </div>    
-    <div style="text-align:center; margin-bottom: 30px;" id='ageDiv'></div>
+        <div style="text-align:center; font-size: 20px; margin-bottom: 10px;"> 訪客分佈圖 2019年5月28日</div>
+        <div style="text-align:center; margin-bottom: 30px;" id='arrivalDiv'></div>
+        
+        <div style="text-align:center; font-size: 20px; margin-bottom: 10px;"> 性別分佈圖 </div>
+        <div style="text-align:center; margin-bottom: 30px;" id='genderDiv'></div>
+        
+        <div style="text-align:center; font-size: 20px; margin-bottom: 10px;"> 年齡分佈圖 </div>
+        <div style="text-align:center; margin-bottom: 30px;" id='ageDiv'></div>
+    </div>
+    
 
 </body>
 </html>
