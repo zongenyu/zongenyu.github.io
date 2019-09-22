@@ -135,22 +135,20 @@ function init() {
                 $(this).prop("checked", true);
             }
         });
-        $("input[type='date']").val(initData.birthday);
-        $("input[name='dealChance']").each(function () {
-            if ($(this).val() == initData.dealChance) {
+
+        // Set Default Visitor Type
+        $("input[name='visitorType']").each(function () {
+            if ($(this).val() == '訪客') {
+                $(this).prop("checked", true);
+            }
+        }); 
+        // Assign Visitor Type from Cloud       
+        $("input[name='visitorType']").each(function () {
+            if ($(this).val() == initData.visitorType) {
                 $(this).prop("checked", true);
             }
         });
-        $("input[name='budget']").each(function () {
-            if ($(this).val() == initData.budget) {
-                $(this).prop("checked", true);
-            }
-        });
-        $("input[name='career']").each(function () {
-            if ($(this).val() == initData.career) {
-                $(this).prop("checked", true);
-            }
-        });
+
         for (var k = 0; k < initData.notes.length; k++) {
             var html = '<div class="member_note_item js-note">';
             var p1 = '<p>' + initData.notes[k].time + '</p>';
@@ -173,9 +171,7 @@ function getData(apiCall) {
         "lastVisitTime": "",
         "gender": "",
         "birthday": "",
-        "dealChance": "",
-        "budget": "",
-        "career": "",
+        "visitorType": "",
         "notes": [],
         "targetFace": ""
     };
@@ -187,10 +183,10 @@ function getData(apiCall) {
     data.userName = $("input.js-userName").val();
     data.lastVisitTime = initData.lastVisitTime
     data.gender = $("input[name='gender']:checked").val();
-    data.birthday = $("input[type='date']").val();
-    data.dealChance = $("input[name='dealChance']:checked").val();
-    data.budget = $("input[name='budget']:checked").val();
-    data.career = $("input[name='career']:checked").val();
+    data.visitorType = $("input[name='visitorType']:checked").val();
+    if(typeof(data.visitorType)==='undefined'){
+            data.visitorType = '訪客';    
+    }
     if (userFaceID !== 'undefined') {
         data.faceId = userFaceID;
     }
@@ -316,10 +312,7 @@ function postCustomerNote() {
             "lastVisitTime": "",
             "snapshots": [],
             "gender": "",
-            "birthday": "",
-            "dealChance": "",
-            "budget": "",
-            "career": "",
+            "visitorType": "",
             "notes": [],
             "targetFace": ""
         };
@@ -330,10 +323,8 @@ function postCustomerNote() {
         data.lastVisitTime = new Date().today() + " " + new Date().timeNow();
         data.snapshots = faces;
         data.gender = $("input[name='gender']:checked").val();
-        data.birthday = $("input[type='date']").val();
-        data.dealChance = $("input[name='dealChance']:checked").val();
-        data.budget = $("input[name='budget']:checked").val();
-        data.career = $("input[name='career']:checked").val();
+        data.visitorType = $("input[name='visitorType']:checked").val();
+
         if (typeof(userFaceID) !== 'undefined') {
             data.faceId = userFaceID;
         }
