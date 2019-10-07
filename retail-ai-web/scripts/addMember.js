@@ -1,21 +1,61 @@
-
 const IMG_ROOT = "https://di93lo4zawi3i.cloudfront.net"
+const milliSecondPerDay=86400000;
+const FACE_EVENT_URL = "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1/face_event?mac=";
+var startTime = -1;
+var endTime = -1;
 var mac = ''
 var imgWidth=1280
 var imgHeight=720
-
-
+    
 
 $(document).ready(function () {
 
     let urlParams = new URLSearchParams(window.location.search);    
     mac = urlParams.get('mac');
-    console.log('mac:'+mac)
+
+
+    var now = new Date();
+    let startTimeStr = urlParams.get('startTime');
+    let endTimeStr = urlParams.get('endTime');
+    startTime = parseInt(startTimeStr);
+    endTime = parseInt(endTimeStr);
+    let startOfDay = now;
+    console.log('startTime:'+startTime);
+
+    if (isNaN(startTime) && isNaN(endTime)) {
+        startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        console.log("start of today:"+startOfDay);
+        startTime = startOfDay.getTime();
+        endTime = startTime+milliSecondPerDay;
+    } else {
+        let currentDate = new Date(startTime/1000);
+        startOfDay = new Date(startTime)
+    }
+
+    let dateText = startOfDay.getFullYear() + " 年 " + startOfDay.getMonth() + " 月 " + startOfDay.getDate() + " 日";
+    $(".docTitle").text(dateText);    
+
+
+    getFaceEvents(mac, {startTime: startTime, endTime: endTime}, (retList) => {
+
+        console.log(retList);
+        drawHtml(retList);
+    });
+
+})
+
+const getFaceEvents = function(mac, timeRange, callback){
+
+
+    let urlStr = FACE_EVENT_URL + mac +"&startTime=" + timeRange.startTime +"&endTime=" + timeRange.endTime;
+
+
+    console.log('url:'+urlStr);
 
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": "https://2k2foie16m.execute-api.ap-northeast-1.amazonaws.com/v1/face_event?mac="+mac,
+        "url": urlStr,
         "method": "GET",
         "headers": {
             "content-type": "application/json"
@@ -30,11 +70,24 @@ $(document).ready(function () {
 
         var data=response;
         console.log(data);
-
-        drawHtml(data);
+        callback(data);
     });
 
-})
+}
+
+$(".prevousBtn").click(() => {
+    endTime = startTime;
+    startTime = startTime - milliSecondPerDay;
+    window.location.href = window.location.pathname + "?mac=" + mac +"&startTime=" + startTime +"&endTime=" + endTime;
+});
+
+$(".nextBtn").click(() => {
+    console.log('start:'+startTime);
+    console.log('end:'+endTime);
+    startTime = endTime;
+    endTime = endTime + milliSecondPerDay;
+    window.location.href = window.location.pathname + "?mac=" + mac +"&startTime=" + startTime +"&endTime=" + endTime;
+});
 
 function drawHtml(data) {
 
