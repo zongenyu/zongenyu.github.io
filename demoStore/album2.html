@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Album2</title>
+    <style>
+        body, a, div{
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+        img{
+			width: 100%;
+        }
+    
+        .clearfix:before,
+        .clearfix:after {
+            content: " ";
+            display: table;
+        }
+    
+        .clearfix:after {
+            clear: both;
+        }
+    
+        .clearfix {
+            *zoom: 1;
+        }
+        
+        body{
+			background: #ddd;
+		}
+		h2{
+			background: #aaa;
+			color: #fff;
+			text-align: center;
+			padding: 20px 0;
+			margin: 0;
+			letter-spacing: 5px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 20px auto;
+        }
+    
+        .col-6 {
+            width: 50%;
+            margin-bottom: 5px;
+            float: left;
+        }
+    
+        .col-12 {
+            width: 100%;
+            padding-left: 5px;
+            padding-right: 5px;
+            position: relative;
+        }
+    
+        .block-a {
+            margin-bottom: 5px;
+        }
+    
+        .block-a:last-child {
+            margin-bottom: 0;
+        }
+    
+        .block-a .col-6 {
+            padding-left: 5px;
+            padding-right: 5px;
+            margin-bottom: 0;
+            position: relative;
+        }
+        .albumBox{
+            cursor: pointer;
+        }
+        .albumBox:hover .figcaption_wrap {
+            display: block;
+        }
+        .figcaption_wrap {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 5px;
+            width: calc(100% - 10px);
+            height: calc(100% - 5px);
+            background: #000;
+            opacity: .5;
+        }
+    
+        figcaption {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translate(0, -50%);
+            text-align: center;
+            color: #fff;
+        }
+    
+        @media screen and (max-width: 1023px) {
+            .container {
+                padding: 0 5px;
+            }
+            .col-6 {
+                width: 100%;
+            }
+    
+            .block-a .col-6 {
+                width: 50%;
+            }
+        }
+        @media screen and (max-width: 767px) {
+            .block-a .col-6{
+                width: 100%;
+            }
+            .block-a .col-6:nth-child(1) {
+                margin-bottom: 5px;
+            }
+        }
+    
+    </style>
+</head>
+<body>
+    <h2 style="text-align: center;">My Album2</h2>
+    <div class="container clearfix">
+        <div class="col-6">
+            <div class="col-12 albumBox">
+                <img src="images/111-300x300.jpg" alt="">
+                <div class="figcaption_wrap">
+                    <figcaption>
+                        <p>出發</span>
+                            <p>10/10/2017</p>
+                    </figcaption>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="block-a clearfix">
+                <div class="col-6 albumBox">
+                    <img src="images/1037-300x300.jpg" alt="">
+                    <div class="figcaption_wrap">
+                        <figcaption>
+                            <p>山頂日景</p> 
+                            <p>09/13/2012</p>
+                        </figcaption>
+                    </div>
+                </div>
+                <div class="col-6 albumBox">
+                    <img src="images/108-300x300.jpg" alt="">
+                    <div class="figcaption_wrap">
+                        <figcaption>
+                            <p>夏日假期</p>
+                            <p>07/01/2018</p>
+                        </figcaption>
+                    </div>
+                </div>
+            </div>
+            <div class="block-a clearfix">
+                <div class="col-6 albumBox">
+                    <img src="images/178-300x300.jpg" alt="">
+                    <div class="figcaption_wrap">
+                        <figcaption>
+                            <p>雨下不停</p> 
+                            <p>03/11/2014</p>
+                        </figcaption>
+                    </div>
+                </div>
+                <div class="col-6 albumBox">
+                    <img src="images/161-300x300.jpg" alt="">
+                    <div class="figcaption_wrap">
+                        <figcaption>
+                            <p>回歸森林</p> 
+                            <p>08/09/2015</p>
+                        </figcaption>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="block-a">
+                <div class="col-6 albumBox">
+                    <img src="images/139-300x300.jpg" alt="">
+                    <div class="figcaption_wrap">
+                        <figcaption>
+                            <p>收成之後</p> 
+                            <p>10/16/2016</p>
+                        </figcaption>
+                    </div>
+                </div>
+                <div class="col-6 albumBox">
+                    <img src="images/1065-300x300.jpg" alt="img1">
+                    <div class="figcaption_wrap">
+                        <figcaption>
+                            <p>後山街景</p>
+                            <p>12/30/2011</p>
+                        </figcaption>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="block-a">
+                <div class="col-6 albumBox">
+                    <img src="images/188-300x300.jpg" alt="">
+                    <div class="figcaption_wrap">
+                        <figcaption>
+                            <p>屋頂的風景</p>
+                            <p>10/21/2013</p>
+                        </figcaption>
+                    </div>
+                </div>
+                <div class="col-6 albumBox">
+                    <img src="images/104-300x300.jpg" alt="">
+                    <div class="figcaption_wrap">
+                        <figcaption>
+                            <p>夢</p> 
+                            <p>2/22/2019</p>
+                        </figcaption>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="jquery-3.1.1.min.js"></script>
+    <script>
+       
+    </script>
+</body>
+</html>

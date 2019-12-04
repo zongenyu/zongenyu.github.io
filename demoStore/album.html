@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Album</title>
+	<style>
+		body,
+		a,
+		div {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		img {
+			width: 100%;
+		}
+
+		body{
+			background: #ddd;
+		}
+		h2{
+			background: #aaa;
+			color: #fff;
+			text-align: center;
+			padding: 20px 0;
+			margin: 0;
+			letter-spacing: 5px;
+		}
+
+		.ig-container {
+			width: 100%;
+			max-width: 900px;
+			margin: 50px auto;
+			display: flex;
+			flex-wrap: nowrap;
+			flex-direction: row;
+		}
+
+		.sample {
+			width: 33.3%;
+			display: flex;
+			flex-wrap: wrap;
+			flex-direction: row;
+		}
+
+		.sample.sample-small {
+			width: 16.65%;
+		}
+
+		.sample-big .big,
+		.sample-big .small,
+		.sample-small .small {
+			display: block;
+			padding: 0 5px 5px 5px;
+		}
+
+		.sample-big .big,
+		.sample-small .small {
+			width: 100%;
+			display: block;
+		}
+
+		.sample-big .small {
+			width: 50%;
+			display: block;
+		}
+
+		@media screen and (max-width: 1023px) {
+			h2{
+				padding: 15px 0;
+				letter-spacing: 3px;
+			}
+			.ig-containerWrap{
+				padding: 10px 0;
+			}
+			.ig-container {
+				flex-wrap: wrap;
+				padding: 0 5px;
+				margin: 20px auto;
+			}
+
+			.sample,
+			.sample.sample-small,
+			.sample-big .small {
+				width: 100%;
+			}
+
+			.sample-big .big,
+			.sample-big .small,
+			.sample-small .small {
+				padding: 0 5px 10px 5px;
+			}
+		}
+		@media screen and (max-width: 767px) {
+
+		}
+	</style>
+</head>
+
+<body>
+	<h2>My Album</h2>
+	<div class="ig-container">
+		<div class="sample sample-big">
+			<a href="coverme.html" class="big">
+				<img src="images/16-300x300.jpg" alt="">
+			</a>
+			<a href="" class="small">
+				<img src="images/102-300x300.jpg" alt="">
+			</a>
+			<a href="" class="small">
+				<img src="images/103-300x300.jpg" alt="">
+			</a>
+		</div>
+	
+		<div class="sample sample-small">
+			<a href="" class="small">
+				<img src="images/104-300x300.jpg" alt="">
+			</a>
+			<a href="" class="small">
+				<img src="images/188-300x300.jpg" alt="">
+			</a>
+			<a href="" class="small">
+				<img src="images/108-300x300.jpg" alt="">
+			</a>
+		</div>
+	
+		<div class="sample sample-small">
+			<a href="" class="small">
+				<img src="images/111-300x300.jpg" alt="">
+			</a>
+			<a href="" class="small">
+				<img src="images/139-300x300.jpg" alt="">
+			</a>
+			<a href="" class="small">
+				<img src="images/161-300x300.jpg" alt="">
+			</a>
+		</div>
+	
+		<div class="sample sample-big">
+			<a href="" class="small">
+				<img src="images/178-300x300.jpg" alt="">
+			</a>
+			<a href="" class="small">
+				<img src="images/1037-300x300.jpg" alt="">
+			</a>
+			<a href="" class="big">
+				<img src="images/1065-300x300.jpg" alt="">
+			</a>
+		</div>
+	
+	</div>
+	
+
+	<script src="jquery-3.1.1.min.js"></script>
+	<script>
+		var flexWrap = ["wrap", "wrap-reverse"];
+		var flexDirection = ["row", "row-reverse"];
+		var sampleFW = 1;
+		var sampleFD = 1;
+		var sampleOrder = [-1, 0, 1];
+
+		$(document).ready(function () {
+
+			albumChange();
+
+			setInterval(function () {
+				// console.log("5秒");
+				albumChange()
+			}, 5000);
+
+		});
+
+		function albumChange() {
+			// $(".ig-container").css({ "opacity": "0", "max-width": 0, "overflow": "auto"});
+			$(".ig-container").css({ "opacity": "0" }, 800);
+
+			var l = $(".sample").length;
+			for (var i = 0; i < l; i++) {
+				// console.log(sampleFD%2 + ", " + sampleFW%2);
+				$(".sample").eq(i).css({
+					"flex-wrap": flexWrap[sampleFW % 2],
+					"flex-direction": flexDirection[sampleFD % 2],
+				});
+			}
+
+			sampleFW++;
+			sampleFD++;
+
+			$(".sample").eq(0).css({
+				"order": sampleOrder[sampleFD % 3]
+			});
+			$(".sample").eq(1).css({
+				"order": sampleOrder[(sampleFD + 1) % 3]
+			});
+
+			// $(".ig-container").animate({ "opacity": "1", "max-width": "900px" }, 1000);
+			$(".ig-container").animate({ "opacity": "1" }, 1000);
+		}
+	</script>
+</body>
+
+</html>
