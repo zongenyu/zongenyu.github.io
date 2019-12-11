@@ -23,7 +23,6 @@
 
         let urlStr = FACE_EVENT_URL + mac +"&startTime=" + timeRange.startTime +"&endTime=" + timeRange.endTime;
 
-
         console.log('url:'+urlStr);
 
         var settings = {
@@ -289,19 +288,19 @@
         });
 
 
-    $(".prevousBtn").click(() => {
-        endTime = startTime;
-        startTime = startTime - milliSecondPerDay;
-        window.location.href = window.location.pathname + "?mac=" + mac +"&startTime=" + startTime +"&endTime=" + endTime;
-    });
+        $(".prevousBtn").click(() => {
+            endTime = startTime;
+            startTime = startTime - milliSecondPerDay;
+            window.location.href = window.location.pathname + "?mac=" + mac +"&startTime=" + startTime +"&endTime=" + endTime;
+        });
 
-    $(".nextBtn").click(() => {
-        startTime = endTime;
-        endTime = endTime + milliSecondPerDay;
-        window.location.href = window.location.pathname + "?mac=" + mac +"&startTime=" + startTime +"&endTime=" + endTime;
-    });
+        $(".nextBtn").click(() => {
+            startTime = endTime;
+            endTime = endTime + milliSecondPerDay;
+            window.location.href = window.location.pathname + "?mac=" + mac +"&startTime=" + startTime +"&endTime=" + endTime;
+        });
 
-});
+    });
 
 
   </script>
