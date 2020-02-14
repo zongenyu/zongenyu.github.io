@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>LUXUR</title>
+    <!-- <link rel="Shortcut Icon" type="image/x-icon" href="images/flag.png"> -->
+    <link rel="stylesheet" href="styles/vendor/jquery.bootstrap-touchspin.css">
+    <link rel="stylesheet" href="styles/vendor/jquery.countdown.css">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+    <header>
+        <!-- desktop -->
+        <div class="header_desktop dtWrap">
+            <div class="header_top">
+                <div class="clearfix">
+                    <div class="header_top_left">
+                        <a href="#" class="logo">
+                            <img src="images/icons/logo.gif" alt="logo" title="logo">
+                        </a>
+                    </div>
+                    <!--end header_top_left-->
+        
+                    <div class="header_top_right">
+                        <div class="header_funList iconsList clearfix">
+                            <ul>
+                                <li>
+                                    <div class="searchWrap js_searchWrap">
+                                        <div class="placeholder_area">
+                                            <input type="text" placeholder="搜尋">
+                                            <a href="#" class="">
+                                                <i class="fas fa-search"></i>
+                                            </a>
+                                        </div>
+                                    
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fas fa-user"></i>
+                                    </a>
+                                </li>
+                                <li class="bagWrap">
+                                    <a href="#">
+                                        <i class="fas fa-shopping-bag"></i>
+                                        <span>100</span>
+                                    </a>
+                                </li>
+                            </ul>
+        
+                        </div>
+    
+                    </div>
+                    <!--end header_top_right-->
+                </div>
+                <!--end mainContent-->
+            </div>
+            <!--end header_top-->
+
+            <div class="">
+                <nav class="mainMenu">
+                    <ul class="dtwrap-mainMenu is-clearfix">
+                        <li>
+                            <a href="productlist.html">當月促銷</a>
+                        </li>
+                        <li>
+                            <a href="#">最新商品</a>
+                        </li>
+                        <li>
+                            <a href="#">熱銷排行</a>
+                            <ul class="submenu">
+                                <li><a href="#">蜜蠟</a></li>
+                                <li><a href="#">珊瑚</a></li>
+                                <li><a href="#">天然石銀墜</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">全品項</a>
+                            <ul class="submenu">
+                                <li><a href="#">蜜蠟</a></li>
+                                <li><a href="#">珊瑚</a></li>
+                                <li><a href="#">天然石銀墜</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">全系列</a>
+                            <ul class="submenu">
+                                <li><a href="#">優雅</a></li>
+                                <li><a href="#">簡約</a></li>
+                                <li><a href="#">墜愛</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!--end desktop -->
+
+        <!-- phone -->
+        <div class="header_phone">
+            <a href="javascript: void(0);" class="header_phone_menu">
+                <img src="images/icons/menu.png" alt="" title="">
+            </a>
+            <a href="default.html">
+                <img src="images/icons/logo.gif" alt="" title="">
+            </a>
+            <a href="#" class="header_phone_bag">
+                <img src="images/icons/bag_m.png" alt="" title="">
+                <span>10</span>
+            </a>
+        </div>
+    </header>
+ 
+    <div class="offcanvas">
+        <br>
+        <div class="searchWrap js_searchWrap" style="width: 90%; margin: 10px auto;">
+            <div class="placeholder_area">
+                <input type="text" placeholder="搜尋" style="width: calc(100% - 45px);">
+                <a href="#" class="">
+                    <i class="fas fa-search"></i>
+                </a>
+            </div>
+        </div>
+        <ul class="phoneMenu">
+            <li>
+                <a href="#" class="">登入/登出</a>
+            </li>
+            <li>
+                <a href="#" class="">當月促銷</a>
+            </li>
+            <li>
+                <a href="#" class="">最新商品</a>
+            </li>
+            <li>
+                <a href="#" class="submenuTitle">熱銷排行</a>
+                <ul class="submenu">
+                    <li>
+                        <a href="#">蜜蠟</a>
+                    </li>
+                    <li>
+                        <a href="#">珊瑚</a>
+                    </li>
+                    <li>
+                        <a href="#">天然石銀墜</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="submenuTitle">全品項</a>
+                <ul class="submenu">
+                    <li>
+                        <a href="#">蜜蠟</a>
+                    </li>
+                    <li>
+                        <a href="#">珊瑚</a>
+                    </li>
+                    <li>
+                        <a href="#">天然石銀墜</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="submenuTitle">全系列</a>
+                <ul class="submenu">
+                    <li>
+                        <a href="#">優雅</a>
+                    </li>
+                    <li>
+                        <a href="#">簡約</a>
+                    </li>
+                    <li>
+                        <a href="#">墜愛</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="submenuTitle">關於我們</a>
+                <ul class="submenu">
+                    <li>
+                        <a href="#">品牌故事</a>
+                    </li>
+                    <li>
+                        <a href="#">商店介紹</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="submenuTitle">會員權益</a>
+                <ul class="submenu">
+                    <li>
+                        <a href="#">隱私權條款</a>
+                    </li>
+                    <li>
+                        <a href="#">會員權益聲明</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="submenuTitle">客服資訊</a>
+                <ul class="submenu">
+                    <li>
+                        <a href="#">常見問題</a>
+                    </li>
+                    <li>
+                        <a href="#">聯絡我們</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="submenuTitle">購物說明</a>
+                <ul class="submenu">
+                    <li>
+                        <a href="#">付款方式</a>
+                    </li>
+                    <li>
+                        <a href="#">運送方式</a>
+                    </li>
+                    <li>
+                        <a href="#">退換貨方式</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="contentWrap">
+        <div class="dtWrap">
+
+            <div class="pdlistWrap clearfix">
+                
+                <div class="pdlist_content">
+                    <div class="breadcrumbs">
+                        <ol>
+                            <li>
+                                <h2><a href="" title="">Home</a></h2>  
+                            </li>
+                            <li>
+                                <h1>美妝</h1>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <!-- <div class="pds clearfix">
+                        <div class="pds_empty">
+                            查無商品
+                        </div>
+                    </div> -->
+                    
+                    <div class="pds clearfix">
+                        
+                        <div class="pdBox">
+                            <a href="#" class="pd_imgWrap">
+                                <img src="images/assets/011422.jpeg" alt="" title="" class="pd_img">
+                            </a>
+                            <p class="pd_name">
+                                玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊
+                            </p>
+                            <p class="pd_price">
+                                <span class="original_price">$1,350</span>
+                                <span class="sale_price">$1,210</span>
+                            </p>
+                        </div>
+
+                        <div class="pdBox">
+                            <a href="#" class="pd_imgWrap">
+                                <img src="images/assets/012129.jpeg" alt="" title="" class="pd_img">
+                            </a>
+                            <p class="pd_name">
+                                玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊
+                            </p>
+                            <p class="pd_price">
+                                <span class="original_price">$1,350</span>
+                                <span class="sale_price">$1,210</span>
+                            </p>
+                        </div>
+
+                        <div class="pdBox">
+                            <a href="#" class="pd_imgWrap">
+                                <img src="images/assets/115240.jpeg" alt="" title="" class="pd_img">
+                            </a>
+                            <p class="pd_name">
+                                玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊
+                            </p>
+                            <p class="pd_price">
+                                <span class="original_price">$1,350</span>
+                                <span class="sale_price">$1,210</span>
+                            </p>
+                        </div>
+
+                        <div class="pdBox">
+                            <a href="#" class="pd_imgWrap">
+                                <img src="images/assets/121725.jpeg" alt="" title="" class="pd_img">
+                            </a>
+                            <p class="pd_name">
+                                S玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊
+                            </p>
+                            <p class="pd_price clearfix">
+                                <span class="original_price">$1,350</span>
+                                <span class="sale_price">$1,210</span>
+                            </p>
+                        </div>
+
+                        <div class="pdBox">
+                            <a href="#" class="pd_imgWrap">
+                                <img src="images/assets/140521.jpeg" alt="" title="" class="pd_img">
+                            </a>
+                            <p class="pd_name">
+                                玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜
+                            </p>
+                            <p class="pd_price">
+                                <span class="original_price">$1,350</span>
+                                <span class="sale_price">$1,210</span>
+                            </p>
+                        </div>
+
+                        <div class="pdBox">
+                            <a href="#" class="pd_imgWrap">
+                                <img src="images/assets/141634.jpeg" alt="" title="" class="pd_img">
+                            </a>
+                            <p class="pd_name">
+                                玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊
+                            </p>
+                            <p class="pd_price">
+                                <span class="original_price">$1,350</span>
+                                <span class="sale_price">$1,210</span>
+                            </p>
+                        </div>
+
+                        <div class="pdBox">
+                            <a href="#" class="pd_imgWrap">
+                                <img src="images/assets/141856.jpeg" alt="" title="" class="pd_img">
+                            </a>
+                            <p class="pd_name">
+                                玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊
+                            </p>
+                            <p class="pd_price">
+                                <span class="original_price">$1,350</span>
+                                <span class="sale_price">$1,210</span>
+                            </p>
+                        </div>
+
+                        <div class="pdBox">
+                            <a href="#" class="pd_imgWrap">
+                                <img src="images/assets/144549-2.jpeg" alt="" title="" class="pd_img">
+                            </a>
+                            <p class="pd_name">
+                                玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊
+                            </p>
+                            <p class="pd_price">
+                                <span class="original_price">$1,350</span>
+                                <span class="sale_price">$1,210</span>
+                            </p>
+                        </div>
+                        
+                        <div class="pdBox">
+                            <a href="#" class="pd_imgWrap">
+                                <img src="images/assets/144549.jpeg" alt="" title="" class="pd_img">
+                            </a>
+                            <p class="pd_name">
+                                玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊
+                            </p>
+                            <p class="pd_price">
+                                <span class="original_price">$1,350</span>
+                                <span class="sale_price">$1,210</span>
+                            </p>
+                        </div>
+
+                        <div class="pdBox">
+                            <a href="#" class="pd_imgWrap">
+                                <img src="images/assets/161415.jpeg" alt="" title="" class="pd_img">
+                            </a>
+                            <p class="pd_name">
+                                玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊
+                            </p>
+                            <p class="pd_price">
+                                <span class="original_price">$1,350</span>
+                                <span class="sale_price">$1,210</span>
+                            </p>
+                        </div>
+
+                        <div class="pdBox">
+                            <a href="#" class="pd_imgWrap">
+                                <img src="images/assets/120939.jpeg" alt="" title="" class="pd_img">
+                            </a>
+                            <p class="pd_name">
+                                玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊
+                            </p>
+                            <p class="pd_price">
+                                <span class="original_price">$1,350</span>
+                                <span class="sale_price">$1,210</span>
+                            </p>
+                        </div>
+
+                        <div class="pdBox">
+                            <a href="#" class="pd_imgWrap">
+                                <img src="images/assets/152114.jpeg" alt="" title="" class="pd_img">
+                            </a>
+                            <p class="pd_name">
+                                玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊
+                            </p>
+                            <p class="pd_price">
+                                <span class="original_price">$1,350</span>
+                                <span class="sale_price">$1,210</span>
+                            </p>
+                        </div>
+                        
+                        <div class="pdBox">
+                            <a href="#" class="pd_imgWrap">
+                                <img src="images/assets/011422.jpeg" alt="" title="" class="pd_img">
+                            </a>
+                            <p class="pd_name">
+                                玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊玫瑰墜鍊
+                            </p>
+                            <p class="pd_price clearfix">
+                                <span class="original_price">$1,350</span>
+                                <span class="sale_price">$1,210</span>
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="pagination">
+                        <a href="#" class="pagination_prev disabled"></a>
+                        <a href="#" class="active pagination_page">1</a>
+                        <a href="#" class="pagination_page">2</a>
+                        <a href="#" class="pagination_page">3</a>
+                        <a href="#" class="pagination_page">4</a>
+                        <a href="#" class="pagination_dots">...</a>
+                        <a href="#" class="pagination_page">25</a>
+                        <a href="#" class="pagination_next"></a>
+                    </div>
+
+                </div>
+                <!--end pdlist_content-->
+            </div>
+            <!--end pdlistWrap-->
+        </div>
+        <!--end dtWrap-->
+
+        <!--popup-->
+        <div id="popup_sort" class="mfp-hide">
+            <p>價格</p>
+            <div class="sortList clearfix">
+                <div class="sortList_price_down">
+                    <a href="">價格高</a>
+                </div>
+                <div class="sortList_price_up">
+                    <a href="">價格低</a>
+                </div>
+                <div class="sortList_price">
+                    <span>價格</span>
+                    <input type="text" placeholder="$最低">
+                    <span>-</span>
+                    <input type="text" placeholder="$最高">
+                </div>
+            </div>
+            <a href="#" class="btn_funCheck">確認</a>
+        </div>
+        <!--end popup-->
+        <footer class="dtWrap">
+            <div class="mainContent">
+                <ul class="footerMenu">
+                    <li>
+                        <a href="#" class="submenuTitle">關於我們</a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="#">品牌故事</a>
+                            </li>
+                            <li>
+                                <a href="#">商店介紹</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="submenuTitle">會員權益</a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="#">隱私權條款</a>
+                            </li>
+                            <li>
+                                <a href="#">會員權益聲明</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="submenuTitle">客服資訊</a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="#">常見問題</a>
+                            </li>
+                            <li>
+                                <a href="#">聯絡我們</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="submenuTitle">購物說明</a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="#">付款方式</a>
+                            </li>
+                            <li>
+                                <a href="#">運送方式</a>
+                            </li>
+                            <li>
+                                <a href="#">退換貨方式</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="footer_bottom">
+                    <p class="copyright">
+                        copyright &copy; 2020好眼力. All Rights Reserved.
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!--end contentWrap -->
+    <div class="pageCover"></div>
+    <!-- 引入js -->
+    <script src="scripts/vendor/jquery-1.11.2.min.js"></script>
+    <script src="scripts/vendor/jquery.magnific-popup.min.js"></script>
+    <!-- <script src="scripts/vendor/bootstrap.min.js"></script> -->
+    <script src="scripts/vendor/jquery.bootstrap-touchspin.js"></script>
+    <script src="scripts/vendor/slick.min.js"></script>
+    <!-- <script src="scripts/vendor/jquery.plugin.min.js"></script> -->
+    <!-- <script src="scripts/vendor/jquery.countdown.min.js"></script> -->
+    <script src="scripts/vendor/jquery.countdown.js"></script>
+    <!-- <script src="scripts/vendor/jquery.lazyload.min.js"></script> -->
+    <script src="scripts/main.js" charset="big5"></script>
+    <script>
+        $(document).ready(function () {
+            
+
+        });
+    </script>
+</body>
+
+</html>
