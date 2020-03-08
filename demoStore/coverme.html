@@ -17,8 +17,8 @@
         
         .imgWrap{
             width: 100%;
-            padding-top: 100%;
-            background-image: url("1771473359912_film.jpg");
+            padding-top: 66.56%;
+            background-image: url("flower_bracelet.jpg");
 　          background-repeat: no-repeat;
             background-position-x: center;
             background-position-y: 0;
@@ -47,13 +47,16 @@
         var changeY=0;
         var positionY=0;
         var scleFactor = 1;
-        var unitJpegHeight = 640;
-        var fullJpegHeight = 30080;
+        var unitJpegHeight = 1728;
+        var fullJpegHeight = 41472;
 
         $(function () {
-            scaleFactor = document.body.clientWidth/640;
+            scaleFactor = document.body.clientWidth/2592;
             unitJpegHeight = unitJpegHeight*scaleFactor;
             fullJpegHeight = fullJpegHeight*scaleFactor;
+            console.log("unit heiight:" + unitJpegHeight);
+            console.log("full height:" + fullJpegHeight);
+            console.log("imgWrap:"+$(".imgWrap").height);
             $(".imgWrap").on("mousedown", mousedown);
             $(".imgWrap").on("touchstart", touchdown);
         });
