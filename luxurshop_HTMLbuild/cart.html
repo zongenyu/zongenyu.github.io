@@ -14,69 +14,12 @@
 
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script>
-
         $(document).ready(function () {
-            getProductInfo();
+            let urlParams = new URLSearchParams(window.location.search);
+            console.log(JSON.stringify(urlParams));
+            document.getElementById('iframe1').src = '../../store/products/' + urlParams.get('item');
         });
-
-        const getProductInfo = function(){
-
-            let urlStr = "../store/api/v1/products?page=1&token=510617c44c29828008df33d1c5c26a963c7db766e5f01bc1";
-            console.log('url:'+urlStr);
-
-            var settings = {
-                "async": true,
-                "crossDomain": true,
-                "url": urlStr,
-                "method": "GET",
-                "headers": {
-                    "content-type": "application/json"
-                    // "cache-control": "no-cache"
-                },
-                "processData": false,
-                "data": ""
-            }
-
-
-            $.ajax(settings).done(function (response) {
-
-                var data=response;
-                console.log(data);
-                renderProduct(data);
-            });
-
-        };
-
-        const renderProduct = function(data){
-            let productContainer = document.getElementById('productContainer');
-            console.log(data.products[0].master.images[0].large_url);
-
-            for (let idx in data.products){
-                let productDiv ='<div class="pdBox2">'+
-                                    `<a href=cart.html?item=${data.products[idx].slug} class="pd_imgWrap">`+
-                                        `<img src=${data.products[idx].master.images[0].large_url} alt="" title="" class="pd_img">`+
-                                        '<img src="" alt="" title="" class="pd_img">'+
-                                    '</a>'+
-                                    `<p class="pd_name">${data.products[idx].name}</p>`+
-                                    '<p class="pd_price">'+
-                                        `<span class="original_price">${data.products[idx].price}</span>`+
-                                        `<span class="sale_price">${data.products[idx].display_price}</span>`+
-                                    '</p>'+
-                                '</div>';
-                document.querySelector('#productContainer').insertAdjacentHTML('afterbegin', productDiv);
-            }
-
-            let firstDiv = '<div class="pdBox2" id="firstPdBox2">' +
-                '</div>';
-            document.querySelector('#productContainer').insertAdjacentHTML('afterbegin', firstDiv);
-            
-            var w=$(".pdBox2").width();
-            console.log(w);
-            let iframe = `<iframe id="iframe1" src="../360/coverme.html" width="100%" height="${w*0.6656}px" frameborder="0" scrolling="yes"></iframe>`;
-            document.querySelector('#firstPdBox2').insertAdjacentHTML('afterbegin', iframe);
-        };
-
-    </script>    
+    </script>
 </head>
 
 <body>
@@ -181,7 +124,7 @@
             </a>
         </div>
     </header>
-
+ 
     <div class="offcanvas">
         <br>
         <div class="searchWrap js_searchWrap" style="width: 90%; margin: 10px auto;">
@@ -293,130 +236,9 @@
             </li>
         </ul>
     </div>
-    <div class="contentWrap">
-        <div class="dtWrap">
 
-            <div class="pdlistWrap clearfix">
-
-                <div class="pdlist_content">
-                    <div class="breadcrumbs">
-                        <ol>
-                            <li>
-                                <h2><a href="" title="">Home</a></h2>
-                            </li>
-                            <li>
-                                <h1>美妝</h1>
-                            </li>
-                        </ol>
-                    </div>
-
-                    <!-- <div class="pds clearfix">
-                        <div class="pds_empty">
-                            查無商品
-                        </div>
-                    </div> -->
-
-                    <div class="pds clearfix" id='productContainer'>
-
-                    </div>
-
-                    <div class="pagination">
-                        <a href="#" class="pagination_prev disabled"></a>
-                        <a href="#" class="active pagination_page">1</a>
-                        <a href="#" class="pagination_page">2</a>
-                        <a href="#" class="pagination_page">3</a>
-                        <a href="#" class="pagination_page">4</a>
-                        <a href="#" class="pagination_dots">...</a>
-                        <a href="#" class="pagination_page">25</a>
-                        <a href="#" class="pagination_next"></a>
-                    </div>
-
-                </div>
-                <!--end pdlist_content-->
-            </div>
-            <!--end pdlistWrap-->
-        </div>
-        <!--end dtWrap-->
-
-        <!--popup-->
-        <div id="popup_sort" class="mfp-hide">
-            <p>價格</p>
-            <div class="sortList clearfix">
-                <div class="sortList_price_down">
-                    <a href="">價格高</a>
-                </div>
-                <div class="sortList_price_up">
-                    <a href="">價格低</a>
-                </div>
-                <div class="sortList_price">
-                    <span>價格</span>
-                    <input type="text" placeholder="$最低">
-                    <span>-</span>
-                    <input type="text" placeholder="$最高">
-                </div>
-            </div>
-            <a href="#" class="btn_funCheck">確認</a>
-        </div>
-        <!--end popup-->
-        <footer class="dtWrap">
-            <div class="mainContent">
-                <ul class="footerMenu">
-                    <li>
-                        <a href="#" class="submenuTitle">關於我們</a>
-                        <ul class="submenu">
-                            <li>
-                                <a href="#">品牌故事</a>
-                            </li>
-                            <li>
-                                <a href="#">商店介紹</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="submenuTitle">會員權益</a>
-                        <ul class="submenu">
-                            <li>
-                                <a href="#">隱私權條款</a>
-                            </li>
-                            <li>
-                                <a href="#">會員權益聲明</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="submenuTitle">客服資訊</a>
-                        <ul class="submenu">
-                            <li>
-                                <a href="#">常見問題</a>
-                            </li>
-                            <li>
-                                <a href="#">聯絡我們</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="submenuTitle">購物說明</a>
-                        <ul class="submenu">
-                            <li>
-                                <a href="#">付款方式</a>
-                            </li>
-                            <li>
-                                <a href="#">運送方式</a>
-                            </li>
-                            <li>
-                                <a href="#">退換貨方式</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-                <div class="footer_bottom">
-                    <p class="copyright">
-                        copyright &copy; 2020好眼力. All Rights Reserved.
-                    </p>
-                </div>
-            </div>
-        </footer>
-    </div>
+    <iframe id="iframe1" src="" width="100vw" height="600px" frameborder="0" scrolling="yes" style="width: 100vw; margin-top: 60px;"></iframe>
+    
     <!--end contentWrap -->
     <div class="pageCover"></div>
     <!-- 引入js -->
@@ -432,7 +254,7 @@
     <script src="scripts/main.js" charset="big5"></script>
     <script>
         $(document).ready(function () {
-
+            
 
         });
     </script>
