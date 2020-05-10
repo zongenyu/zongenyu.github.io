@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tea</title>
+</head>
+
+<body>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <title>Tea</title>
+        <!-- <link rel="Shortcut Icon" type="image/x-icon" href="images/flag.png"> -->
+        <link rel="stylesheet" href="styles/vendor/jquery.bootstrap-touchspin.css">
+        <link rel="stylesheet" href="styles/main.css">
+    </head>
+    <div class="pdcnt">
+        <div class="pdcnt_info">
+            <p>茉莉綠茶</p>
+            <p>$25</p>
+        </div>
+        <div class="pdcnt_sortWrap">
+            <h4 class="pdcnt_sort">尺寸選擇</h3>
+            <div class="sort_itemWrap">
+                <div class="sort_item">
+                    <label>
+                        <input type="radio" name="size"> M
+                    </label>
+                    <p>+$25</p>
+                </div>
+                <div class="sort_item">
+                    <label>
+                        <input type="radio" name="size"> L
+                    </label>
+                    <p>+$30</p>
+                </div>
+            </div>
+        </div>
+        <div class="pdcnt_sortWrap">
+            <h4 class="pdcnt_sort">甜度選擇</h3>
+            <div class="sort_itemWrap">
+                <div class="sort_item">
+                    <label>
+                        <input type="radio" name="sugar"> 九分糖
+                    </label>
+                    <p></p>
+                </div>
+                <div class="sort_item">
+                    <label>
+                        <input type="radio" name="sugar"> 半糖
+                    </label>
+                    <p></p>
+                </div>
+                <div class="sort_item">
+                    <label>
+                        <input type="radio" name="sugar"> 無糖
+                    </label>
+                    <p></p>
+                </div>
+                <div class="sort_item">
+                    <label>
+                        <input type="radio" name="sugar"> 少糖
+                    </label>
+                    <p></p>
+                </div>
+                <div class="sort_item">
+                    <label>
+                        <input type="radio" name="sugar"> 正常糖
+                    </label>
+                    <p></p>
+                </div>
+                <div class="sort_item">
+                    <label>
+                        <input type="radio" name="sugar"> 微糖
+                    </label>
+                    <p></p>
+                </div>
+                <div class="sort_item">
+                    <label>
+                        <input type="radio" name="sugar"> 九分糖
+                    </label>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+        <div class="pdcnt_sortWrap">
+            <h4 class="pdcnt_sort">冷熱選擇</h3>
+                <div class="sort_itemWrap">
+                    <div class="sort_item">
+                        <label>
+                            <input type="radio" name="sugar"> 熱
+                        </label>
+                        <p></p>
+                    </div>
+                    <div class="sort_item">
+                        <label>
+                            <input type="radio" name="sugar"> 正常冰
+                        </label>
+                        <p></p>
+                    </div>
+                    <div class="sort_item">
+                        <label>
+                            <input type="radio" name="sugar"> 少冰
+                        </label>
+                        <p></p>
+                    </div>
+                    <div class="sort_item">
+                        <label>
+                            <input type="radio" name="sugar"> 微冰
+                        </label>
+                        <p></p>
+                    </div>
+                    <div class="sort_item">
+                        <label>
+                            <input type="radio" name="sugar"> 去冰
+                        </label>
+                        <p></p>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <div class="pdcnt_total">
+        <div class="touchspin_wrap">
+            <input class="touchspin" type="text">
+        </div>
+        <a href="#">加入購物車</a>
+    </div>
+    <script src="scripts/vendor/jquery-1.11.2.min.js"></script>
+    <!-- <script src="scripts/vendor/bootstrap.min.js"></script> -->
+    <script src="scripts/vendor/jquery.bootstrap-touchspin.js"></script>
+    <script src="scripts/main.js"></script>
+    <script>
+        $(".touchspin").TouchSpin({
+            initval: 1,
+            min: 1,
+            max: 100,
+            step: 1,
+        });
+    </script>
+</body>
+
+</html>
